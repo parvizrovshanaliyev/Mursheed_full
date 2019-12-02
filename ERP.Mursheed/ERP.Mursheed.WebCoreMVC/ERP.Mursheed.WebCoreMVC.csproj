@@ -22,7 +22,6 @@
   <ItemGroup>
     <Folder Include="Helper\" />
     <Folder Include="ViewComponents\" />
-    <Folder Include="ViewModels\" />
     <Folder Include="wwwroot\admin\" />
     <Folder Include="wwwroot\ui\" />
   </ItemGroup>

@@ -124,17 +124,17 @@ namespace ERP.Mursheed.WebCoreMVC
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
             #endregion
 
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapControllerRoute(
-            //        name: "default",
-            //        pattern: "{controller=Home}/{action=Index}/{id?}");
-            //});
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "areas",
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapAreaControllerRoute(
+                    name: "areas", "areas",
                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                //endpoints.MapRazorPages();
             });
 
         }
