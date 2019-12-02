@@ -8,8 +8,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ERP.Mursheed.WebCoreMVC.Controllers
 {
+    
     public class AccountController : Controller
     {
+        #region Login
         [HttpGet]
         [Route("Account/{login}")]
         public IActionResult Login()
@@ -24,18 +26,19 @@ namespace ERP.Mursheed.WebCoreMVC.Controllers
         {
             return View();
         }
+        #endregion
 
         [HttpGet]
-        [Route("{register}")]
         public IActionResult Register()
         {
             return View();
         }
 
+
         #region Register Driver
         [HttpGet]
-        [Route("register/{driver}")]
-        public IActionResult Driver()
+        [ActionName("driverRegister")]
+        public IActionResult DriverRegister()
         {
             return View();
         }
@@ -44,8 +47,8 @@ namespace ERP.Mursheed.WebCoreMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("register/{guide}")]
-        public IActionResult Driver(Person person) // todo viewmodel
+        [ActionName("driverRegister")]
+        public IActionResult DriverRegister(Person person) // todo viewmodel
         {
             return View();
         }
@@ -53,8 +56,8 @@ namespace ERP.Mursheed.WebCoreMVC.Controllers
 
         #region Register Guide
         [HttpGet]
-        [Route("register/{guide}")]
-        public IActionResult Guide()
+        [ActionName("guideRegister")]
+        public IActionResult GuideRegister()
         {
             return View();
         }
@@ -63,17 +66,16 @@ namespace ERP.Mursheed.WebCoreMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("register/{driver}")]
-        public IActionResult Guide(Person person) // todo viewmodel
+        [ActionName("guideRegister")]
+        public IActionResult GuideRegister(Person person) // todo viewmodel
         {
             return View();
         }
         #endregion
 
-        #region Register Tourist
+        #region Register Tourist = Customer
         [HttpGet]
-        [Route("register/{tourist}")]
-        public IActionResult Tourist()
+        public IActionResult TouristRegister()
         {
             return View();
         }
@@ -82,8 +84,24 @@ namespace ERP.Mursheed.WebCoreMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("register/{tourist}")]
-        public IActionResult Tourist(Person person) // todo viewmodel
+        public IActionResult TouristRegister(Person person) // todo viewmodel
+        {
+            return View();
+        }
+        #endregion
+
+        #region TranspostationAgencyRegister
+        [HttpGet]
+        public IActionResult AgencyRegister()
+        {
+            return View();
+        }
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AgencyRegister(Person person) // todo viewmodel
         {
             return View();
         }
