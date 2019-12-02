@@ -2,47 +2,167 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ERP.Mursheed.WebCoreMVC</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ERP.Mursheed.WebCoreMVC</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    <title>Atlas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Atlas store" name="description" />
+    <meta content="Samir Karimov" name="author" />
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - ERP.Mursheed.WebCoreMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/admin/assets/images/favicon.ico">
+    @RenderSection("styles", false)
+    <!-- App css -->
+    <link href="~/admin/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/admin/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/admin/assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/admin/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+    <!-- Top Bar Start -->
+    <div class="topbar">
+        <!-- LOGO -->
+        <div class="topbar-left">
+            <a href="#" class="logo">
+                <span>
+                    <img src="~/admin/assets/images/logo-sm.png" alt="logo-small" class="logo-sm">
+                </span>
+                <span>
+                    <img src="~/admin/assets/images/logo-dark.png" alt="logo-large" class="logo-lg">
+                </span>
+            </a>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+        <!--end logo-->
+        <!-- Navbar -->
+        <nav class="navbar-custom">
+            <ul class="list-unstyled topbar-nav float-right mb-0">
+                <li class="hidden-sm">
+                    <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="javascript: void(0);" role="button"
+                       aria-haspopup="false" aria-expanded="false">
+                        English <img src="~/admin/assets/images/flags/us_flag.jpg" class="ml-2" height="16" alt="" /> <i class="mdi mdi-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="javascript: void(0);"><span> German </span><img src="~/admin/assets/images/flags/germany_flag.jpg" alt="" class="ml-2 float-right" height="14" /></a>
+                        <a class="dropdown-item" href="javascript: void(0);"><span> Italian </span><img src="~/admin/assets/images/flags/italy_flag.jpg" alt="" class="ml-2 float-right" height="14" /></a>
+                        <a class="dropdown-item" href="javascript: void(0);"><span> French </span><img src="~/admin/assets/images/flags/french_flag.jpg" alt="" class="ml-2 float-right" height="14" /></a>
+                        <a class="dropdown-item" href="javascript: void(0);"><span> Spanish </span><img src="~/admin/assets/images/flags/spain_flag.jpg" alt="" class="ml-2 float-right" height="14" /></a>
+                        <a class="dropdown-item" href="javascript: void(0);"><span> Russian </span><img src="~/admin/assets/images/flags/russia_flag.jpg" alt="" class="ml-2 float-right" height="14" /></a>
+                    </div>
+                </li>
+
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown" href="#" role="button"
+                       aria-haspopup="false" aria-expanded="false">
+                        <i class="dripicons-bell noti-icon"></i>
+                        <span class="badge badge-danger badge-pill noti-icon-badge">2</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-lg">
+                        <!-- item-->
+                        <h6 class="dropdown-item-text">
+                            Notifications (18)
+                        </h6>
+                        <div class="slimscroll notification-list">
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item active">
+                                <div class="notify-icon bg-success"><i class="mdi mdi-cart-outline"></i></div>
+                                <p class="notify-details">Your order is placed<small class="text-muted">Dummy text of the printing and typesetting industry.</small></p>
+                            </a>
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-warning"><i class="mdi mdi-message"></i></div>
+                                <p class="notify-details">New Message received<small class="text-muted">You have 87 unread messages</small></p>
+                            </a>
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-info"><i class="mdi mdi-glass-cocktail"></i></div>
+                                <p class="notify-details">Your item is shipped<small class="text-muted">It is a long established fact that a reader will</small></p>
+                            </a>
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-primary"><i class="mdi mdi-cart-outline"></i></div>
+                                <p class="notify-details">Your order is placed<small class="text-muted">Dummy text of the printing and typesetting industry.</small></p>
+                            </a>
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-danger"><i class="mdi mdi-message"></i></div>
+                                <p class="notify-details">New Message received<small class="text-muted">You have 87 unread messages</small></p>
+                            </a>
+                        </div>
+                        <!-- All-->
+                        <a href="javascript:void(0);" class="dropdown-item text-center text-primary">
+                            View all <i class="fi-arrow-right"></i>
+                        </a>
+                    </div>
+                </li>
+
+                <!-- User Profile Log Out -->
+                <partial name="_LoginPartial" />
+                <!-- User Profile Log Out -->
+
+
+            </ul><!--end topbar-nav-->
+
+            <ul class="list-unstyled topbar-nav mb-0">
+                <li>
+                    <button class="button-menu-mobile nav-link waves-effect waves-light">
+                        <i class="dripicons-menu nav-icon"></i>
+                    </button>
+                </li>
+                <li class="hide-phone app-search">
+                    <form role="search" class="">
+                        <input type="text" placeholder="Search..." class="form-control">
+                        <a href=""><i class="fas fa-search"></i></a>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+        <!-- end navbar-->
+    </div>
+    <!-- Top Bar End -->
+
+    <div class="page-wrapper">
+        <!-- Left Sidenav -->
+        @await Component.InvokeAsync("LeftSideNav")
+        <!-- end left-sidenav-->
+        <!-- Page Content-->
+        <div class="page-content">
+
+            <div class="container-fluid">
+                <!-- Page-Title -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="page-title-box">
+                            <div class="float-right">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Metrica</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript:void(0);">CRM</a></li>
+                                    <li class="breadcrumb-item active">Dashboard</li>
+                                </ol>
+                            </div>
+                            <h4 class="page-title">Dashboard</h4>
+                        </div><!--end page-title-box-->
+                    </div><!--end col-->
+                </div><!--end row-->
+                <!-- end page title end breadcrumb -->
+                @RenderBody()
+            </div><!-- container -->
+
+            <footer class="footer text-center text-sm-left">
+                &copy; 2019 Atlas <span class="text-muted d-none d-sm-inline-block float-right">Crafted with <i class="mdi mdi-heart text-danger"></i> by Samir Karimov</span>
+            </footer><!--end footer-->
+        </div>
+        <!-- end page content -->
+    </div>
+    <!-- end page-wrapper -->
+    <!-- jQuery  -->
+    <script src="~/admin/assets/js/jquery.min.js"></script>
+    <script src="~/admin/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="~/admin/assets/js/metisMenu.min.js"></script>
+    <script src="~/admin/assets/js/waves.min.js"></script>
+    <script src="~/admin/assets/js/jquery.slimscroll.min.js"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <!-- App js -->
+    <script src="~/admin/assets/js/app.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
