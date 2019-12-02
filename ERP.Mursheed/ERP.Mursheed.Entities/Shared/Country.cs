@@ -8,7 +8,7 @@ namespace ERP.Mursheed.Entities.Shared
     {
         public Country()
         {
-            People = new HashSet<Person>();
+            Drivers = new HashSet<Driver>();
         }
         public int Id { get; set; }
         public string ISO { get; set; }
@@ -18,7 +18,7 @@ namespace ERP.Mursheed.Entities.Shared
         public string NumCode { get; set; }
         public string Phonecode { get; set; }
 
-        public virtual ICollection<Person> People { get; set; }
+        public virtual ICollection<Driver> Drivers { get; set; }
 
     }
 }

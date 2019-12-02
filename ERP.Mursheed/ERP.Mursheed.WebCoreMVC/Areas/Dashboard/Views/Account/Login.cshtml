@@ -1,0 +1,81 @@
+﻿
+@model LoginViewModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Login";
+    var returnUrl = @Context.Request.Query["Returnurl"];
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Atlas Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @*<meta content="A premium admin dashboard template by Mannatthemes" name="description" />
+        <meta content="Mannatthemes" name="author" />*@
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="~/admin/assets/images/favicon.ico">
+    <!-- App css -->
+    <link href="~/admin/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/admin/assets/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/admin/assets/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="account-body accountbg">
+    <!-- Log In page -->
+    <div class="row vh-100 ">
+        <div class="col-12 align-self-center">
+            <div class="auth-page">
+                <div class="card auth-card shadow-lg">
+                    <div class="card-body">
+                        <div class="px-3">
+                            <div class="auth-logo-box">
+                                <a href="#" class="logo logo-admin"><img src="~/admin/assets/images/logo-sm.png" height="55" alt="logo" class="auth-logo"></a>
+                            </div><!--end auth-logo-box-->
+                            <div class="text-center auth-logo-text">
+                                <h4 class="mt-0 mb-3 mt-5">Atlas</h4>
+                                <p class="text-muted mb-0">İstifadəçi adınızı və şifrənizi daxil edərək sistemə giriş edin.</p>
+                            </div> <!--end auth-logo-text-->
+                            <form class="form-horizontal auth-form my-4 needs-validation" novalidate autocomplete="off" asp-action="Login" asp-controller="Account" asp-route-returnurl="@returnUrl">
+                                <div class="form-group pb-2">
+                                    <label for="username">İstifadəçi Adı</label>
+                                    <div class="input-group mb-3">
+                                        <span class="auth-form-icon">
+                                            <i class="dripicons-user"></i>
+                                        </span>
+                                        <input type="text" class="form-control" asp-for="Username" required placeholder="İstifadəçi adını daxil edin" autocomplete="off">
+                                    </div>
+                                    <span asp-validation-for="Username" class="text-danger pl-3  aspValidationFor"></span>
+                                </div><!--end form-group-->
+                                <div class="form-group pb-2">
+                                    <label for="userpassword">Şifrə</label>
+                                    <div class="input-group mb-3">
+                                        <span class="auth-form-icon">
+                                            <i class="dripicons-lock"></i>
+                                        </span>
+                                        <input type="password" class="form-control" asp-for="Password" required placeholder="Şifrəni daxil edin" autocomplete="off">
+                                    </div>
+                                    <span asp-validation-for="Password" class="text-danger pl-3  aspValidationFor"></span>
+                                </div><!--end form-group-->
+                                <div asp-validation-summary="ModelOnly" class="text-danger mb-3 mt-2 aspValidationFor"></div>
+                                <div class="form-group mb-0 row pb-2">
+                                    <div class="col-12 mt-2">
+                                        <button class="btn btn-primary btn-round btn-block waves-effect waves-light" type="submit">Log In <i class="fas fa-sign-in-alt ml-1"></i></button>
+                                    </div>@*end col*@
+                                </div> @*end form-group*@
+                            </form><!--end form-->
+                        </div><!--end /div-->
+                    </div><!--end card-body-->
+                </div><!--end card-->
+            </div><!--end auth-page-->
+        </div><!--end col-->
+    </div><!--end row-->
+    <!-- End Log In page -->
+    <!-- jQuery  -->
+    <script src="~/admin/assets/js/jquery.min.js"></script>
+    <script src="~/admin/assets/js/bootstrap.bundle.min.js"></script>
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+</body>
+</html>
+
+
