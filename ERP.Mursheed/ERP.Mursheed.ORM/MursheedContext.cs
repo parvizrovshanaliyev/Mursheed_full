@@ -32,7 +32,7 @@ namespace ERP.Mursheed.ORM
         public DbSet<ApplicationUser> UserApps { get; set; }
         public DbSet<ApplicationRole> ApplicationRoles { get; set; }
         public DbSet<ApplicationUserRole> ApplicationUserRoles { get; set; }
-        public DbSet<Person> Personnel { get; set; }
+        public DbSet<Person> People { get; set; }
 
 
 

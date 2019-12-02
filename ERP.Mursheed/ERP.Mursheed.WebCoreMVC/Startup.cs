@@ -89,9 +89,6 @@ namespace ERP.Mursheed.WebCoreMVC
             //        options.AccessDeniedPath = "/Account/AccessDenied";
             //    });
             #endregion
-
-
-
             services.AddControllersWithViews();
         }
 
@@ -119,10 +116,7 @@ namespace ERP.Mursheed.WebCoreMVC
             app.UseAuthorization();
 
             #region For Decimal
-            var cultureInfo = new CultureInfo("en-GB");
-            cultureInfo.NumberFormat.NumberGroupSeparator = ".";
-
-
+            var cultureInfo = new CultureInfo("en-GB") { NumberFormat = { NumberGroupSeparator = "." } };
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
             #endregion
@@ -132,7 +126,13 @@ namespace ERP.Mursheed.WebCoreMVC
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapAreaControllerRoute(
+                    name: "areas", "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                //endpoints.MapRazorPages();
             });
+
         }
     }
 }
