@@ -69,7 +69,7 @@
                             </div>
                             <input class="submit" type="submit" value="Login">
                             <div class="have_acc">
-                                <a href="">Don’t have an Account? Register</a>
+                                <a href="/register">Don’t have an Account? Register</a>
                             </div>
                         </form>
                     </div>
@@ -80,6 +80,6 @@
     </div>
 </section>
 @section scripts{
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <script src="~/ui/js/showPassForRegister.js" asp-append-version="true"></script>
 }
 

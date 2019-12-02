@@ -31,7 +31,7 @@
                                 <label for="">Password</label>
                                 <div class="password">
                                     <input id="password_input" type="password" placeholder="Your password">
-                                    <button type="button" class="view"><img src="img/login/view-copy.svg" alt=""></button>
+                                    <button type="button" class="view"><img src="~/ui/img/login/view-copy.svg" alt=""></button>
                                 </div>
                             </div>
                             <div class="remember_forgot">
@@ -45,7 +45,7 @@
                             <div class="g-recaptcha" data-sitekey="6Ldbdg0TAAAAAI7KAf72Q6uagbWzWecTeBWmrCpJ"></div>
                             <input class="submit" type="submit" value="Login">
                             <div class="have_acc">
-                                <a href="">Don’t have an Account? Register</a>
+                                <a href="/register">Don’t have an Account? Register</a>
 
                             </div>
                         </form>
@@ -56,4 +56,6 @@
         </div>
     </div>
 </section>
-
+@section scripts{
+    <script src="~/ui/js/showPassForLogin.js" asp-append-version="true"></script>
+}

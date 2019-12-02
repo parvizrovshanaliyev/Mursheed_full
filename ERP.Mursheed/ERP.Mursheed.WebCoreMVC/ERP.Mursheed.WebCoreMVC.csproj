@@ -23,7 +23,6 @@
     <Folder Include="Helper\" />
     <Folder Include="ViewComponents\" />
     <Folder Include="wwwroot\admin\" />
-    <Folder Include="wwwroot\ui\" />
   </ItemGroup>
 
   <ItemGroup>
