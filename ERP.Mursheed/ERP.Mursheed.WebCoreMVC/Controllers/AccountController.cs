@@ -17,6 +17,10 @@ namespace ERP.Mursheed.WebCoreMVC.Controllers
         {
             return View();
         }
+        public IActionResult DriverRegister()
+        {
+            return View();
+        }
         public IActionResult Logout()
         {
             return View();

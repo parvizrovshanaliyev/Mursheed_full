@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "DriverRegister";
+}
+<section id="breadcumbs">
+    <div class="container">
+        <ul>
+            <li><a href="/Home/Index">Home</a></li>
+            <li><a href="/Acoount/Register">Driver Register</a></li>
+        </ul>
+    </div>
+</section>
+<section id="login_register">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="wrapper">
+                    <div class="header">
+                        <h3>Driver Register - First Step</h3>
+                    </div>
+                    <div class="form">
+                        <form>
+                            <div class="inputs">
+                                <label for="">Country</label>
+                                <div class="custom-selectbox">
+                                    <select>
+                                        <option value="0">Azerbaijan</option>
+                                        <option value="1">Turkey</option>
+                                        <option value="2">Germany</option>
+                                        <option value="3">France</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="inputs">
+                                <label for="">Name</label>
+                                <input type="text" placeholder="Your name">
+                            </div>
+                            <div class="inputs">
+                                <label for="">Surname</label>
+                                <input type="text" placeholder="Your surname">
+                            </div>
+                            <div class="inputs">
+                                <label for="">Email address</label>
+                                <input type="email" placeholder="Your email address">
+                            </div>
+                            <div class="inputs">
+                                <label for=""> Phone number</label>
+                                <input type="text" placeholder="Your phone number">
+                            </div>
+                            <div class="inputs">
+                                <label for="">Password</label>
+                                <div class="password">
+                                    <input id="password_input" type="password" placeholder="Your password">
+                                    <button type="button" class="view">
+                                        <img src="img/login/view-copy.svg"
+                                             alt="">
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="inputs">
+                                <label for="">Confrim password</label>
+                                <div class="password">
+                                    <input id="confrim_password_input" type="password" placeholder="Confirm password">
+                                    <button type="button" class="view_confrim">
+                                        <img src="img/login/view-copy.svg"
+                                             alt="">
+                                    </button>
+                                </div>
+                            </div>
+                            <input class="submit" type="submit" value="Login">
+                            <div class="have_acc">
+                                <a href="">Don’t have an Account? Register</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</section>
+@section scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
+
