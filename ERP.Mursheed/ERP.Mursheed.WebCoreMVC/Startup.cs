@@ -119,20 +119,24 @@ namespace ERP.Mursheed.WebCoreMVC
             app.UseAuthorization();
 
             #region For Decimal
-            var cultureInfo = new CultureInfo("en-GB");
-            cultureInfo.NumberFormat.NumberGroupSeparator = ".";
-
-
+            var cultureInfo = new CultureInfo("en-GB") { NumberFormat = { NumberGroupSeparator = "." } };
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
             #endregion
 
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllerRoute(
+            //        name: "default",
+            //        pattern: "{controller=Home}/{action=Index}/{id?}");
+            //});
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
             });
+
         }
     }
 }
