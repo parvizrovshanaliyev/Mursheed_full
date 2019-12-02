@@ -1,0 +1,8 @@
+C:\Users\S510UF\source\repos\parvizrovshanaliyev\ERP_Atlas\ERP.Atlas\ERP.Atlas.Services\bin\Debug\netcoreapp3.0\ERP.Atlas.Services.deps.json
+C:\Users\S510UF\source\repos\parvizrovshanaliyev\ERP_Atlas\ERP.Atlas\ERP.Atlas.Services\bin\Debug\netcoreapp3.0\ERP.Atlas.Services.dll
+C:\Users\S510UF\source\repos\parvizrovshanaliyev\ERP_Atlas\ERP.Atlas\ERP.Atlas.Services\bin\Debug\netcoreapp3.0\ERP.Atlas.Services.pdb
+C:\Users\S510UF\source\repos\parvizrovshanaliyev\ERP_Atlas\ERP.Atlas\ERP.Atlas.Services\obj\Debug\netcoreapp3.0\ERP.Atlas.Services.AssemblyInfoInputs.cache
+C:\Users\S510UF\source\repos\parvizrovshanaliyev\ERP_Atlas\ERP.Atlas\ERP.Atlas.Services\obj\Debug\netcoreapp3.0\ERP.Atlas.Services.AssemblyInfo.cs
+C:\Users\S510UF\source\repos\parvizrovshanaliyev\ERP_Atlas\ERP.Atlas\ERP.Atlas.Services\obj\Debug\netcoreapp3.0\ERP.Atlas.Services.dll
+C:\Users\S510UF\source\repos\parvizrovshanaliyev\ERP_Atlas\ERP.Atlas\ERP.Atlas.Services\obj\Debug\netcoreapp3.0\ERP.Atlas.Services.pdb
+C:\Users\S510UF\source\repos\parvizrovshanaliyev\ERP_Atlas\ERP.Atlas\ERP.Atlas.Services\obj\Debug\netcoreapp3.0\ERP.Atlas.Services.csprojAssemblyReference.cache
