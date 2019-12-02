@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ERP.Mursheed.WebCComporeMVC.Areas.Admin.ViewComponents
+namespace ERP.Mursheed.WebCComporeMVC.Areas.Dashboard.ViewComponents
 {
     public class LeftSideNavViewComponent : ViewComponent
     {

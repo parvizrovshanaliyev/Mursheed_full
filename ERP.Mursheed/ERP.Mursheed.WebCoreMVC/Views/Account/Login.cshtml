@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+<section id="breadcumbs">
+    <div class="container">
+        <ul>
+            <li><a href="/Home/Index">Home</a></li>
+            <li><a href="/Account/Login">Login</a></li>
+        </ul>
+    </div>
+</section>
+<section id="login_register">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="wrapper">
+                    <div class="header">
+                        <h3>Login</h3>
+                    </div>
+                    <div class="form">
+                        <form>
+                            <div class="inputs">
+                                <label for="">Username</label>
+                                <input type="text" placeholder="Your username">
+                            </div>
+                            <div class="inputs">
+                                <label for="">Password</label>
+                                <div class="password">
+                                    <input id="password_input" type="password" placeholder="Your password">
+                                    <button type="button" class="view"><img src="img/login/view-copy.svg" alt=""></button>
+                                </div>
+                            </div>
+                            <div class="remember_forgot">
+                                <label class="checkbox_container">
+                                    Remember me
+                                    <input type="checkbox" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <a href="">Forgot password?</a>
+                            </div>
+                            <div class="g-recaptcha" data-sitekey="6Ldbdg0TAAAAAI7KAf72Q6uagbWzWecTeBWmrCpJ"></div>
+                            <input class="submit" type="submit" value="Login">
+                            <div class="have_acc">
+                                <a href="">Don’t have an Account? Register</a>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</section>
+

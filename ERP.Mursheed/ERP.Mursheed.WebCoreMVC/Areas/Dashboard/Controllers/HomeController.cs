@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ERP.Mursheed.WebCoreMVC.Areas.Admin.Controllers
+namespace ERP.Mursheed.WebCoreMVC.Areas.Dashboard.Controllers
 {
     [Area("Dashboard")]
     [Route("Dashboard/[controller]/[action]")]
