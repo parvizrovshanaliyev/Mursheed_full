@@ -89,9 +89,6 @@ namespace ERP.Mursheed.WebCoreMVC
             //        options.AccessDeniedPath = "/Account/AccessDenied";
             //    });
             #endregion
-
-
-
             services.AddControllersWithViews();
         }
 
@@ -123,7 +120,6 @@ namespace ERP.Mursheed.WebCoreMVC
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
             #endregion
-
 
             app.UseEndpoints(endpoints =>
             {
