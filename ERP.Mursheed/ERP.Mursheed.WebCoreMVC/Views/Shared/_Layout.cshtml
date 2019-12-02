@@ -63,8 +63,8 @@
 
                         </div>
                         <div class="buttons">
-                            <button onclick="window.location.href = '/Account/Login';" class="light-btn">Login</button>
-                            <button onclick="window.location.href = '/Account/Register';" class="dark-btn">Register</button>
+                            <button onclick="window.location.href = '/account/login';" class="light-btn">Login</button>
+                            <button onclick="window.location.href = '/register';" class="dark-btn">Register</button>
                         </div>
                     </div>
                 </div>
@@ -102,10 +102,12 @@
                             </div>
                             <div class="follow-us">
                                 <p class="header-text">Follow us</p>
-                                <li><a href=""><img src="~/ui/img/footer/facebook-letter-logo.svg" alt=""></a></li>
-                                <li><a href=""><img src="~/ui/img/footer/instagram.svg" alt=""></a></li>
-                                <li><a href=""><img src="~/ui/img/footer/twitter-logo-silhouette.svg" alt=""></a></li>
-                                <li><a href=""><img src="~/ui/img/footer/linkedin-letters.svg" alt=""></a></li>
+                                <ul>
+                                    <li><a href=""><img src="~/ui/img/footer/facebook-letter-logo.svg" alt=""></a></li>
+                                    <li><a href=""><img src="~/ui/img/footer/instagram.svg" alt=""></a></li>
+                                    <li><a href=""><img src="~/ui/img/footer/twitter-logo-silhouette.svg" alt=""></a></li>
+                                    <li><a href=""><img src="~/ui/img/footer/linkedin-letters.svg" alt=""></a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -168,7 +170,6 @@
     <script src="~/ui/js/selectbox.js"></script>
     <script src="~/ui/js/script.js"></script>
     @RenderSection("scripts", false);
-
 </body>
 
 </html>
