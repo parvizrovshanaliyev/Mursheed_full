@@ -3,9 +3,79 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientApplications", "ClientApplications", "{C75C918A-7156-4B4F-A52E-175A7DC14B20}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{E8211B46-4F52-4437-BCDC-A386CAAD573A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Mursheed.Services", "ERP.Mursheed.Services\ERP.Mursheed.Services.csproj", "{AA531370-C929-4DD1-AFF6-C6ACED72300F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Mursheed.Utility", "ERP.Mursheed.Utility\ERP.Mursheed.Utility.csproj", "{C86CA69A-9E60-4DF7-B7FC-7F6EDF6FBCD3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DistributedService", "DistributedService", "{CDDB2B5E-3710-47D4-89DE-279D443FC909}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{FB736849-79C4-4352-A0D6-67DFEA9C263A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{15E0548B-8FD8-4860-8E23-3C89167C6952}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTest", "UnitTest", "{D4CFD5C6-3AD2-4334-A89B-5B18ED440FEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Mursheed.ORM", "ERP.Mursheed.ORM\ERP.Mursheed.ORM.csproj", "{BE95F6AC-0D0D-4B43-8B17-C18A1BF93D3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Mursheed.Repositories", "ERP.Mursheed.Repositories\ERP.Mursheed.Repositories.csproj", "{27FCC9E7-6810-4CF9-A610-2997ADC5B77D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Mursheed.Entities", "ERP.Mursheed.Entities\ERP.Mursheed.Entities.csproj", "{7587C817-7622-4DC9-8C59-686E6EAE0A88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Mursheed.Repositories.Interfaces", "ERP.Mursheed.Repositories.Interfaces\ERP.Mursheed.Repositories.Interfaces.csproj", "{C9E9E1C9-77C2-4726-B20B-4A3CDD7F2A0A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Mursheed.WebCoreMVC", "ERP.Mursheed.WebCoreMVC\ERP.Mursheed.WebCoreMVC.csproj", "{E62D7966-C050-4648-9F59-EF72ECE0C5A1}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA531370-C929-4DD1-AFF6-C6ACED72300F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA531370-C929-4DD1-AFF6-C6ACED72300F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA531370-C929-4DD1-AFF6-C6ACED72300F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA531370-C929-4DD1-AFF6-C6ACED72300F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C86CA69A-9E60-4DF7-B7FC-7F6EDF6FBCD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C86CA69A-9E60-4DF7-B7FC-7F6EDF6FBCD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C86CA69A-9E60-4DF7-B7FC-7F6EDF6FBCD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C86CA69A-9E60-4DF7-B7FC-7F6EDF6FBCD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE95F6AC-0D0D-4B43-8B17-C18A1BF93D3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE95F6AC-0D0D-4B43-8B17-C18A1BF93D3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE95F6AC-0D0D-4B43-8B17-C18A1BF93D3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE95F6AC-0D0D-4B43-8B17-C18A1BF93D3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27FCC9E7-6810-4CF9-A610-2997ADC5B77D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27FCC9E7-6810-4CF9-A610-2997ADC5B77D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27FCC9E7-6810-4CF9-A610-2997ADC5B77D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27FCC9E7-6810-4CF9-A610-2997ADC5B77D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7587C817-7622-4DC9-8C59-686E6EAE0A88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7587C817-7622-4DC9-8C59-686E6EAE0A88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7587C817-7622-4DC9-8C59-686E6EAE0A88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7587C817-7622-4DC9-8C59-686E6EAE0A88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9E9E1C9-77C2-4726-B20B-4A3CDD7F2A0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9E9E1C9-77C2-4726-B20B-4A3CDD7F2A0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9E9E1C9-77C2-4726-B20B-4A3CDD7F2A0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9E9E1C9-77C2-4726-B20B-4A3CDD7F2A0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E62D7966-C050-4648-9F59-EF72ECE0C5A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E62D7966-C050-4648-9F59-EF72ECE0C5A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E62D7966-C050-4648-9F59-EF72ECE0C5A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E62D7966-C050-4648-9F59-EF72ECE0C5A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E8211B46-4F52-4437-BCDC-A386CAAD573A} = {C75C918A-7156-4B4F-A52E-175A7DC14B20}
+		{AA531370-C929-4DD1-AFF6-C6ACED72300F} = {E8211B46-4F52-4437-BCDC-A386CAAD573A}
+		{C86CA69A-9E60-4DF7-B7FC-7F6EDF6FBCD3} = {E8211B46-4F52-4437-BCDC-A386CAAD573A}
+		{BE95F6AC-0D0D-4B43-8B17-C18A1BF93D3B} = {15E0548B-8FD8-4860-8E23-3C89167C6952}
+		{27FCC9E7-6810-4CF9-A610-2997ADC5B77D} = {15E0548B-8FD8-4860-8E23-3C89167C6952}
+		{7587C817-7622-4DC9-8C59-686E6EAE0A88} = {FB736849-79C4-4352-A0D6-67DFEA9C263A}
+		{C9E9E1C9-77C2-4726-B20B-4A3CDD7F2A0A} = {FB736849-79C4-4352-A0D6-67DFEA9C263A}
+		{E62D7966-C050-4648-9F59-EF72ECE0C5A1} = {CDDB2B5E-3710-47D4-89DE-279D443FC909}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA724ADE-F644-4FC7-A6B4-9E6FEDA05699}

@@ -1,8 +1,0 @@
-C:\Users\S510UF\source\repos\parvizrovshanaliyev\ERP_Atlas\ERP.Atlas\ERP.Atlas.Utility\bin\Debug\netcoreapp3.0\ERP.Atlas.Utility.deps.json
-C:\Users\S510UF\source\repos\parvizrovshanaliyev\ERP_Atlas\ERP.Atlas\ERP.Atlas.Utility\bin\Debug\netcoreapp3.0\ERP.Atlas.Utility.dll
-C:\Users\S510UF\source\repos\parvizrovshanaliyev\ERP_Atlas\ERP.Atlas\ERP.Atlas.Utility\bin\Debug\netcoreapp3.0\ERP.Atlas.Utility.pdb
-C:\Users\S510UF\source\repos\parvizrovshanaliyev\ERP_Atlas\ERP.Atlas\ERP.Atlas.Utility\obj\Debug\netcoreapp3.0\ERP.Atlas.Utility.AssemblyInfoInputs.cache
-C:\Users\S510UF\source\repos\parvizrovshanaliyev\ERP_Atlas\ERP.Atlas\ERP.Atlas.Utility\obj\Debug\netcoreapp3.0\ERP.Atlas.Utility.AssemblyInfo.cs
-C:\Users\S510UF\source\repos\parvizrovshanaliyev\ERP_Atlas\ERP.Atlas\ERP.Atlas.Utility\obj\Debug\netcoreapp3.0\ERP.Atlas.Utility.dll
-C:\Users\S510UF\source\repos\parvizrovshanaliyev\ERP_Atlas\ERP.Atlas\ERP.Atlas.Utility\obj\Debug\netcoreapp3.0\ERP.Atlas.Utility.pdb
-C:\Users\S510UF\source\repos\parvizrovshanaliyev\ERP_Atlas\ERP.Atlas\ERP.Atlas.Utility\obj\Debug\netcoreapp3.0\ERP.Atlas.Utility.csprojAssemblyReference.cache
