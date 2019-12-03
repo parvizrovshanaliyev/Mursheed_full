@@ -1,0 +1,14 @@
+﻿@using ERP.Mursheed.Entities.Shared
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@*@if (SignInManager.IsSignedIn(User))
+{
+    @UserManager.GetUserName(User)
+}*@
+    <div class="buttons">
+        <button onclick="window.location.href = '/account/login';" class="light-btn">Login</button>
+        <button onclick="window.location.href = '/account/register';" class="dark-btn">Register</button>
+    </div>
