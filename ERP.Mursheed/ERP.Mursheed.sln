@@ -7,9 +7,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientApplications", "Clien
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{E8211B46-4F52-4437-BCDC-A386CAAD573A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Mursheed.Services", "ERP.Mursheed.Services\ERP.Mursheed.Services.csproj", "{AA531370-C929-4DD1-AFF6-C6ACED72300F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERP.Mursheed.Services", "ERP.Mursheed.Services\ERP.Mursheed.Services.csproj", "{AA531370-C929-4DD1-AFF6-C6ACED72300F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Mursheed.Utility", "ERP.Mursheed.Utility\ERP.Mursheed.Utility.csproj", "{C86CA69A-9E60-4DF7-B7FC-7F6EDF6FBCD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERP.Mursheed.Utility", "ERP.Mursheed.Utility\ERP.Mursheed.Utility.csproj", "{C86CA69A-9E60-4DF7-B7FC-7F6EDF6FBCD3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DistributedService", "DistributedService", "{CDDB2B5E-3710-47D4-89DE-279D443FC909}"
 EndProject
@@ -19,15 +19,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTest", "UnitTest", "{D4CFD5C6-3AD2-4334-A89B-5B18ED440FEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Mursheed.ORM", "ERP.Mursheed.ORM\ERP.Mursheed.ORM.csproj", "{BE95F6AC-0D0D-4B43-8B17-C18A1BF93D3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERP.Mursheed.ORM", "ERP.Mursheed.ORM\ERP.Mursheed.ORM.csproj", "{BE95F6AC-0D0D-4B43-8B17-C18A1BF93D3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Mursheed.Repositories", "ERP.Mursheed.Repositories\ERP.Mursheed.Repositories.csproj", "{27FCC9E7-6810-4CF9-A610-2997ADC5B77D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERP.Mursheed.Repositories", "ERP.Mursheed.Repositories\ERP.Mursheed.Repositories.csproj", "{27FCC9E7-6810-4CF9-A610-2997ADC5B77D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Mursheed.Entities", "ERP.Mursheed.Entities\ERP.Mursheed.Entities.csproj", "{7587C817-7622-4DC9-8C59-686E6EAE0A88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERP.Mursheed.Entities", "ERP.Mursheed.Entities\ERP.Mursheed.Entities.csproj", "{7587C817-7622-4DC9-8C59-686E6EAE0A88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Mursheed.Repositories.Interfaces", "ERP.Mursheed.Repositories.Interfaces\ERP.Mursheed.Repositories.Interfaces.csproj", "{C9E9E1C9-77C2-4726-B20B-4A3CDD7F2A0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERP.Mursheed.Repositories.Interfaces", "ERP.Mursheed.Repositories.Interfaces\ERP.Mursheed.Repositories.Interfaces.csproj", "{C9E9E1C9-77C2-4726-B20B-4A3CDD7F2A0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Mursheed.WebCoreMVC", "ERP.Mursheed.WebCoreMVC\ERP.Mursheed.WebCoreMVC.csproj", "{E62D7966-C050-4648-9F59-EF72ECE0C5A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERP.Mursheed.WebCoreMVC", "ERP.Mursheed.WebCoreMVC\ERP.Mursheed.WebCoreMVC.csproj", "{E62D7966-C050-4648-9F59-EF72ECE0C5A1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERP.Mursheed.MSTest", "ERP.Mursheed.MSTest\ERP.Mursheed.MSTest.csproj", "{F71B548B-3330-4044-9C48-32F0B94BA3C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{E62D7966-C050-4648-9F59-EF72ECE0C5A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E62D7966-C050-4648-9F59-EF72ECE0C5A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E62D7966-C050-4648-9F59-EF72ECE0C5A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F71B548B-3330-4044-9C48-32F0B94BA3C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F71B548B-3330-4044-9C48-32F0B94BA3C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F71B548B-3330-4044-9C48-32F0B94BA3C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F71B548B-3330-4044-9C48-32F0B94BA3C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +82,7 @@ Global
 		{7587C817-7622-4DC9-8C59-686E6EAE0A88} = {FB736849-79C4-4352-A0D6-67DFEA9C263A}
 		{C9E9E1C9-77C2-4726-B20B-4A3CDD7F2A0A} = {FB736849-79C4-4352-A0D6-67DFEA9C263A}
 		{E62D7966-C050-4648-9F59-EF72ECE0C5A1} = {CDDB2B5E-3710-47D4-89DE-279D443FC909}
+		{F71B548B-3330-4044-9C48-32F0B94BA3C8} = {D4CFD5C6-3AD2-4334-A89B-5B18ED440FEC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA724ADE-F644-4FC7-A6B4-9E6FEDA05699}
