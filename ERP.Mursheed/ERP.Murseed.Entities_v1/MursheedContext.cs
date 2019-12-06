@@ -117,7 +117,15 @@ namespace ERP.Mursheed.ORM
 
             #endregion
 
+            modelBuilder.Entity<Route>().
+                HasOne(x => x.FromRoutePlace).
+                WithMany(x => x.FromRoutes).
+                OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<Route>().
+                HasOne(x => x.ToRoutePlace).
+                WithMany(x => x.ToRoutes).
+                OnDelete(DeleteBehavior.Restrict);
             #endregion  // fulent api
 
         }
