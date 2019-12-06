@@ -154,16 +154,16 @@ namespace ERP.Mursheed.ORM
                 new Route() { Id = 7,  FromCityId = 1, ToCityId = 8, Price = 65, Info = "Xacmaz" },
                 new Route() { Id = 8,  FromCityId = 1, ToCityId = 9, Price = 50, Info = "Mingecevir" }
             );
-            modelBuilder.Entity<TransporterRoute>().HasData(
-                new TransporterRoute() { Id = 1, TransporterId = 1, RouteId = 2},
-                new TransporterRoute() { Id = 2, TransporterId = 1, RouteId = 3},
-                new TransporterRoute() { Id = 3, TransporterId = 1, RouteId = 4},
-                new TransporterRoute() { Id = 4, TransporterId = 1, RouteId = 5},
-                new TransporterRoute() { Id = 5, TransporterId = 1, RouteId = 6},
-                new TransporterRoute() { Id = 6, TransporterId = 1, RouteId = 7},
-                new TransporterRoute() { Id = 7, TransporterId = 1, RouteId = 8},
-                new TransporterRoute() { Id = 8, TransporterId = 1, RouteId = 9}
-            );
+            //modelBuilder.Entity<TransporterRoute>().HasData(
+            //    new TransporterRoute() { Id = 1, TransporterId = 1, RouteId = 2},
+            //    new TransporterRoute() { Id = 2, TransporterId = 1, RouteId = 3},
+            //    new TransporterRoute() { Id = 3, TransporterId = 1, RouteId = 4},
+            //    new TransporterRoute() { Id = 4, TransporterId = 1, RouteId = 5},
+            //    new TransporterRoute() { Id = 5, TransporterId = 1, RouteId = 6},
+            //    new TransporterRoute() { Id = 6, TransporterId = 1, RouteId = 7},
+            //    new TransporterRoute() { Id = 7, TransporterId = 1, RouteId = 8},
+            //    new TransporterRoute() { Id = 8, TransporterId = 1, RouteId = 9}
+            //);
             #endregion //Seed
 
             #region Fulent API 
