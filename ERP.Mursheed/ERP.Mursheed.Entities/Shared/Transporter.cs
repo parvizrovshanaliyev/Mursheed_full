@@ -13,6 +13,7 @@ namespace ERP.Mursheed.Entities.Shared
         {
             TransporterRatings = new HashSet<TransporterRating>();
             Rides = new HashSet<Ride>();
+            TransporterRoutes = new HashSet<TransporterRoute>();
         }
         [Key] public int Id { get; set; }
 
@@ -20,6 +21,10 @@ namespace ERP.Mursheed.Entities.Shared
 
         public int GovernmentalId { get; set; }
 
+        [Required]
+        public int CountryId { get; set; }
+
+        [Required]
         public int CarId { get; set; }
 
         [Required]
@@ -42,14 +47,19 @@ namespace ERP.Mursheed.Entities.Shared
         public string DriverLicense { get; set; }
 
         public string Photo { get; set; }
+        public bool Status { get; set; }
+
+        [ForeignKey("CountryId")]
+        public Country Country { get; set; }
 
         [ForeignKey("CarId")]
         public Car Car { get; set; }
 
-        public bool Status { get; set; }
 
         public virtual ICollection<TransporterRating> TransporterRatings { get; set; } 
-        public virtual ICollection<Ride> Rides { get; set; } 
+        public virtual ICollection<Ride> Rides { get; set; }
+        public virtual ICollection<TransporterRoute> TransporterRoutes { get; set; }
+
     }
 
     [Table("Tourist")]
@@ -165,6 +175,7 @@ namespace ERP.Mursheed.Entities.Shared
         public Country()
         {
             Cities = new HashSet<City>();
+            Transporters = new HashSet<Transporter>();
         }
         public int Id { get; set; }
         public string ISO { get; set; }
@@ -175,6 +186,7 @@ namespace ERP.Mursheed.Entities.Shared
         public string Phonecode { get; set; }
 
         public virtual ICollection<City> Cities { get; set; }
+        public virtual ICollection<Transporter> Transporters { get; set; }
 
     }
 
@@ -182,6 +194,11 @@ namespace ERP.Mursheed.Entities.Shared
     [Table("City")]
     public class City
     {
+        public City()
+        {
+            FromRoutes = new HashSet<Route>();
+            ToRoutes = new HashSet<Route>();
+        }
         [Key] public int Id { get; set; }
 
         [Required]
@@ -193,6 +210,9 @@ namespace ERP.Mursheed.Entities.Shared
 
         [ForeignKey("CountryId")]
         public Country Country { get; set; }
+
+        public virtual ICollection<Route> FromRoutes { get; set; }
+        public virtual ICollection<Route> ToRoutes { get; set; }
     }
 
 
@@ -213,21 +233,6 @@ namespace ERP.Mursheed.Entities.Shared
     }
 
 
-    [Table("RoutePlace")]
-    public class RoutePlace
-    {
-        public RoutePlace()
-        {
-            FromRoutes = new HashSet<Route>();
-            ToRoutes = new HashSet<Route>();
-        }
-        [Key] public int Id { get; set; }
-
-        public string Name { get; set; }
-
-        public virtual ICollection<Route> FromRoutes { get; set; }
-        public virtual ICollection<Route> ToRoutes { get; set; }
-    }
 
     [Table("Route")]
     public class Route
@@ -235,27 +240,29 @@ namespace ERP.Mursheed.Entities.Shared
         public Route()
         {
             RideToRoutes = new HashSet<RideToRoute>();
+            TransporterRoutes = new HashSet<TransporterRoute>();
         }
         [Key] public int Id { get; set; }
 
         [Required]
-        public int FromRoutePlaceId { get; set; }
+        public int FromCityId { get; set; }
 
         [Required]
-        public int ToRoutePlaceId { get; set; }
+        public int ToCityId { get; set; }
 
         [Required]
         public float Price { get; set; }
 
         public string Info { get; set; }
 
-        [ForeignKey("FromRoutePlaceId")]
-        public RoutePlace FromRoutePlace { get; set; }
+        [ForeignKey("FromCityId")]
+        public City FromCity { get; set; }
 
-        [ForeignKey("ToRoutePlaceId")]
-        public RoutePlace ToRoutePlace { get; set; }
+        [ForeignKey("ToCityId")]
+        public City ToCity { get; set; }
 
         public virtual ICollection<RideToRoute> RideToRoutes { get; set; }
+        public virtual ICollection<TransporterRoute> TransporterRoutes { get; set; }
 
     }
 
@@ -314,6 +321,26 @@ namespace ERP.Mursheed.Entities.Shared
         public virtual ICollection<Ticket> Tickets { get; set; }
     }
 
+    [Table("TransporterRoute")]
+    public class TransporterRoute
+    {
+       
+        [Key] public int Id { get; set; }
+
+        [Required]
+        public int TransporterId { get; set; }
+
+        [Required]
+        public int RouteId { get; set; }
+
+
+        [ForeignKey("TransporterId")]
+        public Transporter Transporter { get; set; }
+
+        [ForeignKey("RouteId")]
+        public Route Route { get; set; }
+    }
+
     [Table("Ticket")]
     public class Ticket
     {
@@ -328,4 +355,23 @@ namespace ERP.Mursheed.Entities.Shared
         [ForeignKey("RideToRouteId")]
         public virtual RideToRoute RideToRoute { get; set; }
     }
+
+
+
+    //[Table("RoutePlace")]
+    //public class RoutePlace
+    //{
+    //    public RoutePlace()
+    //    {
+    //        FromRoutes = new HashSet<Route>();
+    //        ToRoutes = new HashSet<Route>();
+    //    }
+    //    [Key] public int Id { get; set; }
+
+    //    public string Name { get; set; }
+
+    //    public virtual ICollection<Route> FromRoutes { get; set; }
+    //    public virtual ICollection<Route> ToRoutes { get; set; }
+    //}
+
 }

@@ -44,7 +44,7 @@ namespace ERP.Mursheed.ORM
         public DbSet<Tourist> Tourists { get; set; }
         public DbSet<TransporterRating> TransporterRatings { get; set; }
         public DbSet<Route> Routes { get; set; }
-        public DbSet<RoutePlace> RoutePlaces { get; set; }
+        //public DbSet<RoutePlace> RoutePlaces { get; set; }
         public DbSet<Ride> Rides { get; set; }
         public DbSet<RideToRoute> RideToRoutes { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
@@ -100,6 +100,22 @@ namespace ERP.Mursheed.ORM
                     ModelId = 1
                 }
             );
+            modelBuilder.Entity<Country>().HasData(
+
+                new Country() { Id = 1, Name = "Azerbaijan" }
+            );
+            modelBuilder.Entity<City>().HasData(
+
+                new City() { Id = 1, CountryId = 1, Name = "Baki" },
+                new City() { Id = 2, CountryId = 1, Name = "Sumqayit" },
+                new City() { Id = 3, CountryId = 1, Name = "Gence" },
+                new City() { Id = 4, CountryId = 1, Name = "Quba" },
+                new City() { Id = 5, CountryId = 1, Name = "Qusar" },
+                new City() { Id = 6, CountryId = 1, Name = "Seki" },
+                new City() { Id = 7, CountryId = 1, Name = "Xacmaz" },
+                new City() { Id = 8, CountryId = 1, Name = "Mingecevir" },
+                new City() { Id = 9, CountryId = 1, Name = "Xacmaz" }
+            );
             modelBuilder.Entity<Transporter>().HasData(
 
                 new Transporter()
@@ -109,7 +125,9 @@ namespace ERP.Mursheed.ORM
                     Lastname = "Ali",
                     FatherName = "Rovshan",
                     CarId=1,
-                    GovernmentalId=123456789
+                    GovernmentalId=123456789,
+                    // secdiyi olkeye esasen seherlerden routelar yaradacaq
+                    CountryId=1
                 }
             );
             modelBuilder.Entity<Tourist>().HasData(
@@ -122,46 +140,29 @@ namespace ERP.Mursheed.ORM
                     FatherName = "Heci Oglu",
                 }
             );
-
-            modelBuilder.Entity<Country>().HasData(
-
-                new Country() { Id = 1,Name="Azerbaijan"}
-            );
-            modelBuilder.Entity<City>().HasData(
-
-                new City() { Id = 1,CountryId=1, Name = "Baki" },
-                new City() { Id = 2,CountryId=1, Name = "Sumqayit" },
-                new City() { Id = 3,CountryId=1, Name = "Gence" },
-                new City() { Id = 4,CountryId=1, Name = "Quba" },
-                new City() { Id = 5,CountryId=1, Name = "Qusar" },
-                new City() { Id = 6,CountryId=1, Name = "Seki" },
-                new City() { Id = 7,CountryId=1, Name = "Xacmaz" },
-                new City() { Id = 8,CountryId=1, Name = "Mingecevir" },
-                new City() { Id = 9,CountryId=1, Name = "Xacmaz" }
-            );
-
-            modelBuilder.Entity<RoutePlace>().HasData(
-
-                new RoutePlace() { Id = 1, Name = "Baki" },
-                new RoutePlace() { Id = 2, Name = "Sumqayit" },
-                new RoutePlace() { Id = 3, Name = "Gence" },
-                new RoutePlace() { Id = 4, Name = "Quba" },
-                new RoutePlace() { Id = 5, Name = "Qusar" },
-                new RoutePlace() { Id = 6, Name = "Seki" },
-                new RoutePlace() { Id = 7, Name = "Xacmaz" },
-                new RoutePlace() { Id = 8, Name = "Mingecevir" },
-                new RoutePlace() { Id = 9, Name = "Xacmaz" }
-            );
+            // demeli surucu mensub oldugu olkeye uygun seherlerden Qiymeti ile birlikde route daxil edir 
+            // eyni tranzaksiya ile daxil edilen routeId ve DriverId TransporterRoute cedveline qeyd edilir
+            // Musteri yeni Tourist Secdiyi Surucunun qiymetler sehifesinde  hemin surucunun yaratdigi routelara gore
+            // from to selectlerini doldurmalidir 
             modelBuilder.Entity<Route>().HasData(
-
-                new Route() { Id = 1,FromRoutePlaceId=1,   ToRoutePlaceId=2,  Price=50, Info = "Baki" },
-                new Route() { Id = 2,FromRoutePlaceId=1,   ToRoutePlaceId=3,  Price=50, Info = "Sumqayit" },
-                new Route() { Id = 3,FromRoutePlaceId=1,   ToRoutePlaceId=4,  Price=50, Info = "Gence" },
-                new Route() { Id = 4,FromRoutePlaceId=1,   ToRoutePlaceId=5,  Price=50, Info = "Quba" },
-                new Route() { Id = 5,FromRoutePlaceId=1,   ToRoutePlaceId=6,  Price=50, Info = "Qusar" },
-                new Route() { Id = 6,FromRoutePlaceId=1,   ToRoutePlaceId=7,  Price=50, Info = "Seki" },
-                new Route() { Id = 7,FromRoutePlaceId=1,   ToRoutePlaceId=8,  Price=50, Info = "Xacmaz" },
-                new Route() { Id = 8,FromRoutePlaceId=1,   ToRoutePlaceId=9,  Price=50, Info = "Mingecevir" }
+                new Route() { Id = 1,  FromCityId = 1, ToCityId = 2, Price = 50, Info = "Baki" },
+                new Route() { Id = 2,  FromCityId = 1, ToCityId = 3, Price = 55, Info = "Sumqayit" },
+                new Route() { Id = 3,  FromCityId = 1, ToCityId = 4, Price = 65, Info = "Gence" },
+                new Route() { Id = 4,  FromCityId = 1, ToCityId = 5, Price = 45, Info = "Quba" },
+                new Route() { Id = 5,  FromCityId = 1, ToCityId = 6, Price = 35, Info = "Qusar" },
+                new Route() { Id = 6,  FromCityId = 1, ToCityId = 7, Price = 25, Info = "Seki" },
+                new Route() { Id = 7,  FromCityId = 1, ToCityId = 8, Price = 65, Info = "Xacmaz" },
+                new Route() { Id = 8,  FromCityId = 1, ToCityId = 9, Price = 50, Info = "Mingecevir" }
+            );
+            modelBuilder.Entity<TransporterRoute>().HasData(
+                new TransporterRoute() { Id = 1, TransporterId = 1, RouteId = 2},
+                new TransporterRoute() { Id = 2, TransporterId = 1, RouteId = 3},
+                new TransporterRoute() { Id = 3, TransporterId = 1, RouteId = 4},
+                new TransporterRoute() { Id = 4, TransporterId = 1, RouteId = 5},
+                new TransporterRoute() { Id = 5, TransporterId = 1, RouteId = 6},
+                new TransporterRoute() { Id = 6, TransporterId = 1, RouteId = 7},
+                new TransporterRoute() { Id = 7, TransporterId = 1, RouteId = 8},
+                new TransporterRoute() { Id = 8, TransporterId = 1, RouteId = 9}
             );
             #endregion //Seed
 
@@ -208,12 +209,12 @@ namespace ERP.Mursheed.ORM
             #endregion
 
             modelBuilder.Entity<Route>().
-                HasOne(x => x.FromRoutePlace).
+                HasOne(x => x.FromCity).
                 WithMany(x => x.FromRoutes).
                 OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Route>().
-                HasOne(x => x.ToRoutePlace).
+                HasOne(x => x.ToCity).
                 WithMany(x => x.ToRoutes).
                 OnDelete(DeleteBehavior.Restrict);
             #endregion  // fulent api
