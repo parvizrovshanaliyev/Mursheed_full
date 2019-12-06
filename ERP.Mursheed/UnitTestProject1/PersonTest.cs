@@ -1,10 +1,16 @@
-﻿using System;
+﻿using ERP.Mursheed.Entities.Shared;
+using ERP.Mursheed.ORM;
+using ERP.Mursheed.Repositories;
+using ERP.Mursheed.Repositories.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace UnitTestProject1
 {
     [TestClass]
-    public class PersonRepositoryMsTest
+    public class PersonTest
     {
         private IUnitOfWork _unitOfWork;
 
@@ -19,7 +25,7 @@ namespace UnitTestProject1
         {
             var person = new Person()
             {
-                Id = 1,
+                Id = 2,
                 Firstname = "Parviz",
                 Lastname = "Aliyev",
                 FatherName = "Rovshan",
@@ -30,4 +36,6 @@ namespace UnitTestProject1
             Assert.IsTrue(insertedPersonResult.IsSuccess);
         }
     }
+
+   
 }
