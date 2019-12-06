@@ -88,7 +88,8 @@ namespace ERP.Mursheed.ORM
                 new Model()
                 {
                     Id = 1,
-                    Name = "Touareg"
+                    Name = "Touareg",
+                    BrandId=1
                 }
             );
             modelBuilder.Entity<Car>().HasData(
@@ -128,15 +129,15 @@ namespace ERP.Mursheed.ORM
             );
             modelBuilder.Entity<City>().HasData(
 
-                new City() { Id = 1, Name = "Baki" },
-                new City() { Id = 2, Name = "Sumqayit" },
-                new City() { Id = 3, Name = "Gence" },
-                new City() { Id = 4, Name = "Quba" },
-                new City() { Id = 5, Name = "Qusar" },
-                new City() { Id = 6, Name = "Seki" },
-                new City() { Id = 7, Name = "Xacmaz" },
-                new City() { Id = 8, Name = "Mingecevir" },
-                new City() { Id = 9, Name = "Xacmaz" }
+                new City() { Id = 1,CountryId=1, Name = "Baki" },
+                new City() { Id = 2,CountryId=1, Name = "Sumqayit" },
+                new City() { Id = 3,CountryId=1, Name = "Gence" },
+                new City() { Id = 4,CountryId=1, Name = "Quba" },
+                new City() { Id = 5,CountryId=1, Name = "Qusar" },
+                new City() { Id = 6,CountryId=1, Name = "Seki" },
+                new City() { Id = 7,CountryId=1, Name = "Xacmaz" },
+                new City() { Id = 8,CountryId=1, Name = "Mingecevir" },
+                new City() { Id = 9,CountryId=1, Name = "Xacmaz" }
             );
 
             modelBuilder.Entity<RoutePlace>().HasData(
@@ -150,6 +151,17 @@ namespace ERP.Mursheed.ORM
                 new RoutePlace() { Id = 7, Name = "Xacmaz" },
                 new RoutePlace() { Id = 8, Name = "Mingecevir" },
                 new RoutePlace() { Id = 9, Name = "Xacmaz" }
+            );
+            modelBuilder.Entity<Route>().HasData(
+
+                new Route() { Id = 1,FromRoutePlaceId=1,   ToRoutePlaceId=2,  Price=50, Info = "Baki" },
+                new Route() { Id = 2,FromRoutePlaceId=1,   ToRoutePlaceId=3,  Price=50, Info = "Sumqayit" },
+                new Route() { Id = 3,FromRoutePlaceId=1,   ToRoutePlaceId=4,  Price=50, Info = "Gence" },
+                new Route() { Id = 4,FromRoutePlaceId=1,   ToRoutePlaceId=5,  Price=50, Info = "Quba" },
+                new Route() { Id = 5,FromRoutePlaceId=1,   ToRoutePlaceId=6,  Price=50, Info = "Qusar" },
+                new Route() { Id = 6,FromRoutePlaceId=1,   ToRoutePlaceId=7,  Price=50, Info = "Seki" },
+                new Route() { Id = 7,FromRoutePlaceId=1,   ToRoutePlaceId=8,  Price=50, Info = "Xacmaz" },
+                new Route() { Id = 8,FromRoutePlaceId=1,   ToRoutePlaceId=9,  Price=50, Info = "Mingecevir" }
             );
             #endregion //Seed
 

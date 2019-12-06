@@ -5,6 +5,10 @@
     {
       "library": "datepicker@0.6.5",
       "destination": "wwwroot/datepicker/"
+    },
+    {
+      "library": "select2@4.0.10",
+      "destination": "wwwroot/select2/"
     }
   ]
 }

@@ -151,6 +151,13 @@ namespace ERP.Mursheed.ORM.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Brand");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Volkswagen"
+                        });
                 });
 
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.Car", b =>
@@ -168,6 +175,13 @@ namespace ERP.Mursheed.ORM.Migrations
                     b.HasIndex("ModelId");
 
                     b.ToTable("Car");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ModelId = 1
+                        });
                 });
 
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.City", b =>
@@ -177,17 +191,74 @@ namespace ERP.Mursheed.ORM.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BrandId")
+                    b.Property<int>("CountryId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CountryId")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CountryId");
 
                     b.ToTable("City");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CountryId = 1,
+                            Name = "Baki"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            CountryId = 1,
+                            Name = "Sumqayit"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            CountryId = 1,
+                            Name = "Gence"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CountryId = 1,
+                            Name = "Quba"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CountryId = 1,
+                            Name = "Qusar"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CountryId = 1,
+                            Name = "Seki"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CountryId = 1,
+                            Name = "Xacmaz"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CountryId = 1,
+                            Name = "Mingecevir"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CountryId = 1,
+                            Name = "Xacmaz"
+                        });
                 });
 
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.Country", b =>
@@ -218,6 +289,13 @@ namespace ERP.Mursheed.ORM.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Country");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Azerbaijan"
+                        });
                 });
 
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.DateFromTo", b =>
@@ -257,6 +335,14 @@ namespace ERP.Mursheed.ORM.Migrations
                     b.HasIndex("BrandId");
 
                     b.ToTable("Model");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BrandId = 1,
+                            Name = "Touareg"
+                        });
                 });
 
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.Person", b =>
@@ -393,6 +479,53 @@ namespace ERP.Mursheed.ORM.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("RoutePlace");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Baki"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Sumqayit"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Gence"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Quba"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Qusar"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Seki"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Xacmaz"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Mingecevir"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Xacmaz"
+                        });
                 });
 
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.Ticket", b =>
@@ -443,6 +576,16 @@ namespace ERP.Mursheed.ORM.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tourist");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            FatherName = "Heci Oglu",
+                            Firstname = "Heci",
+                            Lastname = "Hecili",
+                            Status = false
+                        });
                 });
 
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.Transporter", b =>
@@ -455,6 +598,12 @@ namespace ERP.Mursheed.ORM.Migrations
                     b.Property<int>("CarId")
                         .HasColumnType("int");
 
+                    b.Property<string>("CustomId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DriverLicense")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FatherName")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
@@ -465,10 +614,16 @@ namespace ERP.Mursheed.ORM.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
+                    b.Property<int>("GovernmentalId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Lastname")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
+
+                    b.Property<string>("Photo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
@@ -478,6 +633,18 @@ namespace ERP.Mursheed.ORM.Migrations
                     b.HasIndex("CarId");
 
                     b.ToTable("Transporter");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CarId = 1,
+                            FatherName = "Rovshan",
+                            Firstname = "Parviz",
+                            GovernmentalId = 123456789,
+                            Lastname = "Ali",
+                            Status = false
+                        });
                 });
 
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.TransporterRating", b =>
@@ -618,7 +785,7 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.Car", b =>
                 {
                     b.HasOne("ERP.Mursheed.Entities.Shared.Model", "Model")
-                        .WithMany()
+                        .WithMany("Cars")
                         .HasForeignKey("ModelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -628,7 +795,9 @@ namespace ERP.Mursheed.ORM.Migrations
                 {
                     b.HasOne("ERP.Mursheed.Entities.Shared.Country", "Country")
                         .WithMany("Cities")
-                        .HasForeignKey("CountryId");
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.Model", b =>
