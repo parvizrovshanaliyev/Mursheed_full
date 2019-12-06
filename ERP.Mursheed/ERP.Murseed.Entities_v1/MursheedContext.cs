@@ -73,6 +73,84 @@ namespace ERP.Mursheed.ORM
                     Email = "samir@code.edu.az"
                 }
             );
+
+            modelBuilder.Entity<Brand>().HasData(
+
+                new Brand()
+                {
+                    Id = 1,
+                    Name= "Volkswagen"
+                }
+            );
+
+            modelBuilder.Entity<Model>().HasData(
+
+                new Model()
+                {
+                    Id = 1,
+                    Name = "Touareg"
+                }
+            );
+            modelBuilder.Entity<Car>().HasData(
+
+                new Car()
+                {
+                    Id = 1,
+                    ModelId = 1
+                }
+            );
+            modelBuilder.Entity<Transporter>().HasData(
+
+                new Transporter()
+                {
+                    Id = 1,
+                    Firstname = "Parviz",
+                    Lastname = "Ali",
+                    FatherName = "Rovshan",
+                    CarId=1,
+                    GovernmentalId=123456789
+                }
+            );
+            modelBuilder.Entity<Tourist>().HasData(
+
+                new Tourist()
+                {
+                    Id = 1,
+                    Firstname = "Heci",
+                    Lastname = "Hecili",
+                    FatherName = "Heci Oglu",
+                }
+            );
+
+            modelBuilder.Entity<Country>().HasData(
+
+                new Country() { Id = 1,Name="Azerbaijan"}
+            );
+            modelBuilder.Entity<City>().HasData(
+
+                new City() { Id = 1, Name = "Baki" },
+                new City() { Id = 2, Name = "Sumqayit" },
+                new City() { Id = 3, Name = "Gence" },
+                new City() { Id = 4, Name = "Quba" },
+                new City() { Id = 5, Name = "Qusar" },
+                new City() { Id = 6, Name = "Seki" },
+                new City() { Id = 7, Name = "Xacmaz" },
+                new City() { Id = 8, Name = "Mingecevir" },
+                new City() { Id = 9, Name = "Xacmaz" }
+            );
+
+            modelBuilder.Entity<RoutePlace>().HasData(
+
+                new RoutePlace() { Id = 1, Name = "Baki" },
+                new RoutePlace() { Id = 2, Name = "Sumqayit" },
+                new RoutePlace() { Id = 3, Name = "Gence" },
+                new RoutePlace() { Id = 4, Name = "Quba" },
+                new RoutePlace() { Id = 5, Name = "Qusar" },
+                new RoutePlace() { Id = 6, Name = "Seki" },
+                new RoutePlace() { Id = 7, Name = "Xacmaz" },
+                new RoutePlace() { Id = 8, Name = "Mingecevir" },
+                new RoutePlace() { Id = 9, Name = "Xacmaz" }
+            );
             #endregion //Seed
 
             #region Fulent API 

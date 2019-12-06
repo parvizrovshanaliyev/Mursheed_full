@@ -16,6 +16,10 @@ namespace ERP.Mursheed.Entities.Shared
         }
         [Key] public int Id { get; set; }
 
+        public string CustomId { get; set; }
+
+        public int GovernmentalId { get; set; }
+
         public int CarId { get; set; }
 
         [Required]
@@ -34,6 +38,10 @@ namespace ERP.Mursheed.Entities.Shared
         {
             get { return $"{Firstname} {Lastname} {FatherName}"; }
         }
+
+        public string DriverLicense { get; set; }
+
+        public string Photo { get; set; }
 
         [ForeignKey("CarId")]
         public Car Car { get; set; }
@@ -118,6 +126,10 @@ namespace ERP.Mursheed.Entities.Shared
     [Table("Model")]
     public class Model
     {
+        public Model()
+        {
+            Cars = new HashSet<Car>();
+        }
         [Key] public int Id { get; set; }
 
         [Required]
@@ -128,6 +140,8 @@ namespace ERP.Mursheed.Entities.Shared
 
         [ForeignKey("BrandId")]
         public Brand Brand { get; set; }
+
+        public virtual ICollection<Car> Cars { get; set; }
     }
 
     [Table("Brand")]
@@ -171,7 +185,12 @@ namespace ERP.Mursheed.Entities.Shared
         [Key] public int Id { get; set; }
 
         [Required]
-        public int BrandId { get; set; }
+        public int CountryId { get; set; }
+
+        [Required]
+        public string Name { get; set; }
+        //public string NiceName { get; set; }
+
         [ForeignKey("CountryId")]
         public Country Country { get; set; }
     }
