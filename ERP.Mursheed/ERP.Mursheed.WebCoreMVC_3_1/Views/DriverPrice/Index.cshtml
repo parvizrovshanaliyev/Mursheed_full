@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section id="breadcumbs">
+    <div class="container">
+        <ul>
+            <li><a href="/Home/Index">Home</a></li>
+            <li><a href="/Guides_Drivers/Index">Guides & Drivers</a></li>
+            <li><a href="/About/Index">Alexandre Paiva</a></li>
+            <li><a href="">Journey milestones</a></li>
+
+        </ul>
+    </div>
+</section>
+<section id="driver_price">
+    <div class="container">
+        <div class="wrapper">
+            <div class="header">
+                <h3>Decide your journey milestones</h3>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="profile">
+                        <div class="profile_img">
+                            <img src="~/ui/img/driver_price/rectangle.png" alt="">
+                        </div>
+                        <div class="profile_details">
+                            <h4>Alexandre Paiva</h4>
+                            <p>190 times ride</p>
+                            <p>Honda pilot</p>
+                            <div class="div">
+                                <button class="aviable">available</button>
+                                <img src="~/ui/img/guides_drivers/group-4.svg" alt="">
+                                <img src="~/ui/img/guides_drivers/user.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="date">
+                        <div class="inputs">
+                            <div class="date_input">
+                                <label for="">Start date</label>
+                                <input id="startDate" type="date" placeholder="Date">
+                            </div>
+                            <div class="date_input">
+                                <label for="">End date</label>
+                                <input id="endDate" type="date" placeholder="Date">
+                            </div>
+                        </div>
+                        <div class="buttons">
+                            <div class="reyting">
+                                <img src="~/ui/img/guides_drivers/star.svg" alt="">
+                                <img src="~/ui/img/guides_drivers/star.svg" alt="">
+                                <img src="~/ui/img/guides_drivers/star.svg" alt="">
+                                <img src="~/ui/img/guides_drivers/star.svg" alt="">
+                                <img src="~/ui/img/guides_drivers/star.svg" alt="">
+                                <span>(23)</span>
+                            </div>
+                            <button class="light-btn">Details</button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="select_price">
+                        <div class="select_price_btns">
+                            <button class="btn btn_manually">Route manually</button>
+                            <button class="btn btn_fixed">Fixed price</button>
+                        </div>
+                        <table class="table select_price_title">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">From</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">To</th>
+                                    <th scope="col">Info</th>
+                                    <th scope="col">Route Cost</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @*<tr>
+                                        <th scope="row">1</th>
+                                        <td>Mark</td>
+                                        <td>Otto</td>
+                                        <td>@mdo</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>Jacob</td>
+                                        <td>Thornton</td>
+                                        <td>@fat</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>Larry</td>
+                                        <td>the Bird</td>
+                                        <td>@twitter</td>
+                                    </tr>*@
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@*<div class="select_price_title">
+        <ul>
+            <li>Date</li>
+            <li>From</li>
+            <li>Time</li>
+            <li>To</li>
+            <li>Info</li>
+            <li>Route Cost</li>
+        </ul>
+    </div>*@
+<!-- <div class="custom-selectbox">
+    <select>
+        <option value="0">All cities</option>
+        <option value="1">Baku</option>
+        <option value="2">Qazax</option>
+        <option value="3">Ganja</option>
+        <option value="4">Shaki</option>
+    </select>
+</div> -->
