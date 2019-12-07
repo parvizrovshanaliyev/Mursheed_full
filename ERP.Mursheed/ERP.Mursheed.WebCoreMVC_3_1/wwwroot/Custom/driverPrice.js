@@ -10,7 +10,7 @@ var day,
     tbody = document.getElementById("routeTable")
         .getElementsByTagName("tbody")[0],
     dayArrange,
-    selectBox=`<select class="select2DropDown"><option>test</option><select/>`,
+    selectBox=`<select class="select2DropDown"><option></option><select/>`,
     dateArray=[],
     newRow = 'row',
     column = 'cell';
@@ -70,11 +70,24 @@ function insertRouteRow(dateArr) {
         initializeSelect2(selectBox);
     }
 }
-
+//#region initializeSelect2
 function initializeSelect2() {
-    $('.select2DropDown').select2();
+    $('.select2DropDown').select2({
+        language: {
+            inputTooShort: function () {
+                return 'Zəhmət olmasa bir hərf daxil edin';
+            },
+            noResults: function () {
+                return "Nətice yoxdur";
+            },
+            searching: function () {
+                return "Axtarılır...";
+            }
+        },
+        placeholder: "Secin"
+    });
 }
-
+//#endregion
 
 //#endregion Insert New Route Row
 //jQuery.validator.addMethod("greaterThan",
