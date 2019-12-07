@@ -15,6 +15,6 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.ViewModels
 
         public bool Status { get; set; }
 
-        public int TotalRide { get; set; }
+        public int TotalRide { get; set; } = 0;
     }
 }

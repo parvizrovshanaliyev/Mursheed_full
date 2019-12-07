@@ -9,6 +9,10 @@
     {
       "library": "select2@4.0.10",
       "destination": "wwwroot/select2/"
+    },
+    {
+      "library": "sweetalert@2.1.2",
+      "destination": "wwwroot/sweetalert/"
     }
   ]
 }

@@ -8,6 +8,7 @@ using ERP.Mursheed.Entities.Shared;
 using ERP.Mursheed.ORM;
 using ERP.Mursheed.Repositories;
 using ERP.Mursheed.Repositories.Interfaces;
+using ERP.Mursheed.WebCoreMVC_3_1.Facades;
 using ERP.Mursheed.WebCoreMVC_3_1.Helper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -49,6 +50,10 @@ namespace ERP.Mursheed.WebCoreMVC_3_1
             //todo
 
 
+            #endregion
+            #region facades
+            //todo
+            services.AddScoped<IDriverPriceFacade, DriverPriceFacade>();
             #endregion
             #region Mapper
 

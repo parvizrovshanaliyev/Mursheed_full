@@ -1,4 +1,4 @@
-﻿
+﻿@model DriverPriceViewModel
 @{
     ViewData["Title"] = "Index";
 }
@@ -27,9 +27,10 @@
                             <img src="~/ui/img/driver_price/rectangle.png" alt="">
                         </div>
                         <div class="profile_details">
-                            <h4>Alexandre Paiva</h4>
-                            <p>190 times ride</p>
-                            <p>Honda pilot</p>
+                            <input type="hidden" asp-for="Id" />
+                            <h4>@Model.Fullname</h4>
+                            <p>@Model.TotalRide times ride</p>
+                            <p>@Model.CarName</p>
                             <div class="div">
                                 <button class="aviable">available</button>
                                 <img src="~/ui/img/guides_drivers/group-4.svg" alt="">
@@ -97,6 +98,7 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="~/select2/js/select2.min.js"></script>
     <script src="~/DataJS/date.js"></script>
+    <script src="~/sweetalert/sweetalert.min.js"></script>
     <script src="~/Custom/driverPrice.js" asp-append-version="true"></script>
 }
 

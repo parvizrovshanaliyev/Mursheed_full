@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using ERP.Mursheed.Entities.Shared;
+using ERP.Mursheed.WebCoreMVC_3_1.ViewModels;
 
 namespace ERP.Mursheed.WebCoreMVC_3_1.Helper
 {
@@ -7,7 +9,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Helper
         public MappingEntity()
         {
             //todo
-            //CreateMap<Person, PersonViewModel>();
+            CreateMap<Transporter, DriverPriceViewModel>();
         }
     }
 }

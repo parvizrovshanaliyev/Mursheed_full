@@ -13,8 +13,11 @@ body::-webkit-scrollbar-thumb {
 /*Select2 responsive*/
 .select2 {
     width: 100% !important;
+    outline: none;
 }
-
+.select2 {
+    outline: none;
+}
 .select2-selection {
     overflow: hidden;
 }
