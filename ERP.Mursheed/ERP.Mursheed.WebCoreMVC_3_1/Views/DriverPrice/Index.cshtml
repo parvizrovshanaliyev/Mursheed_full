@@ -61,7 +61,6 @@
                             </div>
                             <button class="light-btn">Details</button>
                         </div>
-
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -92,33 +91,12 @@
     </div>
 </section>
 @section styles{
+    <link href="~/select2/css/select2.min.css" rel="stylesheet" />
 }
 @section scripts{
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/select2/js/select2.min.js"></script>
+    <script src="~/DataJS/date.js"></script>
     <script src="~/Custom/driverPrice.js" asp-append-version="true"></script>
 }
 
-
-
-
-
-
-@*<div class="select_price_title">
-        <ul>
-            <li>Date</li>
-            <li>From</li>
-            <li>Time</li>
-            <li>To</li>
-            <li>Info</li>
-            <li>Route Cost</li>
-        </ul>
-    </div>*@
-<!-- <div class="custom-selectbox">
-    <select>
-        <option value="0">All cities</option>
-        <option value="1">Baku</option>
-        <option value="2">Qazax</option>
-        <option value="3">Ganja</option>
-        <option value="4">Shaki</option>
-    </select>
-</div> -->

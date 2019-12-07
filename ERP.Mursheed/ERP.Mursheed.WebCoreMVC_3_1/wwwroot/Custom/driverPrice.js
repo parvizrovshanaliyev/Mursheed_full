@@ -1,19 +1,77 @@
 ﻿$(document).ready(function () {
     //$("#endDate").rules('add', { greaterThan: "#startDate" });
+
 });
 var day,
     startDate,
     endDate,
     routeRow,
-    routeTable,
-    routeTableTbody,
+    table = document.getElementById("routeTable"),
+    tbody = document.getElementById("routeTable")
+        .getElementsByTagName("tbody")[0],
     dayArrange,
     selectBox,
-    newRow,
+    dateArray=[],
+    newRow = 'row',
     column = 'cell';
 
+//$('.select2DropDown').select2({
+
+//    language: {
+//        inputTooShort: function () {
+//            return 'Zəhmət olmasa bir hərf daxil edin';
+//        },
+//        noResults: function () {
+//            return "Nətice yoxdur";
+//        },
+//        searching: function () {
+//            return "Axtarılır...";
+//        }
+//    },
+//    placeholder: "Secin"
+//});
+///#region endDate on change
+$("#endDate").on("change",
+    function () {
+
+        // get date input's value
+        startDate = new Date($('#startDate').val());
+        endDate = new Date($('#endDate').val());
+        // create date arr
+        dateArray = getDateArray(startDate, endDate);
+        // insert
+        insertRouteRow(dateArray);
+        console.log(dateArray);
+    });
+//#endregion endDate on change
+///#region  dateArray
+var getDateArray = function (start, end) {
+    var arr = new Array();
+    // var dt = new Date(start);
+    // console.log(dt);
+    while (start <= end) {
+        arr.push(Date.parse(startDate).toString("M/d/yyyy")); //save only "M/d/yyyy" part
+        start.setDate(start.getDate() + 1);
+    }
+    return arr;
+}
+//#endregion  dateArray
+///#region Insert New Route Row
+function insertRouteRow(dateArr) {
+    for (let rowIndex = 0; rowIndex < dateArr.length; rowIndex++) {
+        window[newRow + rowIndex] = tbody.insertRow(table.length);
+        for (let cellIndex = 0; cellIndex < table.rows[0].cells.length; cellIndex++) {
+            window[column + cellIndex] = window[newRow + rowIndex].insertCell(cellIndex);
+            // routeDate
+            cell0.innerHTML=dateArr[rowIndex];
+        }
+    }
+}
 
 
+
+
+//#endregion Insert New Route Row
 //jQuery.validator.addMethod("greaterThan",
 //    function (value, element, params) {
 
@@ -24,52 +82,3 @@ var day,
 //        return isNaN(value) && isNaN($(params).val())
 //            || (Number(value) > Number($(params).val()));
 //    }, 'Must be greater than {0}.');
-//#region endDate on change
-$("#endDate").on("change",
-    function () {
-        startDate = new Date($('#startDate').val());
-        endDate = new Date($('#endDate').val());
-        console.log(endDate.getDate() - startDate.getDate());
-        // insert
-        dayArrange = endDate.getDate() - startDate.getDate() + 1;
-        insertRouteRow(dayArrange);
-    });
-//#endregion endDate on change
-
-//#region Insert New Route Row
-function insertRouteRow(dayArrange) {
-    routeTable = document.getElementById("routeTable");
-
-    for (var i = 0; i < dayArrange; i++) {
-        $("#routeTable").find("tbody").append(`<tr>
-                                      <th scope="row">TEST</th>
-                                      <td>
-                                        <select>
-                                               <option value="0">All cities</option>
-                                               <option value="1">Baku</option>
-                                               <option value="2">Qazax</option>
-                                               <option value="3">Ganja</option>
-                                               <option value="4">Shaki</option>
-                                        </select>
-                                      </td>
-                                      <td>
-                                      time
-                                      </td>
-                                      <td>
-                                        <select>
-                                                <option value="0">All cities</option>
-                                                <option value="1">Baku</option>
-                                                <option value="2">Qazax</option>
-                                                <option value="3">Ganja</option>
-                                                <option value="4">Shaki</option>
-                                        </select>
-                                      </td>
-                                      <td>TEST</td>
-                                      <td>TEST</td>
-                                    </tr>`);
-    }
-    
-
-
-}
-//#endregion Insert New Route Row
