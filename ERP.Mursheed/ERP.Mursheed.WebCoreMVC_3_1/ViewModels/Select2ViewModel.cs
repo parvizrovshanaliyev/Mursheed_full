@@ -9,5 +9,6 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.ViewModels
     {
         public int id { get; set; }
         public string text { get; set; }
+        public float cost { get; set; }
     }
 }

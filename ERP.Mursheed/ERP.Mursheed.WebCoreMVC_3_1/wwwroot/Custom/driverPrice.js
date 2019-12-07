@@ -1,12 +1,13 @@
 ﻿$(document).ready(function() {
     //$("#endDate").rules('add', { greaterThan: "#startDate" });
-    onChangeFromRouteSelect();
+    //onChangeFromRouteSelect();
 });
 var day,
     selectedRow = null,
     fromRoutes,
     routeCost,
     fromRouteId,
+    toRouteId,
     driverId = $("#Id").val(),
     startDate,
     endDate,
@@ -20,6 +21,8 @@ var day,
     dateArray = [],
     newRow = "row",
     column = "cell";
+const select2DropDownFromRoutes = ".select2DropDown.fromRoutes",
+      select2DropDownToRoutes = ".select2DropDown.toRoutes";
 
 
 //#region endDate on change
@@ -31,7 +34,7 @@ $("#endDate").on("change",
         // create date arr
         dateArray = getDateArray(startDate, endDate);
         // insert
-        insertRouteRow(dateArray);
+        insertRow(dateArray);
         //console.log(dateArray);
     });
 //#endregion endDate on change
@@ -49,7 +52,7 @@ var getDateArray = function(start, end) {
 
 //#endregion  dateArray
 //#region Insert New Route Row
-function insertRouteRow(dateArr) {
+function insertRow(dateArr) {
     for (let rowIndex = 0; rowIndex < dateArr.length; rowIndex++) {
         window[newRow + rowIndex] = tbody.insertRow(table.length);
         for (let cellIndex = 0; cellIndex < table.rows[0].cells.length; cellIndex++) {
@@ -61,43 +64,73 @@ function insertRouteRow(dateArr) {
         window.cell1.innerHTML = selectBoxFromRoutes;
         window.cell3.innerHTML = selectBoxToRoutes;
     }
-
+    //
+    initializeSelect2();
     // get from routes
-    getFromRoutes(driverId);
+    fillToSelect(driverId);
 }
 //
-function getFromRoutes(driverId) {
+//
+function fillToSelect(driverId) {
     if (driverId !== null) {
         $.ajax({
             url: `/Select2/GetFromRoute/${driverId}`,
             type: "POST"
-        }).done(function(response) {
-            //console.log(response.items);
-            initializeSelect2(response.items);
-            //Swal.fire({
-            //    type: "success",
-            //    text: response.message,
-            //    showConfirmButton: false,
-            //    timer: 1500
+        }).done(function (response) {
+            initializeSelect2(select2DropDownFromRoutes, response.items);
+            //$(".select2DropDown").select2({
+            //    data: response.items
             //});
-        }).fail(function(response) {
-            //window.Swal.fire({
-            //    title: "Xəta!",
-            //    type: "error",
-            //    text: response.message,
-            //    showConfirmButton: true
-            //});
+        }).fail(function (response) {
         });
     }
 }
 //
-//
 function onChangeSelect(selectBox) {
     
+    if ($(selectBox).hasClass("fromRoutes")) {
+        fromRouteId = $(selectBox).val();
+        if (fromRouteId !== null && driverId !== null) {
+            $.ajax({
+                url: `/Select2/GetToRouteForFromRoute`,
+                data: {
+                    fromRouteId: fromRouteId,
+                    driverId: driverId
+                },
+                type: "POST"
+            }).done(function (response) {
+                //console.log(response.items);
+                initializeSelect2(select2DropDownToRoutes, response.items);
+            }).fail(function (response) {
+            });
+        }
+    } else if ($(selectBox).hasClass("toRoutes")) {
+        toRouteId = $(selectBox).val();
+        console.log(fromRouteId, toRouteId);
+        selectedRow = selectBox.parentElement.parentElement;
+        console.log(`selectedRow :${selectedRow.sectionRowIndex}`);
+        if (fromRouteId !== null && driverId !== null && toRouteId !== null) {
+            $.ajax({
+                url: `/Select2/GetToCostForRoute`,
+                data: {
+                    fromRouteId: fromRouteId,
+                    driverId: driverId,
+                    toRouteId: toRouteId
+                },
+                type: "POST"
+            }).done(function (response) {
+                console.log(response);
+                selectedRow.cells[4].innerHTML = response.info;
+                selectedRow.cells[5].innerHTML = response.cost;
+                //initializeSelect2(select2DropDownToRoutes, response.items);
+            }).fail(function (response) {
+            });
+        }
+    }
 }
 //
 //#region initializeSelect2
-function initializeSelect2(data) {
+function initializeSelect2(select2Classes,data) {
     $(".select2DropDown").select2({
         language: {
             inputTooShort: function() {
@@ -114,15 +147,15 @@ function initializeSelect2(data) {
         allowClear: true,
         placeholder: "Secin"
     });
-    $(".select2DropDown.fromRoutes").select2({
+    $(select2Classes).select2({
         language: {
-            inputTooShort: function() {
+            inputTooShort: function () {
                 return "Zəhmət olmasa bir hərf daxil edin";
             },
-            noResults: function() {
+            noResults: function () {
                 return "Nətice yoxdur";
             },
-            searching: function() {
+            searching: function () {
                 return "Axtarılır...";
             }
         },
@@ -130,44 +163,16 @@ function initializeSelect2(data) {
         allowClear: true,
         placeholder: "Secin",
         data: data
+
     });
+    
 }
 //#endregion
 function onChangeFromRouteSelect() {
     $(document).on("change",
         ".select2DropDown.fromRoutes",
         function() {
-            fromRouteId = $(this).val();
-            if (fromRouteId !== null && driverId !== null) {
-                $.ajax({
-                    url: `/Select2/GetToRouteForFromRoute`,
-                    data: {
-                        fromRouteId: fromRouteId,
-                        driverId: driverId
-                    },
-                    type: "POST"
-                }).done(function(response) {
-                    console.log(response.items);
-                    $(".select2DropDown.toRoutes").select2({
-                        language: {
-                            inputTooShort: function() {
-                                return "Zəhmət olmasa bir hərf daxil edin";
-                            },
-                            noResults: function() {
-                                return "Nətice yoxdur";
-                            },
-                            searching: function() {
-                                return "Axtarılır...";
-                            }
-                        },
-                        closeOnSelect: true,
-                        allowClear: true,
-                        placeholder: "Secin",
-                        data: response.items
-                    });
-                }).fail(function(response) {
-                });
-            }
+            
         });
 }
 //#endregion Insert New Route Row
