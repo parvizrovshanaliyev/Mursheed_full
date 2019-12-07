@@ -10,7 +10,7 @@ var day,
     tbody = document.getElementById("routeTable")
         .getElementsByTagName("tbody")[0],
     dayArrange,
-    selectBox,
+    selectBox=`<select class="select2DropDown"><option>test</option><select/>`,
     dateArray=[],
     newRow = 'row',
     column = 'cell';
@@ -33,7 +33,6 @@ var day,
 ///#region endDate on change
 $("#endDate").on("change",
     function () {
-
         // get date input's value
         startDate = new Date($('#startDate').val());
         endDate = new Date($('#endDate').val());
@@ -62,13 +61,19 @@ function insertRouteRow(dateArr) {
         window[newRow + rowIndex] = tbody.insertRow(table.length);
         for (let cellIndex = 0; cellIndex < table.rows[0].cells.length; cellIndex++) {
             window[column + cellIndex] = window[newRow + rowIndex].insertCell(cellIndex);
-            // routeDate
-            cell0.innerHTML=dateArr[rowIndex];
+            // console.log(window[column + cellIndex]);
         }
+        // routeDate
+        cell0.innerHTML=dateArr[rowIndex];
+        cell1.innerHTML=selectBox;
+        cell3.innerHTML=selectBox;
+        initializeSelect2(selectBox);
     }
 }
 
-
+function initializeSelect2() {
+    $('.select2DropDown').select2();
+}
 
 
 //#endregion Insert New Route Row
