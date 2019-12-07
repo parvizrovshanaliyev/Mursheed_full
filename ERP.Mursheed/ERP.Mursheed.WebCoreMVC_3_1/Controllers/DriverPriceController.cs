@@ -8,7 +8,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
 {
     public class DriverPriceController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
             return View();
         }
