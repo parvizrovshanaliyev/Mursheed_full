@@ -61,6 +61,7 @@
                                 <span>(23)</span>
                             </div>
                             <button class="light-btn">Details</button>
+                            <button id="hire" onclick="onHire(this)" class="light-btn mt-2">Hire</button>
                         </div>
                     </div>
                 </div>
@@ -73,16 +74,23 @@
                         <table id="routeTable" class="table select_price_title">
                             <thead>
                                 <tr>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">From</th>
-                                    <th scope="col">Time</th>
-                                    <th scope="col">To</th>
-                                    <th scope="col">Info</th>
-                                    <th scope="col">Route Cost</th>
+                                    <th colspan="1" scope="col">Id</th>
+                                    <th colspan="1" scope="col">Date</th>
+                                    <th colspan="1" scope="col">From</th>
+                                    <th colspan="1" scope="col">Time</th>
+                                    <th colspan="1" scope="col">To</th>
+                                    <th colspan="1" scope="col">Info</th>
+                                    <th colspan="1" scope="col">Route Cost</th>
                                 </tr>
                             </thead>
                             <tbody>
                             </tbody>
+                            <tfoot>
+                                
+                            <tr >
+                                <th colspan="7" class="text-right">Total price : <span id="totalPrice">0</span></th>
+                            </tr>
+                            </tfoot>
                         </table>
 
                     </div>
@@ -99,6 +107,7 @@
     <script src="~/select2/js/select2.min.js"></script>
     <script src="~/DataJS/date.js"></script>
     <script src="~/sweetalert/sweetalert.min.js"></script>
+    <script src="~/sweetalert/SwalUtility.js" asp-append-version="true"></script>
     <script src="~/Custom/driverPrice.js" asp-append-version="true"></script>
 }
 

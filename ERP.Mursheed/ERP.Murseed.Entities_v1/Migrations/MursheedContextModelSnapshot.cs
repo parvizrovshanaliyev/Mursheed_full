@@ -582,7 +582,7 @@ namespace ERP.Mursheed.ORM.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("RideToRouteId")
+                    b.Property<int>("RideId")
                         .HasColumnType("int");
 
                     b.Property<float>("TotalPrice")
@@ -590,7 +590,7 @@ namespace ERP.Mursheed.ORM.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RideToRouteId");
+                    b.HasIndex("RideId");
 
                     b.ToTable("Ticket");
                 });
@@ -1022,9 +1022,9 @@ namespace ERP.Mursheed.ORM.Migrations
 
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.Ticket", b =>
                 {
-                    b.HasOne("ERP.Mursheed.Entities.Shared.RideToRoute", "RideToRoute")
+                    b.HasOne("ERP.Mursheed.Entities.Shared.Ride", "Ride")
                         .WithMany("Tickets")
-                        .HasForeignKey("RideToRouteId")
+                        .HasForeignKey("RideId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

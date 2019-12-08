@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ERP.Mursheed.ORM.Migrations
 {
     [DbContext(typeof(MursheedContext))]
-    [Migration("20191208064252_seed_changed_dbInit_again")]
-    partial class seed_changed_dbInit_again
+    [Migration("20191208161522_initDb")]
+    partial class initDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -584,7 +584,7 @@ namespace ERP.Mursheed.ORM.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("RideToRouteId")
+                    b.Property<int>("RideId")
                         .HasColumnType("int");
 
                     b.Property<float>("TotalPrice")
@@ -592,7 +592,7 @@ namespace ERP.Mursheed.ORM.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RideToRouteId");
+                    b.HasIndex("RideId");
 
                     b.ToTable("Ticket");
                 });
@@ -1024,9 +1024,9 @@ namespace ERP.Mursheed.ORM.Migrations
 
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.Ticket", b =>
                 {
-                    b.HasOne("ERP.Mursheed.Entities.Shared.RideToRoute", "RideToRoute")
+                    b.HasOne("ERP.Mursheed.Entities.Shared.Ride", "Ride")
                         .WithMany("Tickets")
-                        .HasForeignKey("RideToRouteId")
+                        .HasForeignKey("RideId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

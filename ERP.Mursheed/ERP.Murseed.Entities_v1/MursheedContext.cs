@@ -61,6 +61,7 @@ namespace ERP.Mursheed.ORM
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            
             #region Seed
             modelBuilder.Entity<Person>().HasData(
 

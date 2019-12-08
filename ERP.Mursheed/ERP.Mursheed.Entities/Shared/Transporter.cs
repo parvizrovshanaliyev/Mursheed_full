@@ -225,7 +225,9 @@ namespace ERP.Mursheed.Entities.Shared
         }
         [Key] public int Id { get; set; }
 
+        [Required]
         public DateTime StartDate { get; set; }
+        [Required]
         public DateTime EndDate { get; set; }
 
         public virtual ICollection<RideToRoute> RideToRoutes { get; set; }
@@ -273,6 +275,7 @@ namespace ERP.Mursheed.Entities.Shared
         public Ride()
         {
             RideToRoutes = new HashSet<RideToRoute>();
+            Tickets = new HashSet<Ticket>();
         }
         [Key] public int Id { get; set; }
 
@@ -289,36 +292,25 @@ namespace ERP.Mursheed.Entities.Shared
         public Transporter Transporter { get; set; }
 
         public virtual ICollection<RideToRoute> RideToRoutes { get; set; }
+        public virtual ICollection<Ticket> Tickets { get; set; }
     }
 
     [Table("RideToRoute")]
     public class RideToRoute
     {
-        public RideToRoute()
-        {
-            Tickets = new HashSet<Ticket>();
-        }
         [Key] public int Id { get; set; }
 
-        [Required]
-        public int RideId { get; set; }
+        [Required] public int RideId { get; set; }
 
-        [Required]
-        public int RouteId { get; set; }
-        
-        [Required]
-        public int DateFromToId { get; set; }
+        [Required] public int RouteId { get; set; }
 
-        [ForeignKey("RideId")]
-        public Ride Ride { get; set; }
+        [Required] public int DateFromToId { get; set; }
 
-        [ForeignKey("RouteId")]
-        public Route Route { get; set; }
+        [ForeignKey("RideId")] public Ride Ride { get; set; }
 
-        [ForeignKey("DateFromToId")]
-        public DateFromTo DateFromTo { get; set; }
+        [ForeignKey("RouteId")] public Route Route { get; set; }
 
-        public virtual ICollection<Ticket> Tickets { get; set; }
+        [ForeignKey("DateFromToId")] public DateFromTo DateFromTo { get; set; }
     }
 
     [Table("TransporterRoute")]
@@ -347,13 +339,13 @@ namespace ERP.Mursheed.Entities.Shared
         [Key] public int Id { get; set; }
 
         [Required]
-        public int RideToRouteId { get; set; }
+        public int RideId { get; set; }
 
         [Required]
         public float TotalPrice { get; set; }
 
-        [ForeignKey("RideToRouteId")]
-        public virtual RideToRoute RideToRoute { get; set; }
+        [ForeignKey("RideId")]
+        public virtual Ride Ride { get; set; }
     }
 
 
