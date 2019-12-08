@@ -37,39 +37,39 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Facades
                 TouristId = 1,
                 TransporterId = model.DriverId
             };
-            //// create ride
-            //_unitOfWork.Repository<Ride>().AddUnCommitted(ride);
-            //// start date endDate
-            //var dateFromTo = _mapper.Map<DateFromTo>(model.DateFromTo);
-            //_unitOfWork.Repository<DateFromTo>().AddUnCommitted(dateFromTo);
-            //// find all routes
-            //if (model.RouteIds.Count == 0) return null;
-            //var routes = await _unitOfWork.Repository<Route>().FindAllAsync(x => model.RouteIds.Contains(x.Id));
+            // create ride
+            _unitOfWork.Repository<Ride>().AddUnCommitted(ride);
+            // start date endDate
+            var dateFromTo = _mapper.Map<DateFromTo>(model.DateFromTo);
+            _unitOfWork.Repository<DateFromTo>().AddUnCommitted(dateFromTo);
+            // find all routes
+            if (model.RouteIds.Count == 0) return null;
+            var routes = await _unitOfWork.Repository<Route>().FindAllAsync(x => model.RouteIds.Contains(x.Id));
 
-            //if (routes.Count == 0) return null;
-            //float totalPrice = 0;
-            //var rideToRoutes = new List<RideToRoute>();
-            //foreach (var route in routes)
-            //{
-            //    var rideToRoute = new RideToRoute
-            //    {
-            //        RouteId = route.Id,
-            //        RideId = ride.Id,
-            //        DateFromToId = dateFromTo.Id
-            //    };
-            //    totalPrice += route.Price;
-            //    rideToRoutes.Add(rideToRoute);
-            //}
+            if (routes.Count == 0) return null;
+            float totalPrice = 0;
+            var rideToRoutes = new List<RideToRoute>();
+            foreach (var route in routes)
+            {
+                var rideToRoute = new RideToRoute
+                {
+                    RouteId = route.Id,
+                    RideId = ride.Id,
+                    DateFromToId = dateFromTo.Id
+                };
+                totalPrice += route.Price;
+                rideToRoutes.Add(rideToRoute);
+            }
 
-            //_unitOfWork.Repository<RideToRoute>().AddRangeUnCommitted(rideToRoutes);
+            _unitOfWork.Repository<RideToRoute>().AddRangeUnCommitted(rideToRoutes);
 
-            //// final 
-            //var ticket = new Ticket
-            //{
-            //    RideId = ride.Id,
-            //    TotalPrice = totalPrice
-            //};
-            //_unitOfWork.Repository<Ticket>().AddUnCommitted(ticket);
+            // final 
+            var ticket = new Ticket
+            {
+                RideId = ride.Id,
+                TotalPrice = totalPrice
+            };
+            _unitOfWork.Repository<Ticket>().AddUnCommitted(ticket);
 
             var result = await _unitOfWork.Commit();
 
