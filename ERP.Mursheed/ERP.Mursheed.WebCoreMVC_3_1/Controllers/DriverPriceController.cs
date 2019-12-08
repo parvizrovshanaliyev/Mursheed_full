@@ -43,18 +43,24 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Ticket(TicketViewModel model)
+        public async Task<JsonResult> Ticket(TicketViewModel model)
         {
             if (!ModelState.IsValid) return new JsonResult(BadRequest());
             try
             {
-                var result = await _ticketFacade.AddAsync(model);
-                if (!result.IsSuccess) return BadRequest();
+                var t = _ticketFacade.AddAsync(model);
+                var commitResult = await _unitOfWork.Commit();
+                if (commitResult.IsSuccess)
+                {
+                    return Json(new { t });
+                }
             }
-            catch (Exception)
+            catch (Exception exception)
             {
-                return BadRequest();
+                return Json(new { exception });
             }
+            
+
             return new JsonResult(BadRequest());
         }
     }

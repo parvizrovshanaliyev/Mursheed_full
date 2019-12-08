@@ -228,6 +228,13 @@ namespace ERP.Mursheed.ORM
                 HasOne(x => x.ToCity).
                 WithMany(x => x.ToRoutes).
                 OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<RideToRoute>()
+                .HasOne(x => x.DateFromTo)
+                .WithMany(e => e.RideToRoutes)
+                .HasForeignKey(e => e.DateFromToId)
+                .OnDelete(DeleteBehavior.Restrict)
+                .HasConstraintName("FK_RideToRoute_DateFromTo_DateFromToId");
             #endregion  // fulent api
 
         }

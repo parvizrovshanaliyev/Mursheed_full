@@ -14,7 +14,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Facades
     public interface ITicketFacade
     {
         //TicketViewModel CreateTicket(TicketViewModel model);
-        Task<TransResult<int>> AddAsync(TicketViewModel model);
+        TicketViewModel AddAsync(TicketViewModel model);
     }
 
     public class TicketFacade : ITicketFacade
@@ -30,7 +30,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Facades
 
         
 
-        public async Task<TransResult<int>> AddAsync(TicketViewModel model)
+        public  TicketViewModel AddAsync(TicketViewModel model)
         {
             var ride = new Ride
             {
@@ -40,11 +40,19 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Facades
             // create ride
             _unitOfWork.Repository<Ride>().AddUnCommitted(ride);
             // start date endDate
-            var dateFromTo = _mapper.Map<DateFromTo>(model.DateFromTo);
+            // var dateFromTo = _mapper.Map<DateFromTo>(model.DateFromTo);
+            var dateFromTo = new DateFromTo
+            {
+                StartDate=model.DateFromTo.StartDate,
+                EndDate=model.DateFromTo.EndDate
+            };
+
+
             _unitOfWork.Repository<DateFromTo>().AddUnCommitted(dateFromTo);
+            
             // find all routes
             if (model.RouteIds.Count == 0) return null;
-            var routes = await _unitOfWork.Repository<Route>().FindAllAsync(x => model.RouteIds.Contains(x.Id));
+            var routes = _unitOfWork.Repository<Route>().FindAll(x => model.RouteIds.Contains(x.Id));
 
             if (routes.Count == 0) return null;
             float totalPrice = 0;
@@ -69,11 +77,12 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Facades
                 RideId = ride.Id,
                 TotalPrice = totalPrice
             };
+
             _unitOfWork.Repository<Ticket>().AddUnCommitted(ticket);
 
-            var result = await _unitOfWork.Commit();
-
-            return result;
+            //var result = await _unitOfWork.Commit();
+            var t = new TicketViewModel();
+            return t;
 
 
         }
