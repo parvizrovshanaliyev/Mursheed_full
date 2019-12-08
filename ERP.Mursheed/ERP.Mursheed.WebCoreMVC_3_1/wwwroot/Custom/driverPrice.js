@@ -4,6 +4,7 @@
 });
 var day,
     selectedRow = null,
+    childElement = null,
     fromRoutes,
     routeCost,
     fromRouteId,
@@ -19,6 +20,7 @@ var day,
     selectBoxFromRoutes = `<select onchange="onChangeSelect(this)"  class="select2DropDown fromRoutes"><option></option><select/>`,
     selectBoxToRoutes = `<select onchange="onChangeSelect(this)" class="select2DropDown toRoutes"><option></option><select/>`,
     dateArray = [],
+    routeIds = [],
     newRow = "row",
     column = "cell";
 const select2DropDownFromRoutes = ".select2DropDown.fromRoutes",
@@ -87,9 +89,14 @@ function fillToSelect(driverId) {
 }
 //
 function onChangeSelect(selectBox) {
-    
+    selectedRow = selectBox.parentElement.parentElement;
     if ($(selectBox).hasClass("fromRoutes")) {
         fromRouteId = $(selectBox).val();
+        console.log(`fromRouteId:${fromRouteId}`);
+        
+        childElement = $(selectedRow).find(select2DropDownToRoutes);
+        //console.log(`selectedRow :${selectedRow.sectionRowIndex}`);
+        //console.log($(selectedRow).find(select2DropDownToRoutes).val());
         if (fromRouteId !== null && driverId !== null) {
             $.ajax({
                 url: `/Select2/GetToRouteForFromRoute`,
@@ -100,26 +107,28 @@ function onChangeSelect(selectBox) {
                 type: "POST"
             }).done(function (response) {
                 //console.log(response.items);
-                initializeSelect2(select2DropDownToRoutes, response.items);
+                initializeSelect2(childElement, response.items);
             }).fail(function (response) {
             });
+            fromRouteId = null;
         }
     } else if ($(selectBox).hasClass("toRoutes")) {
         toRouteId = $(selectBox).val();
-        console.log(fromRouteId, toRouteId);
-        selectedRow = selectBox.parentElement.parentElement;
-        console.log(`selectedRow :${selectedRow.sectionRowIndex}`);
+        childElement = $(selectedRow).find(select2DropDownFromRoutes);
+        //console.log(fromRouteId, toRouteId);
+        //console.log(`selectedRow :${selectedRow.sectionRowIndex}`);
         if (fromRouteId !== null && driverId !== null && toRouteId !== null) {
             $.ajax({
                 url: `/Select2/GetToCostForRoute`,
                 data: {
-                    fromRouteId: fromRouteId,
+                    fromRouteId: $(childElement).val(),
                     driverId: driverId,
                     toRouteId: toRouteId
                 },
                 type: "POST"
             }).done(function (response) {
-                console.log(response);
+                //console.log(response);
+                selectedRow.cells[2].innerHTML = `fromRouteId:${fromRouteId}-toRouteId:${toRouteId}`;
                 selectedRow.cells[4].innerHTML = response.info;
                 selectedRow.cells[5].innerHTML = response.cost;
             }).fail(function (response) {
@@ -129,7 +138,7 @@ function onChangeSelect(selectBox) {
 }
 //
 //#region initializeSelect2
-function initializeSelect2(select2Classes,data) {
+function initializeSelect2(element,data) {
     $(".select2DropDown").select2({
         language: {
             inputTooShort: function() {
@@ -146,7 +155,7 @@ function initializeSelect2(select2Classes,data) {
         allowClear: true,
         placeholder: "Secin"
     });
-    $(select2Classes).select2({
+    $(element).select2({
         language: {
             inputTooShort: function () {
                 return "Zəhmət olmasa bir hərf daxil edin";
@@ -163,7 +172,7 @@ function initializeSelect2(select2Classes,data) {
         placeholder: "Secin",
         data: data
     });
-    
+    childElement = null;
 }
 //#endregion
 function onChangeFromRouteSelect() {
