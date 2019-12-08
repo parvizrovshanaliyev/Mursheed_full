@@ -45,8 +45,8 @@ namespace ERP.Mursheed.Entities.Shared
 
         public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
 
-        [ForeignKey("CountryId")]
-        public virtual Country Country { get; set; }
+        //[ForeignKey("CountryId")]
+        //public virtual Country Country { get; set; }
 
     }
 
@@ -55,17 +55,7 @@ namespace ERP.Mursheed.Entities.Shared
     /// <summary>
     /// driverle car arasinda hemcinin brand ve model arasindaki elage araya pivot  pivotun adi 
     /// </summary>
-    [Table("Car")]
-    public class Car
-    {
-        [Key] public int Id { get; set; }
-
-        [Required]
-        public int BrandId { get; set; }
-
-        [Required]
-        public int ModelId { get; set; }
-    }
+    
 
 
     [Table("AvailableDate")]
