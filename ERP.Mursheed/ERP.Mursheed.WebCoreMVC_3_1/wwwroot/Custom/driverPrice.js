@@ -122,7 +122,6 @@ function onChangeSelect(selectBox) {
                 console.log(response);
                 selectedRow.cells[4].innerHTML = response.info;
                 selectedRow.cells[5].innerHTML = response.cost;
-                //initializeSelect2(select2DropDownToRoutes, response.items);
             }).fail(function (response) {
             });
         }
@@ -163,7 +162,6 @@ function initializeSelect2(select2Classes,data) {
         allowClear: true,
         placeholder: "Secin",
         data: data
-
     });
     
 }

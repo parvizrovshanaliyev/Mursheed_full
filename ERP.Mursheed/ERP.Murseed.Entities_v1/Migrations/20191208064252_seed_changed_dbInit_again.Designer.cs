@@ -4,14 +4,16 @@ using ERP.Mursheed.ORM;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ERP.Mursheed.ORM.Migrations
 {
     [DbContext(typeof(MursheedContext))]
-    partial class MursheedContextModelSnapshot : ModelSnapshot
+    [Migration("20191208064252_seed_changed_dbInit_again")]
+    partial class seed_changed_dbInit_again
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

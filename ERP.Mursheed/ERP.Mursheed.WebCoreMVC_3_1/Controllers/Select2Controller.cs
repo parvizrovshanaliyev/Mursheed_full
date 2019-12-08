@@ -76,7 +76,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
         }
         #endregion
         #region From Route
-        public JsonResult GetToCostForRoute(int fromRouteId, int driverId, int ToRouteId)
+        public JsonResult GetToCostForRoute(int fromRouteId, int driverId, int toRouteId)
         {
             var toRoutes = (from tRoute in _unitOfWork.Repository<TransporterRoute>().Query()
                 join driver in _unitOfWork.Repository<Transporter>().Query()
@@ -87,7 +87,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
                     on route.FromCityId equals fromCity.Id
                 join toCity in _unitOfWork.Repository<City>().Query()
                     on route.ToCityId equals toCity.Id
-                where driver.Id == driverId && fromCity.Id == fromRouteId && toCity.Id == ToRouteId
+                where driver.Id == driverId && fromCity.Id == fromRouteId && toCity.Id == toRouteId
                 select new Select2ViewModel
                 {
                     id = route.Id,
