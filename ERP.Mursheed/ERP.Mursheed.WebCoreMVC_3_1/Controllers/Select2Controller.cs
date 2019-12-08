@@ -50,6 +50,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
             var fromToRoute = _driverPriceFacade.GetToCostForRoute(model);
             return Json(new { cost = fromToRoute.cost, id = fromToRoute.id, info = fromToRoute.text });
 
+
         }
         #endregion
     }
