@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using ERP.Mursheed.Entities.Shared;
 using ERP.Mursheed.Repositories.Interfaces;
+using ERP.Mursheed.Utility;
 using ERP.Mursheed.WebCoreMVC_3_1.Facades;
 using ERP.Mursheed.WebCoreMVC_3_1.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -18,17 +19,19 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IDriverPriceFacade _driverPriceFacade;
+        private readonly ITicketFacade _ticketFacade;
 
         
         public DriverPriceController(IConfiguration configuration, 
             IMapper mapper, 
             IUnitOfWork unitOfWork, 
-            IDriverPriceFacade driverPriceFacade)
+            IDriverPriceFacade driverPriceFacade, ITicketFacade ticketFacade)
         {
             _configuration = configuration;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
             _driverPriceFacade = driverPriceFacade;
+            _ticketFacade = ticketFacade;
         }
 
         [Route("DriverPrice/{id}")]
@@ -40,49 +43,19 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> Ticket(TicketViewModel model)
+        public async Task<IActionResult> Ticket(TicketViewModel model)
         {
             if (!ModelState.IsValid) return new JsonResult(BadRequest());
-
-            var ride = new Ride
+            try
             {
-                TouristId = 1,
-                TransporterId = model.DriverId
-            };
-            // create ride
-            _unitOfWork.Repository<Ride>().AddUnCommitted(ride);
-            // start date endDate
-            var dateFromTo = _mapper.Map<DateFromTo>(model.DateFromTo);
-            _unitOfWork.Repository<DateFromTo>().AddUnCommitted(dateFromTo);
-            // find all routes
-            if (model.RouteIds.Count <= 0) return new JsonResult(BadRequest());
-            var routes = await _unitOfWork.Repository<Route>().FindAllAsync(x => model.RouteIds.Contains(x.Id));
-            if (routes.Count <= 0) return new JsonResult(BadRequest());
-            float totalPrice = 0;
-            var rideToRoutes = new List<RideToRoute>();
-            foreach (var route in routes)
-            {
-                var rideToRoute = new RideToRoute
-                {
-                    RouteId = route.Id,
-                    RideId = ride.Id,
-                    DateFromToId = dateFromTo.Id
-                };
-                totalPrice += route.Price;
-                rideToRoutes.Add(rideToRoute);
+                var result = await _ticketFacade.AddAsync(model);
+                if (!result.IsSuccess) return BadRequest();
             }
-
-            _unitOfWork.Repository<RideToRoute>().AddRangeUnCommitted(rideToRoutes);
-
-            // final 
-            var ticket = new Ticket
+            catch (Exception)
             {
-                RideId = ride.Id,
-                TotalPrice = totalPrice
-            };
-            _unitOfWork.Repository<Ticket>().AddUnCommitted(ticket);
-            var result = _unitOfWork.Commit();
-            return result.IsCompletedSuccessfully ? Json(new {id = ticket.Id, totalPrice = ticket.TotalPrice}) : new JsonResult(BadRequest());
+                return BadRequest();
+            }
+            return new JsonResult(BadRequest());
         }
     }
 }

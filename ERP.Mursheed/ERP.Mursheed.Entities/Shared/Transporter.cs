@@ -298,31 +298,19 @@ namespace ERP.Mursheed.Entities.Shared
     [Table("RideToRoute")]
     public class RideToRoute
     {
-        public RideToRoute()
-        {
-            Tickets = new HashSet<Ticket>();
-        }
         [Key] public int Id { get; set; }
 
-        [Required]
-        public int RideId { get; set; }
+        [Required] public int RideId { get; set; }
 
-        [Required]
-        public int RouteId { get; set; }
-        
-        [Required]
-        public int DateFromToId { get; set; }
+        [Required] public int RouteId { get; set; }
 
-        [ForeignKey("RideId")]
-        public Ride Ride { get; set; }
+        [Required] public int DateFromToId { get; set; }
 
-        [ForeignKey("RouteId")]
-        public Route Route { get; set; }
+        [ForeignKey("RideId")] public Ride Ride { get; set; }
 
-        [ForeignKey("DateFromToId")]
-        public DateFromTo DateFromTo { get; set; }
+        [ForeignKey("RouteId")] public Route Route { get; set; }
 
-        public virtual ICollection<Ticket> Tickets { get; set; }
+        [ForeignKey("DateFromToId")] public DateFromTo DateFromTo { get; set; }
     }
 
     [Table("TransporterRoute")]

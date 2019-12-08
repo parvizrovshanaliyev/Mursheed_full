@@ -10,7 +10,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Helper
         {
             //todo
             CreateMap<Transporter, DriverPriceViewModel>();
-            CreateMap<DateFromTo, DateFromToViewModel>();
+            CreateMap<DateFromTo, DateFromToViewModel>().ReverseMap();
         }
     }
 }
