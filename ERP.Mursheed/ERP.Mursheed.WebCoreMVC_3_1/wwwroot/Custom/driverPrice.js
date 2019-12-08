@@ -95,6 +95,7 @@ function onChangeSelect(selectBox) {
     selectedRow = selectBox.parentElement.parentElement;
     if ($(selectBox).hasClass("fromRoutes")) {
         fromRouteId = $(selectBox).val();
+        fromToRouteModel.FromRouteId = $(selectBox).val();
         console.log(`fromRouteId:${fromRouteId}`);
         
         childElement = $(selectedRow).find(select2DropDownToRoutes);
@@ -107,6 +108,7 @@ function onChangeSelect(selectBox) {
                     fromRouteId: fromRouteId,
                     driverId: driverId
                 },
+                data: { model: fromToRouteModel },
                 type: "POST"
             }).done(function (response) {
                 //console.log(response.items);
