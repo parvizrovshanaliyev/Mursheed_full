@@ -74,9 +74,10 @@ function insertRow(dateArr) {
             // console.log(window[column + cellIndex]);
         }
         // routeDate
-        window.cell0.innerHTML = dateArr[rowIndex];
-        window.cell1.innerHTML = selectBoxFromRoutes;
-        window.cell3.innerHTML = selectBoxToRoutes;
+        window.cell1.innerHTML = dateArr[rowIndex];
+        window.cell2.innerHTML = selectBoxFromRoutes;
+        window.cell4.innerHTML = selectBoxToRoutes;
+        window.cell6.innerHTML = 0;
     }
     //
     initializeSelect2();
@@ -106,7 +107,11 @@ function onChangeSelect(selectBox) {
     selectedRow = selectBox.parentElement.parentElement;
     if ($(selectBox).hasClass("fromRoutes")) {
         fromToRouteModel.FromRouteId = $(selectBox).val();
+        
         childElement = $(selectedRow).find(select2DropDownToRoutes);
+        // clear child select To Routes
+        clearSelect(childElement);
+        
         if (fromToRouteModel.FromRouteId !== 0
             && fromToRouteModel.DriverId !== 0) {
             $.ajax({
@@ -134,8 +139,9 @@ function onChangeSelect(selectBox) {
                 data: { model: fromToRouteModel },
                 type: "POST"
             }).done(function (response) {
-                selectedRow.cells[4].innerHTML = response.info;
-                selectedRow.cells[5].innerHTML = response.cost;
+                selectedRow.cells[0].innerHTML = response.id;
+                selectedRow.cells[5].innerHTML = response.info;
+                selectedRow.cells[6].innerHTML = response.cost;
             }).fail(function (response) {
                 SwalUtility.Fail();
             });
@@ -143,6 +149,13 @@ function onChangeSelect(selectBox) {
             fromToRouteModel.FromRouteId = 0;
         }
     }
+}
+//
+function clearSelect(element) {
+    $(element).empty().append(`<option></option>`);
+    selectedRow.cells[5].innerHTML = '';
+    selectedRow.cells[6].innerHTML = 0;
+    selectedRow.cells[0].innerHTML = '';
 }
 //
 //#region initializeSelect2
