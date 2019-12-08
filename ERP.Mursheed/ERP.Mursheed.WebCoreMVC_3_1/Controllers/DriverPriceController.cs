@@ -36,5 +36,15 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
             var model= _driverPriceFacade.GetTransporter((int) id);
             return View(model);
         }
+
+        [HttpPost]
+        public JsonResult Ticket(TicketViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+            return new JsonResult(BadRequest());
+        }
     }
 }
