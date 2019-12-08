@@ -1,11 +1,11 @@
-﻿$(document).ready(function() {
+﻿$(document).ready(function () {
     //$("#endDate").rules('add', { greaterThan: "#startDate" });
     //onChangeFromRouteSelect();
 });
 var day,
     selectedRow = null,
     childElement = null,
-    fromToRouteModel= {
+    fromToRouteModel = {
         FromRouteId: 0,
         ToRouteId: 0,
         DriverId: $("#Id").val()
@@ -29,12 +29,12 @@ var day,
     newRow = "row",
     column = "cell";
 const select2DropDownFromRoutes = ".select2DropDown.fromRoutes",
-      select2DropDownToRoutes = ".select2DropDown.toRoutes";
+    select2DropDownToRoutes = ".select2DropDown.toRoutes";
 
 
 //#region endDate on change
 $("#endDate").on("change",
-    function() {
+    function () {
         // get date input's value
         startDate = new Date($("#startDate").val());
         endDate = new Date($("#endDate").val());
@@ -46,7 +46,7 @@ $("#endDate").on("change",
     });
 //#endregion endDate on change
 //#region  dateArray
-var getDateArray = function(start, end) {
+var getDateArray = function (start, end) {
     const arr = new Array();
     // var dt = new Date(start);
     // console.log(dt);
@@ -82,7 +82,7 @@ function fillToSelect() {
     if (fromToRouteModel.DriverId !== null) {
         $.ajax({
             url: `/Select2/GetFromRoute`,
-            data: { model: fromToRouteModel},
+            data: { model: fromToRouteModel },
             type: "POST"
         }).done(function (response) {
             initializeSelect2(select2DropDownFromRoutes, response.items);
@@ -94,67 +94,54 @@ function fillToSelect() {
 function onChangeSelect(selectBox) {
     selectedRow = selectBox.parentElement.parentElement;
     if ($(selectBox).hasClass("fromRoutes")) {
-        fromRouteId = $(selectBox).val();
         fromToRouteModel.FromRouteId = $(selectBox).val();
-        console.log(`fromRouteId:${fromRouteId}`);
-        
         childElement = $(selectedRow).find(select2DropDownToRoutes);
-        //console.log(`selectedRow :${selectedRow.sectionRowIndex}`);
-        //console.log($(selectedRow).find(select2DropDownToRoutes).val());
-        if (fromRouteId !== null && driverId !== null) {
+        if (fromToRouteModel.FromRouteId !== 0
+            && fromToRouteModel.DriverId !== 0) {
             $.ajax({
                 url: `/Select2/GetToRouteForFromRoute`,
-                data: {
-                    fromRouteId: fromRouteId,
-                    driverId: driverId
-                },
                 data: { model: fromToRouteModel },
                 type: "POST"
             }).done(function (response) {
-                //console.log(response.items);
                 initializeSelect2(childElement, response.items);
             }).fail(function (response) {
             });
-            fromRouteId = null;
+            fromToRouteModel.FromRouteId = 0;
         }
     } else if ($(selectBox).hasClass("toRoutes")) {
-        toRouteId = $(selectBox).val();
+        fromToRouteModel.ToRouteId = $(selectBox).val();
         childElement = $(selectedRow).find(select2DropDownFromRoutes);
-        fromRouteId = $(childElement).val();
-        //console.log(fromRouteId, toRouteId);
-        //console.log(`selectedRow :${selectedRow.sectionRowIndex}`);
-        if (fromRouteId !== null && driverId !== null && toRouteId !== null) {
+        fromToRouteModel.FromRouteId = $(childElement).val();
+
+        if (fromToRouteModel.FromRouteId !== 0
+            && fromToRouteModel.ToRouteId !== 0
+            && fromToRouteModel.DriverId !== 0) {
             $.ajax({
                 url: `/Select2/GetToCostForRoute`,
-                data: {
-                    fromRouteId: fromRouteId,
-                    driverId: driverId,
-                    toRouteId: toRouteId
-                },
+                data: { model: fromToRouteModel },
                 type: "POST"
             }).done(function (response) {
-                //console.log(response);
-                //selectedRow.cells[2].innerHTML = `fromRouteId:${fromRouteId}-toRouteId:${toRouteId}`;
                 selectedRow.cells[4].innerHTML = response.info;
                 selectedRow.cells[5].innerHTML = response.cost;
             }).fail(function (response) {
             });
-            fromRouteId = null;
+            fromToRouteModel.ToRouteId = 0;
+            fromToRouteModel.FromRouteId = 0;
         }
     }
 }
 //
 //#region initializeSelect2
-function initializeSelect2(element,data) {
+function initializeSelect2(element, data) {
     $(".select2DropDown").select2({
         language: {
-            inputTooShort: function() {
+            inputTooShort: function () {
                 return "Zəhmət olmasa bir hərf daxil edin";
             },
-            noResults: function() {
+            noResults: function () {
                 return "Nətice yoxdur";
             },
-            searching: function() {
+            searching: function () {
                 return "Axtarılır...";
             }
         },
@@ -185,8 +172,8 @@ function initializeSelect2(element,data) {
 function onChangeFromRouteSelect() {
     $(document).on("change",
         ".select2DropDown.fromRoutes",
-        function() {
-            
+        function () {
+
         });
 }
 //#endregion Insert New Route Row
