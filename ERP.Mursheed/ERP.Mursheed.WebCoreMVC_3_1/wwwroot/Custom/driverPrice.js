@@ -115,24 +115,26 @@ function onChangeSelect(selectBox) {
     } else if ($(selectBox).hasClass("toRoutes")) {
         toRouteId = $(selectBox).val();
         childElement = $(selectedRow).find(select2DropDownFromRoutes);
+        fromRouteId = $(childElement).val();
         //console.log(fromRouteId, toRouteId);
         //console.log(`selectedRow :${selectedRow.sectionRowIndex}`);
         if (fromRouteId !== null && driverId !== null && toRouteId !== null) {
             $.ajax({
                 url: `/Select2/GetToCostForRoute`,
                 data: {
-                    fromRouteId: $(childElement).val(),
+                    fromRouteId: fromRouteId,
                     driverId: driverId,
                     toRouteId: toRouteId
                 },
                 type: "POST"
             }).done(function (response) {
                 //console.log(response);
-                selectedRow.cells[2].innerHTML = `fromRouteId:${fromRouteId}-toRouteId:${toRouteId}`;
+                //selectedRow.cells[2].innerHTML = `fromRouteId:${fromRouteId}-toRouteId:${toRouteId}`;
                 selectedRow.cells[4].innerHTML = response.info;
                 selectedRow.cells[5].innerHTML = response.cost;
             }).fail(function (response) {
             });
+            fromRouteId = null;
         }
     }
 }
