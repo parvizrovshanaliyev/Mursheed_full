@@ -5,11 +5,16 @@
 var day,
     selectedRow = null,
     childElement = null,
+    fromToRouteModel= {
+        FromRouteId: 0,
+        ToRouteId: 0,
+        DriverId: $("#Id").val()
+    },
     fromRoutes,
     routeCost,
     fromRouteId,
     toRouteId,
-    driverId = $("#Id").val(),
+    //driverId = $("#Id").val(),
     startDate,
     endDate,
     routeRow,
@@ -69,20 +74,18 @@ function insertRow(dateArr) {
     //
     initializeSelect2();
     // get from routes
-    fillToSelect(driverId);
+    fillToSelect();
 }
 //
 //
-function fillToSelect(driverId) {
-    if (driverId !== null) {
+function fillToSelect() {
+    if (fromToRouteModel.DriverId !== null) {
         $.ajax({
-            url: `/Select2/GetFromRoute/${driverId}`,
+            url: `/Select2/GetFromRoute`,
+            data: { model: fromToRouteModel},
             type: "POST"
         }).done(function (response) {
             initializeSelect2(select2DropDownFromRoutes, response.items);
-            //$(".select2DropDown").select2({
-            //    data: response.items
-            //});
         }).fail(function (response) {
         });
     }

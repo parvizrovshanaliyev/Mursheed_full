@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ERP.Mursheed.Entities.Shared;
 using ERP.Mursheed.Repositories.Interfaces;
+using ERP.Mursheed.WebCoreMVC_3_1.Facades;
 using ERP.Mursheed.WebCoreMVC_3_1.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,90 +13,42 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
     public class Select2Controller : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IDriverPriceFacade _driverPriceFacade;
 
-        public Select2Controller(IUnitOfWork unitOfWork)
+        public Select2Controller(IUnitOfWork unitOfWork,
+                                 IDriverPriceFacade driverPriceFacade)
         {
             _unitOfWork = unitOfWork;
+            _driverPriceFacade = driverPriceFacade;
         }
 
-        #region From Route
-        public JsonResult GetFromRoute(int id)
+        #region GetFromRoute
+        [HttpPost]
+        public JsonResult GetFromRoute([Bind(include: "DriverId")]FromToRouteViewModel model)
         {
-            //List<Select2ViewModel> list = null;
-
-            //if (!(string.IsNullOrEmpty(search) || string.IsNullOrWhiteSpace(search)))
-            //{
-            //    list = _unitOfWork.Repository<Personel>().Query().
-            //        Where(x => x.Fullname.ToLower().StartsWith(search.ToLower()))
-            //        .Select(x => new Select2ViewModel
-            //        {
-            //            text = x.Fullname,
-            //            id = x.Id
-            //        }).ToList();
-            //}
-
-            var fromRoutes = (from tRoute in _unitOfWork.Repository<TransporterRoute>().Query()
-                              join driver in _unitOfWork.Repository<Transporter>().Query()
-                                  on tRoute.TransporterId equals driver.Id
-                              join route in _unitOfWork.Repository<Route>().Query()
-                                  on tRoute.RouteId equals route.Id
-                              join fromCity in _unitOfWork.Repository<City>().Query()
-                                  on route.FromCityId equals fromCity.Id
-                              where driver.Id == id
-                              select new Select2ViewModel
-                              {
-                                  id = fromCity.Id,
-                                  text = fromCity.Name
-                              }).Distinct();
-
+            if (model.DriverId == 0) return new JsonResult(BadRequest());
+            var fromRoutes = _driverPriceFacade.GetFromRoute(model);
             return Json(new { items = fromRoutes });
 
         }
         #endregion
-        #region From Route
-        public JsonResult GetToRouteForFromRoute(int fromRouteId, int driverId)
+        #region GetToRouteForFromRoute
+        [HttpPost]
+        public JsonResult GetToRouteForFromRoute([Bind(include: "FromRouteId, DriverId")]FromToRouteViewModel model)
         {
-            var toRoutes = (from tRoute in _unitOfWork.Repository<TransporterRoute>().Query()
-                            join driver in _unitOfWork.Repository<Transporter>().Query()
-                                on tRoute.TransporterId equals driver.Id
-                            join route in _unitOfWork.Repository<Route>().Query()
-                                on tRoute.RouteId equals route.Id
-                            join fromCity in _unitOfWork.Repository<City>().Query()
-                                on route.FromCityId equals fromCity.Id
-                            join toCity in _unitOfWork.Repository<City>().Query()
-                                on route.ToCityId equals toCity.Id
-                            where driver.Id == driverId && fromCity.Id == fromRouteId
-                            select new Select2ViewModel
-                            {
-                                id = toCity.Id,
-                                text = toCity.Name
-                            });
-
+            if (model.DriverId == 0 && model.FromRouteId == 0) return new JsonResult(BadRequest());
+            var toRoutes = _driverPriceFacade.GetToRouteForFromRoute(model);
             return Json(new { items = toRoutes });
 
         }
         #endregion
-        #region From Route
-        public JsonResult GetToCostForRoute(int fromRouteId, int driverId, int toRouteId)
+        #region GetToCostForRoute
+        [HttpPost]
+        public JsonResult GetToCostForRoute([Bind(include: "FromRouteId, DriverId , ToRouteId")]FromToRouteViewModel model)
         {
-            var toRoutes = (from tRoute in _unitOfWork.Repository<TransporterRoute>().Query()
-                join driver in _unitOfWork.Repository<Transporter>().Query()
-                    on tRoute.TransporterId equals driver.Id
-                join route in _unitOfWork.Repository<Route>().Query()
-                    on tRoute.RouteId equals route.Id
-                join fromCity in _unitOfWork.Repository<City>().Query()
-                    on route.FromCityId equals fromCity.Id
-                join toCity in _unitOfWork.Repository<City>().Query()
-                    on route.ToCityId equals toCity.Id
-                where driver.Id == driverId && fromCity.Id == fromRouteId && toCity.Id == toRouteId
-                select new Select2ViewModel
-                {
-                    id = route.Id,
-                    cost = route.Price,
-                    text = route.Info
-                }).SingleOrDefault();
-
-            return Json(new { cost = toRoutes.cost, id= toRoutes.id, info= toRoutes.text });
+            if (model.DriverId == 0 && model.FromRouteId == 0 && model.ToRouteId == 0) return new JsonResult(BadRequest());
+            var fromToRoute = _driverPriceFacade.GetToCostForRoute(model);
+            return Json(new { cost = fromToRoute.cost, id = fromToRoute.id, info = fromToRoute.text });
 
         }
         #endregion
