@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
 {
+    [Route("DriverPrice")]
     public class DriverPriceController : Controller
     {
         private readonly IConfiguration _configuration;
@@ -19,6 +20,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly IDriverPriceFacade _driverPriceFacade;
 
+        
         public DriverPriceController(IConfiguration configuration, IMapper mapper, IUnitOfWork unitOfWork, IDriverPriceFacade driverPriceFacade)
         {
             _configuration = configuration;
@@ -27,6 +29,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
             _driverPriceFacade = driverPriceFacade;
         }
 
+        [Route("{id}")]
         public IActionResult Index(int? id)
         {
             if (id == null) return NotFound();

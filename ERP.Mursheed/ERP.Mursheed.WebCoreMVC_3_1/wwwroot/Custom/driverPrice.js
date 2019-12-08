@@ -1,5 +1,7 @@
-﻿$(document).ready(function () {
+﻿
+$(document).ready(function () {
     //$("#endDate").rules('add', { greaterThan: "#startDate" });
+   
     //onChangeFromRouteSelect();
 });
 var day,
@@ -103,6 +105,7 @@ function onChangeSelect(selectBox) {
                 data: { model: fromToRouteModel },
                 type: "POST"
             }).done(function (response) {
+               
                 initializeSelect2(childElement, response.items);
             }).fail(function (response) {
             });
