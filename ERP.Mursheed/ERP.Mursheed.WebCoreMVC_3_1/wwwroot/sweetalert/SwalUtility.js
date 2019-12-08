@@ -1,16 +1,25 @@
 ﻿class SwalUtility {
     static Success() {
 
-        swal({
+        window.swal({
             type: 'success',
             title: 'Əməliyyat yerinə yetirildi',
             showConfirmButton: false,
             timer: 1000
         });
     }
+    static Success(res) {
+
+        window.swal({
+            type: 'success',
+            title: res.totalPrice,
+            showConfirmButton: false,
+            timer: 1000
+        });
+    }
 
     static Fail() {
-        swal({
+        window.swal({
             type: 'error',
             title: 'Xəta baş verdi',
             showConfirmButton: false,
@@ -19,7 +28,7 @@
     }
 
     static Fail(text) {
-        swal({
+        window.swal({
             type: 'error',
             title: text,
             showConfirmButton: false,

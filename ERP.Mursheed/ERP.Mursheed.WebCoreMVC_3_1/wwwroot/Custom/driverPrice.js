@@ -228,6 +228,16 @@ function onHire(btn) {
     console.log(routePrice);
     console.log(routeIds);
     console.log(ticketViewModel);
+    $.ajax({
+        url: `/DriverPrice/Ticket`,
+        data: { model: ticketViewModel },
+        type: "POST"
+    }).done(function (response) {
+        SwalUtility.Success(response);
+    }).fail(function (response) {
+        SwalUtility.Fail();
+    });
+    
 }
 //#endregion Insert New Route Row
 //jQuery.validator.addMethod("greaterThan",

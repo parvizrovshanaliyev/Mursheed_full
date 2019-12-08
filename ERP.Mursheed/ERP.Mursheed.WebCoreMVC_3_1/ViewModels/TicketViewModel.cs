@@ -18,7 +18,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.ViewModels
         public int DriverId { get; set; }
 
         [Required]
-        public DateFromTo DateFromTo { get; set; }
+        public DateFromToViewModel DateFromTo { get; set; }
 
         // sistemde online olan tourist in user idsine gore tourist id goturulecek
         //[Required]
@@ -26,7 +26,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.ViewModels
 
     }
 
-    public class DateFromTo
+    public class DateFromToViewModel
     {
         [Required]
         public DateTime StartDate { get; set; }

@@ -275,6 +275,7 @@ namespace ERP.Mursheed.Entities.Shared
         public Ride()
         {
             RideToRoutes = new HashSet<RideToRoute>();
+            Tickets = new HashSet<Ticket>();
         }
         [Key] public int Id { get; set; }
 
@@ -291,6 +292,7 @@ namespace ERP.Mursheed.Entities.Shared
         public Transporter Transporter { get; set; }
 
         public virtual ICollection<RideToRoute> RideToRoutes { get; set; }
+        public virtual ICollection<Ticket> Tickets { get; set; }
     }
 
     [Table("RideToRoute")]
@@ -349,13 +351,13 @@ namespace ERP.Mursheed.Entities.Shared
         [Key] public int Id { get; set; }
 
         [Required]
-        public int RideToRouteId { get; set; }
+        public int RideId { get; set; }
 
         [Required]
         public float TotalPrice { get; set; }
 
-        [ForeignKey("RideToRouteId")]
-        public virtual RideToRoute RideToRoute { get; set; }
+        [ForeignKey("RideId")]
+        public virtual Ride Ride { get; set; }
     }
 
 
