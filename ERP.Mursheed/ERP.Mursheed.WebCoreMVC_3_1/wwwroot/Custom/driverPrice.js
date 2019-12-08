@@ -12,11 +12,16 @@ var day,
         ToRouteId: 0,
         DriverId: $("#Id").val()
     },
+    ticketViewModel = {
+        RouteIds: [],
+        DriverId: fromToRouteModel.DriverId,
+        TotalPrice: 0,
+        DateFromTos:[]
+    },
     fromRoutes,
     routeCost,
     fromRouteId,
     toRouteId,
-    //driverId = $("#Id").val(),
     startDate,
     endDate,
     routeRow,
@@ -85,10 +90,14 @@ function fillToSelect() {
         $.ajax({
             url: `/Select2/GetFromRoute`,
             data: { model: fromToRouteModel },
-            type: "POST"
-        }).done(function (response) {
-            initializeSelect2(select2DropDownFromRoutes, response.items);
-        }).fail(function (response) {
+            type: "POST",
+            success: function (response) {
+                initializeSelect2(select2DropDownFromRoutes, response.items);
+                //SwalUtility.Success();
+
+            }
+        }).fail(function () {
+            SwalUtility.Fail();
         });
     }
 }
@@ -108,6 +117,7 @@ function onChangeSelect(selectBox) {
                
                 initializeSelect2(childElement, response.items);
             }).fail(function (response) {
+                SwalUtility.Fail();
             });
             fromToRouteModel.FromRouteId = 0;
         }
@@ -127,6 +137,7 @@ function onChangeSelect(selectBox) {
                 selectedRow.cells[4].innerHTML = response.info;
                 selectedRow.cells[5].innerHTML = response.cost;
             }).fail(function (response) {
+                SwalUtility.Fail();
             });
             fromToRouteModel.ToRouteId = 0;
             fromToRouteModel.FromRouteId = 0;
@@ -172,13 +183,7 @@ function initializeSelect2(element, data) {
     childElement = null;
 }
 //#endregion
-function onChangeFromRouteSelect() {
-    $(document).on("change",
-        ".select2DropDown.fromRoutes",
-        function () {
 
-        });
-}
 //#endregion Insert New Route Row
 //jQuery.validator.addMethod("greaterThan",
 //    function (value, element, params) {
