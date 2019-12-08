@@ -18,7 +18,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.ViewModels
         public int DriverId { get; set; }
 
         [Required]
-        public List<DateFromTo> DateFromTos { get; set; }
+        public DateFromTo DateFromTo { get; set; }
 
         // sistemde online olan tourist in user idsine gore tourist id goturulecek
         //[Required]

@@ -12,11 +12,15 @@ var day,
         ToRouteId: 0,
         DriverId: $("#Id").val()
     },
+    dateArray = [],
     ticketViewModel = {
         RouteIds: [],
         DriverId: fromToRouteModel.DriverId,
         TotalPrice: 0,
-        DateFromTos:[]
+        DateFromTo: {
+            StartDate: '',
+            EndDate: ''
+        }
     },
     fromRoutes,
     routeCost,
@@ -28,10 +32,8 @@ var day,
     table = document.getElementById("routeTable"),
     tbody = document.getElementById("routeTable")
         .getElementsByTagName("tbody")[0],
-    dayArrange,
     selectBoxFromRoutes = `<select onchange="onChangeSelect(this)"  class="select2DropDown fromRoutes"><option></option><select/>`,
     selectBoxToRoutes = `<select onchange="onChangeSelect(this)" class="select2DropDown toRoutes"><option></option><select/>`,
-    dateArray = [],
     routeIds = [],
     newRow = "row",
     column = "cell";
@@ -47,9 +49,12 @@ $("#endDate").on("change",
         endDate = new Date($("#endDate").val());
         // create date arr
         dateArray = getDateArray(startDate, endDate);
+        //
+        ticketViewModel.DateFromTo.StartDate = dateArray[0];
+        ticketViewModel.DateFromTo.EndDate = dateArray.slice(-1)[0];
         // insert
         insertRow(dateArray);
-        //console.log(dateArray);
+        console.log(ticketViewModel);
     });
 //#endregion endDate on change
 //#region  dateArray
