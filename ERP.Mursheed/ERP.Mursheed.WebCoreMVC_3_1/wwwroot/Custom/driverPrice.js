@@ -113,7 +113,9 @@ function onChangeSelect(selectBox) {
         clearSelect(childElement);
         
         if (fromToRouteModel.FromRouteId !== 0
-            && fromToRouteModel.DriverId !== 0) {
+            && fromToRouteModel.DriverId !== 0
+            && fromToRouteModel.FromRouteId !== ''
+            && fromToRouteModel.DriverId !== '') {
             $.ajax({
                 url: `/Select2/GetToRouteForFromRoute`,
                 data: { model: fromToRouteModel },
@@ -129,11 +131,15 @@ function onChangeSelect(selectBox) {
     } else if ($(selectBox).hasClass("toRoutes")) {
         fromToRouteModel.ToRouteId = $(selectBox).val();
         childElement = $(selectedRow).find(select2DropDownFromRoutes);
+        clearSelect();
         fromToRouteModel.FromRouteId = $(childElement).val();
 
         if (fromToRouteModel.FromRouteId !== 0
             && fromToRouteModel.ToRouteId !== 0
-            && fromToRouteModel.DriverId !== 0) {
+            && fromToRouteModel.DriverId !== 0
+            && fromToRouteModel.ToRouteId !== ''
+            && fromToRouteModel.DriverId !== ''
+            && fromToRouteModel.FromRouteId !== '') {
             $.ajax({
                 url: `/Select2/GetToCostForRoute`,
                 data: { model: fromToRouteModel },
