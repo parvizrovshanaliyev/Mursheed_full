@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace ERP.Mursheed.Entities.Shared
@@ -12,12 +13,14 @@ namespace ERP.Mursheed.Entities.Shared
         }
         public int Id { get; set; }
         public string ApplicationUserId { get; set; }
+        public int CountryId { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
+
+        [EmailAddress]
         public string Email { get; set; }
         public string AdditionalInfo { get; set; }
         public string Fullname => $"{Firstname} {Lastname}";
-
 
         public virtual ApplicationUser ApplicationUser { get; set; }
         public virtual Country Country { get; set; }

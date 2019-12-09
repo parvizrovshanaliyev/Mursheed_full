@@ -233,8 +233,114 @@ namespace ERP.Mursheed.ORM
 
 
             #endregion
-
             
+            modelBuilder.Entity<Tourist>(entity =>
+            {
+                entity.ToTable("TOURIST");
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Firstname)
+                    .IsRequired()
+                    .HasMaxLength(50);
+                entity.Property(e => e.Lastname)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.HasIndex(e=>e.ApplicationUserId);
+                entity.HasIndex(e=>e.CountryId);
+
+                entity.HasOne(e => e.Country)
+                    .WithMany(e => e.Tourists)
+                    .HasForeignKey(e => e.CountryId)
+                    .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(e => e.ApplicationUser)
+                    .WithMany(e => e.Tourists)
+                    .HasForeignKey(e => e.ApplicationUserId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+            modelBuilder.Entity<Driver>(entity =>
+            {
+                entity.ToTable("DRIVER");
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Firstname)
+                    .IsRequired()
+                    .HasMaxLength(50);
+                entity.Property(e => e.Lastname)
+                    .IsRequired()
+                    .HasMaxLength(50);
+                entity.Property(e => e.PhoneNumber)
+                    .IsRequired()
+                    .HasMaxLength(50);
+                entity.Property(e => e.PhotoName)
+                    .IsRequired()
+                    .HasMaxLength(100);
+                entity.Property(e => e.PhotoPath)
+                    .IsRequired()
+                    .HasMaxLength(250);
+                entity.Property(e => e.DriverLicenseId)
+                    .IsRequired()
+                    .HasMaxLength(50);
+                entity.Property(e => e.GovernmentalId)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.HasIndex(e => e.ApplicationUserId);
+                entity.HasIndex(e => e.CountryId);
+                entity.HasIndex(e => e.CarId);
+
+                entity.HasOne(e => e.Country)
+                    .WithMany(e => e.Drivers)
+                    .HasForeignKey(e => e.CountryId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.ApplicationUser)
+                    .WithMany(e => e.Drivers)
+                    .HasForeignKey(e => e.ApplicationUserId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.Car)
+                    .WithMany(e => e.Drivers)
+                    .HasForeignKey(e => e.CarId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+            modelBuilder.Entity<Guide>(entity =>
+            {
+                entity.ToTable("GUIDE");
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Firstname)
+                    .IsRequired()
+                    .HasMaxLength(50);
+                entity.Property(e => e.Lastname)
+                    .IsRequired()
+                    .HasMaxLength(50);
+                entity.Property(e => e.PhoneNumber)
+                    .IsRequired()
+                    .HasMaxLength(50);
+                entity.Property(e => e.PhotoName)
+                    .IsRequired()
+                    .HasMaxLength(100);
+                entity.Property(e => e.PhotoPath)
+                    .IsRequired()
+                    .HasMaxLength(250);
+                entity.Property(e => e.GovernmentalId)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.HasIndex(e => e.ApplicationUserId);
+                entity.HasIndex(e => e.CountryId);
+
+                entity.HasOne(e => e.Country)
+                    .WithMany(e => e.Guides)
+                    .HasForeignKey(e => e.CountryId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.ApplicationUser)
+                    .WithMany(e => e.Guides)
+                    .HasForeignKey(e => e.ApplicationUserId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
 
 
             #endregion  // fulent api
