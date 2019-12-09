@@ -10,6 +10,7 @@ namespace ERP.Mursheed.Entities.Shared
         public Tourist()
         {
             DriverRides = new HashSet<DriverRide>();
+            GuideRides = new HashSet<GuideRide>();
         }
         public int Id { get; set; }
         public string ApplicationUserId { get; set; }
@@ -25,5 +26,6 @@ namespace ERP.Mursheed.Entities.Shared
         public virtual ApplicationUser ApplicationUser { get; set; }
         public virtual Country Country { get; set; }
         public virtual ICollection<DriverRide> DriverRides { get; set; }
+        public virtual ICollection<GuideRide> GuideRides { get; set; }
     }
 }

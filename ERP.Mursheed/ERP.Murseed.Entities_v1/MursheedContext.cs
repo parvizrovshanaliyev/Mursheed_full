@@ -467,6 +467,103 @@ namespace ERP.Mursheed.ORM
                     .HasForeignKey(e => e.BrandId)
                     .OnDelete(DeleteBehavior.Restrict);
             });
+            modelBuilder.Entity<Route>(entity =>
+            {
+                entity.ToTable("ROUTE");
+
+                entity.HasIndex(e => e.FromCityId);
+                entity.HasIndex(e => e.ToCityId);
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Info)
+                    .IsRequired()
+                    .HasMaxLength(50);
+                entity.Property(e => e.Price)
+                    .IsRequired();
+                    
+
+                entity.HasOne(e => e.FromCity)
+                    .WithMany(e => e.FromRoutes)
+                    .HasForeignKey(e => e.FromCityId)
+                    .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(e => e.ToCity)
+                    .WithMany(e => e.ToRoutes)
+                    .HasForeignKey(e => e.ToCityId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+            modelBuilder.Entity<DriverRoute>(entity =>
+            {
+                entity.ToTable("DRIVER_ROUTE");
+
+                entity.HasIndex(e => e.RouteId);
+                entity.HasIndex(e => e.DriverId);
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.HasOne(e => e.Route)
+                    .WithMany(e => e.DriverRoutes)
+                    .HasForeignKey(e => e.RouteId)
+                    .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(e => e.Driver)
+                    .WithMany(e => e.DriverRoutes)
+                    .HasForeignKey(e => e.DriverId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+            modelBuilder.Entity<GuideRoute>(entity =>
+            {
+                entity.ToTable("GUIDE_ROUTE");
+
+                entity.HasIndex(e => e.RouteId);
+                entity.HasIndex(e => e.GuideId);
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.HasOne(e => e.Route)
+                    .WithMany(e => e.GuideRoutes)
+                    .HasForeignKey(e => e.RouteId)
+                    .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(e => e.Guide)
+                    .WithMany(e => e.GuideRoutes)
+                    .HasForeignKey(e => e.GuideId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+            modelBuilder.Entity<DriverRide>(entity =>
+            {
+                entity.ToTable("DRIVER_RIDE");
+
+                entity.HasIndex(e => e.DriverId);
+                entity.HasIndex(e => e.TouristId);
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.HasOne(e => e.Driver)
+                    .WithMany(e => e.DriverRides)
+                    .HasForeignKey(e => e.DriverId)
+                    .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(e => e.Tourist)
+                    .WithMany(e => e.DriverRides)
+                    .HasForeignKey(e => e.TouristId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            modelBuilder.Entity<GuideRide>(entity =>
+            {
+                entity.ToTable("GUIDE_RIDE");
+
+                entity.HasIndex(e => e.GuideId);
+                entity.HasIndex(e => e.TouristId);
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.HasOne(e => e.Guide)
+                    .WithMany(e => e.GuideRides)
+                    .HasForeignKey(e => e.GuideId)
+                    .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(e => e.Tourist)
+                    .WithMany(e => e.GuideRides)
+                    .HasForeignKey(e => e.TouristId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
 
 
             #endregion  // fulent api
