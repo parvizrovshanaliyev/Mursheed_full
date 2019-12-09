@@ -342,6 +342,74 @@ namespace ERP.Mursheed.ORM
                     .OnDelete(DeleteBehavior.Restrict);
             });
 
+            modelBuilder.Entity<Country>(entity =>
+            {
+                entity.ToTable("COUNTRY");
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<City>(entity =>
+            {
+                entity.ToTable("CITY");
+                entity.HasIndex(e => e.CountryId);
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(50);
+            });
+            modelBuilder.Entity<Language>(entity =>
+            {
+                entity.ToTable("LANGUAGE");
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(50);
+            });
+            modelBuilder.Entity<DriverLanguage>(entity =>
+            {
+                entity.ToTable("DRIVER_LANGUAGE");
+
+                entity.HasIndex(e => e.DriverId);
+                entity.HasIndex(e => e.LanguageId);
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.HasOne(e => e.Language)
+                    .WithMany(e => e.DriverLanguages)
+                    .HasForeignKey(e => e.LanguageId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.Driver)
+                    .WithMany(e => e.DriverLanguages)
+                    .HasForeignKey(e => e.DriverId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+            });
+            modelBuilder.Entity<GuideLanguage>(entity =>
+            {
+                entity.ToTable("GUIDE_LANGUAGE");
+
+                entity.HasIndex(e => e.GuideId);
+                entity.HasIndex(e => e.LanguageId);
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.HasOne(e => e.Language)
+                    .WithMany(e => e.GuideLanguages)
+                    .HasForeignKey(e => e.LanguageId)
+                    .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(e => e.Guide)
+                    .WithMany(e => e.GuideLanguages)
+                    .HasForeignKey(e => e.GuideId)
+                    .OnDelete(DeleteBehavior.Restrict);
+                
+            });
+
 
             #endregion  // fulent api
 
