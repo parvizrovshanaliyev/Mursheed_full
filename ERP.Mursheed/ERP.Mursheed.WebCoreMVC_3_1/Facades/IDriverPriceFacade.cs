@@ -32,7 +32,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Facades
 
         public DriverPriceViewModel GetTransporter(int id)
         {
-            var driverModel = (from driver in _unitOfWork.Repository<Transporter>().Query()
+            var driverModel = (from driver in _unitOfWork.Repository<Driver>().Query()
                                join car in _unitOfWork.Repository<Car>().Query()
                                    on driver.CarId equals car.Id
                                join model in _unitOfWork.Repository<Model>().Query()
@@ -55,7 +55,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Facades
         public IQueryable<Select2ViewModel> GetFromRoute(FromToRouteViewModel model)
         {
             var fromRoutes = (from tRoute in _unitOfWork.Repository<TransporterRoute>().Query()
-                join driver in _unitOfWork.Repository<Transporter>().Query()
+                join driver in _unitOfWork.Repository<Driver>().Query()
                     on tRoute.TransporterId equals driver.Id
                 join route in _unitOfWork.Repository<Route>().Query()
                     on tRoute.RouteId equals route.Id
@@ -73,7 +73,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Facades
         public IQueryable<Select2ViewModel> GetToRouteForFromRoute(FromToRouteViewModel model)
         {
             var toRoutes = (from tRoute in _unitOfWork.Repository<TransporterRoute>().Query()
-                join driver in _unitOfWork.Repository<Transporter>().Query()
+                join driver in _unitOfWork.Repository<Driver>().Query()
                     on tRoute.TransporterId equals driver.Id
                 join route in _unitOfWork.Repository<Route>().Query()
                     on tRoute.RouteId equals route.Id
@@ -93,7 +93,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Facades
         public Select2ViewModel GetToCostForRoute(FromToRouteViewModel model)
         {
             var fromToRoute = (from tRoute in _unitOfWork.Repository<TransporterRoute>().Query()
-                join driver in _unitOfWork.Repository<Transporter>().Query()
+                join driver in _unitOfWork.Repository<Driver>().Query()
                     on tRoute.TransporterId equals driver.Id
                 join route in _unitOfWork.Repository<Route>().Query()
                     on tRoute.RouteId equals route.Id

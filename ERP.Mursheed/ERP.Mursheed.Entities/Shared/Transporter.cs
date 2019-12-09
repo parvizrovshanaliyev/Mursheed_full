@@ -6,12 +6,12 @@ using System.Text;
 
 namespace ERP.Mursheed.Entities.Shared
 {
-    [Table("Transporter")]
-    public class Transporter
+    [Table("Driver")]
+    public class Driver
     {
-        public Transporter()
+        public Driver()
         {
-            TransporterRatings = new HashSet<TransporterRating>();
+            //TransporterRatings = new HashSet<TransporterRating>();
             Rides = new HashSet<Ride>();
             TransporterRoutes = new HashSet<TransporterRoute>();
         }
@@ -19,10 +19,16 @@ namespace ERP.Mursheed.Entities.Shared
 
         public string CustomId { get; set; }
 
+        [DataType(DataType.PostalCode)]
         public int GovernmentalId { get; set; }
 
         [Required]
+        public string DriverLicenseId { get; set; }
+
+
+        [Required]
         public int CountryId { get; set; }
+        
 
         [Required]
         public int CarId { get; set; }
@@ -35,18 +41,16 @@ namespace ERP.Mursheed.Entities.Shared
         [StringLength(50), MinLength(3)]
         public string Lastname { get; set; }
 
-        [Required]
-        [StringLength(50), MinLength(3)]
-        public string FatherName { get; set; }
+        [EmailAddress]
+        public string Email { get; set; }
 
         public string Fullname
         {
-            get { return $"{Firstname} {Lastname} {FatherName}"; }
+            get { return $"{Firstname} {Lastname}"; }
         }
 
-        public string DriverLicense { get; set; }
+        public string PersonalPhoto { get; set; }
 
-        public string Photo { get; set; }
         public bool Status { get; set; }
 
         [ForeignKey("CountryId")]
@@ -56,11 +60,12 @@ namespace ERP.Mursheed.Entities.Shared
         public Car Car { get; set; }
 
 
-        public virtual ICollection<TransporterRating> TransporterRatings { get; set; } 
+        //public virtual ICollection<TransporterRating> TransporterRatings { get; set; } 
         public virtual ICollection<Ride> Rides { get; set; }
         public virtual ICollection<TransporterRoute> TransporterRoutes { get; set; }
 
     }
+
 
     [Table("Tourist")]
     public class Tourist
@@ -97,12 +102,100 @@ namespace ERP.Mursheed.Entities.Shared
         public bool Status { get; set; }
 
         [ForeignKey("CountryId")]
-        public virtual  Country Country { get; set; }
+        public virtual Country Country { get; set; }
 
         public virtual ICollection<TransporterRating> TransporterRatings { get; set; }
         public virtual ICollection<Ride> Rides { get; set; }
 
     }
+
+    [Table("Guide")]
+    public class Guide
+    {
+        [Key] public int Id { get; set; }
+
+        [DataType(DataType.PostalCode)]
+        public int GovernmentalId { get; set; }
+
+        [Required]
+        public int CountryId { get; set; }
+
+        [Required]
+        public int LanguageId { get; set; }
+
+        [Required]
+        public int CarId { get; set; }
+
+        [Required]
+        [StringLength(50), MinLength(3)]
+        public string Firstname { get; set; }
+
+        [Required]
+        [StringLength(50), MinLength(3)]
+        public string Lastname { get; set; }
+
+        [EmailAddress]
+        public string Email { get; set; }
+
+        public string Fullname
+        {
+            get { return $"{Firstname} {Lastname}"; }
+        }
+
+    }
+    [Table("DriverLanguage")]
+    public class DriverLanguage
+    {
+        [Key] public int Id { get; set; }
+
+        [Required]
+        public int DriverId { get; set; }
+
+        [Required]
+        public int LanguageId { get; set; }
+
+        [ForeignKey("DriverId")]
+        public Driver Driver { get; set; }
+
+        [ForeignKey("LanguageId")]
+        public Language Language { get; set; }
+    }
+
+
+    [Table("GuideLanguage")]
+    public class GuideLanguage
+    {
+        [Key] public int Id { get; set; }
+
+        [Required]
+        public int GuideId { get; set; }
+
+        [Required]
+        public int LanguageId { get; set; }
+
+        [ForeignKey("GuideId")]
+        public virtual Guide Guide { get; set; }
+
+        [ForeignKey("LanguageId")]
+        public virtual Language Language { get; set; }
+    }
+
+
+    [Table("Language")]
+    public class Language
+    {
+        public Language()
+        {
+            DriverLanguages = new HashSet<DriverLanguage>();
+        }
+        [Key] public int Id { get; set; }
+
+        [Required] public string Name { get; set; }
+
+        public virtual ICollection<DriverLanguage> DriverLanguages { get; set; }
+
+    }
+   
 
     [Table("TransporterRating")]
     public class TransporterRating
@@ -119,7 +212,7 @@ namespace ERP.Mursheed.Entities.Shared
         public Tourist Tourist { get; set; }
 
         [ForeignKey("TransporterId")]
-        public Transporter Transporter { get; set; }
+        public Driver Transporter { get; set; }
 
     }
 
@@ -128,7 +221,7 @@ namespace ERP.Mursheed.Entities.Shared
     {
         public Car()
         {
-            Transporters = new HashSet<Transporter>();
+            Transporters = new HashSet<Driver>();
         }
         [Key] public int Id { get; set; }
 
@@ -138,7 +231,7 @@ namespace ERP.Mursheed.Entities.Shared
         [ForeignKey("ModelId")]
         public Model Model { get; set; }
 
-        public virtual ICollection<Transporter> Transporters { get; set; }
+        public virtual ICollection<Driver> Transporters { get; set; }
     }
 
     [Table("Model")]
@@ -183,7 +276,7 @@ namespace ERP.Mursheed.Entities.Shared
         public Country()
         {
             Cities = new HashSet<City>();
-            Transporters = new HashSet<Transporter>();
+            Transporters = new HashSet<Driver>();
             Tourists = new HashSet<Tourist>();
         }
         public int Id { get; set; }
@@ -195,7 +288,7 @@ namespace ERP.Mursheed.Entities.Shared
         public string Phonecode { get; set; }
 
         public virtual ICollection<City> Cities { get; set; }
-        public virtual ICollection<Transporter> Transporters { get; set; }
+        public virtual ICollection<Driver> Transporters { get; set; }
         public virtual ICollection<Tourist> Tourists { get; set; }
 
     }
@@ -299,7 +392,7 @@ namespace ERP.Mursheed.Entities.Shared
         public Tourist Tourist { get; set; }
 
         [ForeignKey("TransporterId")]
-        public Transporter Transporter { get; set; }
+        public Driver Transporter { get; set; }
 
         public virtual ICollection<RideToRoute> RideToRoutes { get; set; }
         public virtual ICollection<Ticket> Tickets { get; set; }
@@ -341,7 +434,7 @@ namespace ERP.Mursheed.Entities.Shared
 
 
         [ForeignKey("TransporterId")]
-        public Transporter Transporter { get; set; }
+        public Driver Transporter { get; set; }
 
         [ForeignKey("RouteId")]
         public Route Route { get; set; }

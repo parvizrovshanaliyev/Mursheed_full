@@ -9,7 +9,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Helper
         public MappingEntity()
         {
             //todo
-            CreateMap<Transporter, DriverPriceViewModel>();
+            CreateMap<Driver, DriverPriceViewModel>();
             CreateMap<DateFromTo, DateFromToViewModel>().ReverseMap();
         }
     }

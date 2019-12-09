@@ -40,7 +40,7 @@ namespace ERP.Mursheed.ORM
         public DbSet<ApplicationUser> UserApps { get; set; }
         public DbSet<ApplicationRole> ApplicationRoles { get; set; }
         public DbSet<ApplicationUserRole> ApplicationUserRoles { get; set; }
-        public DbSet<Transporter> Transporters { get; set; }
+        public DbSet<Driver> Transporters { get; set; }
         public DbSet<Tourist> Tourists { get; set; }
         public DbSet<TransporterRating> TransporterRatings { get; set; }
         public DbSet<Route> Routes { get; set; }
@@ -106,42 +106,42 @@ namespace ERP.Mursheed.ORM
                 new City() { Id = 8, CountryId = 1, Name = "Mingecevir" },
                 new City() { Id = 9, CountryId = 1, Name = "Lenkeran" }
             );
-            modelBuilder.Entity<Transporter>().HasData(
+            //modelBuilder.Entity<Driver>().HasData(
 
-                new Transporter()
-                {
-                    Id = 1,
-                    Firstname = "Parviz",
-                    Lastname = "Ali",
-                    FatherName = "Rovshan",
-                    CarId=1,
-                    GovernmentalId=123456789,
-                    // secdiyi olkeye esasen seherlerden routelar yaradacaq
-                    CountryId=1
-                },
-                new Transporter()
-                {
-                    Id = 2,
-                    Firstname = "Aga",
-                    Lastname = "Dayi",
-                    FatherName = "Agalar",
-                    CarId = 2,
-                    GovernmentalId = 678912345,
-                    // secdiyi olkeye esasen seherlerden routelar yaradacaq
-                    CountryId = 1
-                }
+            //    new Driver()
+            //    {
+            //        Id = 1,
+            //        Firstname = "Parviz",
+            //        Lastname = "Ali",
+            //        FatherName = "Rovshan",
+            //        CarId=1,
+            //        GovernmentalId=123456789,
+            //        // secdiyi olkeye esasen seherlerden routelar yaradacaq
+            //        CountryId=1
+            //    },
+            //    new Driver()
+            //    {
+            //        Id = 2,
+            //        Firstname = "Aga",
+            //        Lastname = "Dayi",
+            //        FatherName = "Agalar",
+            //        CarId = 2,
+            //        GovernmentalId = 678912345,
+            //        // secdiyi olkeye esasen seherlerden routelar yaradacaq
+            //        CountryId = 1
+            //    }
 
-            );
-            modelBuilder.Entity<Tourist>().HasData(
+            //);
+            //modelBuilder.Entity<Tourist>().HasData(
 
-                new Tourist()
-                {
-                    Id = 1,
-                    Firstname = "Heci",
-                    Lastname = "Hecili",
-                    FatherName = "Heci Oglu",
-                }
-            );
+            //    new Tourist()
+            //    {
+            //        Id = 1,
+            //        Firstname = "Heci",
+            //        Lastname = "Hecili",
+            //        FatherName = "Heci Oglu",
+            //    }
+            //);
             // demeli surucu mensub oldugu olkeye uygun seherlerden Qiymeti ile birlikde route daxil edir 
             // eyni tranzaksiya ile daxil edilen routeId ve DriverId TransporterRoute cedveline qeyd edilir
             // Musteri yeni Tourist Secdiyi Surucunun qiymetler sehifesinde  hemin surucunun yaratdigi routelara gore
