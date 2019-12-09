@@ -32,6 +32,15 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Facades
 
         public  TicketViewModel AddAsync(TicketViewModel model)
         {
+            // start date endDate
+            // var dateFromTo = _mapper.Map<DateFromTo>(model.DateFromTo);
+            var dateFromTo = new DateFromTo
+            {
+                StartDate = model.DateFromTo.StartDate,
+                EndDate = model.DateFromTo.EndDate
+            };
+            _unitOfWork.Repository<DateFromTo>().AddUnCommitted(dateFromTo);
+
             var ride = new Ride
             {
                 TouristId = 1,
@@ -39,22 +48,14 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Facades
             };
             // create ride
             _unitOfWork.Repository<Ride>().AddUnCommitted(ride);
-            // start date endDate
-            // var dateFromTo = _mapper.Map<DateFromTo>(model.DateFromTo);
-            var dateFromTo = new DateFromTo
-            {
-                StartDate=model.DateFromTo.StartDate,
-                EndDate=model.DateFromTo.EndDate
-            };
-
-
-            _unitOfWork.Repository<DateFromTo>().AddUnCommitted(dateFromTo);
             
             // find all routes
             if (model.RouteIds.Count == 0) return null;
+
             var routes = _unitOfWork.Repository<Route>().FindAll(x => model.RouteIds.Contains(x.Id));
 
             if (routes.Count == 0) return null;
+
             float totalPrice = 0;
             var rideToRoutes = new List<RideToRoute>();
             foreach (var route in routes)
@@ -68,7 +69,6 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Facades
                 totalPrice += route.Price;
                 rideToRoutes.Add(rideToRoute);
             }
-
             _unitOfWork.Repository<RideToRoute>().AddRangeUnCommitted(rideToRoutes);
 
             // final 
