@@ -9,6 +9,7 @@ namespace ERP.Mursheed.Entities.Shared
         public Guide()
         {
             GuideLanguages = new HashSet<GuideLanguage>();
+            GuideRatings = new HashSet<GuideRating>();
         }
         public int Id { get; set; }
         public int GovernmentalId { get; set; }
@@ -23,9 +24,19 @@ namespace ERP.Mursheed.Entities.Shared
 
         public Country Country { get; set; }
         public virtual ICollection<GuideLanguage> GuideLanguages { get; set; }
+        public virtual ICollection<GuideRating> GuideRatings { get; set; }
+    }
+
+    public class GuideRating
+    {
+        public int Id { get; set; }
+        public int TouristId { get; set; }
+        public int GuideId { get; set; }
+
+        public Tourist Tourist { get; set; }
+        public Guide Guide { get; set; }
     }
 
 
-    
-   
+
 }
