@@ -49,7 +49,11 @@ namespace ERP.Mursheed.Entities.Shared
     }
 
 
+    public class DriverRide
+    {
+        public int Id { get; set; }
 
+    }
 
 
 
@@ -76,7 +80,7 @@ namespace ERP.Mursheed.Entities.Shared
 
 
 
-    
+
 
 
     //[Table("Ride")]
@@ -128,7 +132,7 @@ namespace ERP.Mursheed.Entities.Shared
     //    public DateFromTo DateFromTo { get; set; }
     //}
 
-    
+
 
     //[Table("Ticket")]
     //public class Ticket
