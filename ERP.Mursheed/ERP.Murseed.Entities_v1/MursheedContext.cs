@@ -273,10 +273,10 @@ namespace ERP.Mursheed.ORM
                     .IsRequired()
                     .HasMaxLength(50);
                 entity.Property(e => e.PhotoName)
-                    .IsRequired()
+                    //.IsRequired()
                     .HasMaxLength(100);
                 entity.Property(e => e.PhotoPath)
-                    .IsRequired()
+                    //.IsRequired()
                     .HasMaxLength(250);
                 entity.Property(e => e.DriverLicenseId)
                     .IsRequired()
@@ -319,10 +319,10 @@ namespace ERP.Mursheed.ORM
                     .IsRequired()
                     .HasMaxLength(50);
                 entity.Property(e => e.PhotoName)
-                    .IsRequired()
+                    //.IsRequired()
                     .HasMaxLength(100);
                 entity.Property(e => e.PhotoPath)
-                    .IsRequired()
+                    //.IsRequired()
                     .HasMaxLength(250);
                 entity.Property(e => e.GovernmentalId)
                     .IsRequired()
@@ -389,6 +389,7 @@ namespace ERP.Mursheed.ORM
                     .OnDelete(DeleteBehavior.Restrict);
 
             });
+
             modelBuilder.Entity<GuideLanguage>(entity =>
             {
                 entity.ToTable("GUIDE_LANGUAGE");
@@ -408,6 +409,63 @@ namespace ERP.Mursheed.ORM
                     .HasForeignKey(e => e.GuideId)
                     .OnDelete(DeleteBehavior.Restrict);
                 
+            });
+            modelBuilder.Entity<Car>(entity =>
+            {
+                entity.ToTable("CAR");
+
+                entity.HasIndex(e => e.ModelId);
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.HasOne(e => e.Model)
+                    .WithMany(e => e.Cars)
+                    .HasForeignKey(e => e.ModelId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+            modelBuilder.Entity<CarPhoto>(entity =>
+            {
+                entity.ToTable("CAR_PHOTO");
+
+                entity.HasIndex(e => e.CarId);
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.PhotoName)
+                    //.IsRequired()
+                    .HasMaxLength(100);
+                entity.Property(e => e.PhotoPath)
+                    //.IsRequired()
+                    .HasMaxLength(250);
+
+                entity.HasOne(e => e.Car)
+                    .WithMany(e => e.CarPhotos)
+                    .HasForeignKey(e => e.CarId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+            modelBuilder.Entity<Brand>(entity =>
+            {
+                entity.ToTable("BRAND");
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<Model>(entity =>
+            {
+                entity.ToTable("MODEL");
+
+                entity.HasIndex(e => e.BrandId);
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.HasOne(e => e.Brand)
+                    .WithMany(e => e.Models)
+                    .HasForeignKey(e => e.BrandId)
+                    .OnDelete(DeleteBehavior.Restrict);
             });
 
 
