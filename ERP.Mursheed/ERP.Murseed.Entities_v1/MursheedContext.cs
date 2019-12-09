@@ -40,8 +40,36 @@ namespace ERP.Mursheed.ORM
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<ApplicationRole> ApplicationRoles { get; set; }
         public DbSet<ApplicationUserRole> ApplicationUserRoles { get; set; }
-        
-
+        /// <summary>
+        /// Project entities v2 
+        /// </summary>
+        /// <param name="modelBuilder"></param>
+        /// Tourist
+        public DbSet<Tourist> Tourists { get; set; }
+        /// <summary>
+        /// Guide
+        /// </summary>
+        public DbSet<Guide> Guides { get; set; }
+        public DbSet<GuideRide> GuideRides { get; set; }
+        public DbSet<GuideRoute> GuideRoutes { get; set; }
+        public DbSet<GuideRideToRoute> GuideRideTos { get; set; }
+        public DbSet<GuideTicket> GuideTickets { get; set; }
+        public DbSet<GuideLanguage> GuideLanguages { get; set; }
+        public DbSet<GuideRating> GuideRatings { get; set; }
+        /// <summary>
+        /// Driver
+        /// </summary>
+        public DbSet<Driver> Drivers { get; set; }
+        public DbSet<DriverRide> DriverRides { get; set; }
+        public DbSet<DriverRoute> DriverRoutes { get; set; }
+        public DbSet<DriverRideToRoute> DriverRideToRoutes { get; set; }
+        public DbSet<DriverTicket> DriverTickets { get; set; }
+        public DbSet<DriverLanguage> DriverLanguages { get; set; }
+        public DbSet<DriverRating> DriverRatings { get; set; }
+        /// <summary>
+        /// todo travel agency
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         #endregion
 
         #region OnModelCreate Seeding
@@ -206,42 +234,7 @@ namespace ERP.Mursheed.ORM
 
             #endregion
 
-            //modelBuilder.Entity<Route>().
-            //    HasOne(x => x.FromCity).
-            //    WithMany(x => x.FromRoutes).
-            //    OnDelete(DeleteBehavior.Restrict);
-
-            //modelBuilder.Entity<Route>().
-            //    HasOne(x => x.ToCity).
-            //    WithMany(x => x.ToRoutes).
-            //    OnDelete(DeleteBehavior.Restrict);
-
-            //modelBuilder.Entity<RideToRoute>(entity =>
-            //{
-            //    entity.HasIndex(e => e.RideId);
-
-            //    entity.HasIndex(e => e.RouteId);
-
-            //    entity.HasIndex(e => e.DateFromToId);
-
-            //    entity.HasOne(x => x.DateFromTo)
-            //        .WithMany(e => e.RideToRoutes)
-            //        .HasForeignKey(e => e.DateFromToId)
-            //        .OnDelete(DeleteBehavior.ClientSetNull)
-            //        .HasConstraintName("FK_RideToRoute_DateFromTo");
-
-            //    entity.HasOne(x => x.Ride)
-            //        .WithMany(e => e.RideToRoutes)
-            //        .HasForeignKey(e => e.RideId)
-            //        .OnDelete(DeleteBehavior.ClientSetNull)
-            //        .HasConstraintName("FK_RideToRoute_Ride");
-
-            //    entity.HasOne(x => x.Route)
-            //        .WithMany(e => e.RideToRoutes)
-            //        .HasForeignKey(e => e.RouteId)
-            //        .OnDelete(DeleteBehavior.ClientSetNull)
-            //        .HasConstraintName("FK_RideToRoute_Route");
-            //});
+            
 
 
             #endregion  // fulent api
@@ -253,3 +246,39 @@ namespace ERP.Mursheed.ORM
 
     }
 }
+//modelBuilder.Entity<Route>().
+//    HasOne(x => x.FromCity).
+//    WithMany(x => x.FromRoutes).
+//    OnDelete(DeleteBehavior.Restrict);
+
+//modelBuilder.Entity<Route>().
+//    HasOne(x => x.ToCity).
+//    WithMany(x => x.ToRoutes).
+//    OnDelete(DeleteBehavior.Restrict);
+
+//modelBuilder.Entity<RideToRoute>(entity =>
+//{
+//    entity.HasIndex(e => e.RideId);
+
+//    entity.HasIndex(e => e.RouteId);
+
+//    entity.HasIndex(e => e.DateFromToId);
+
+//    entity.HasOne(x => x.DateFromTo)
+//        .WithMany(e => e.RideToRoutes)
+//        .HasForeignKey(e => e.DateFromToId)
+//        .OnDelete(DeleteBehavior.ClientSetNull)
+//        .HasConstraintName("FK_RideToRoute_DateFromTo");
+
+//    entity.HasOne(x => x.Ride)
+//        .WithMany(e => e.RideToRoutes)
+//        .HasForeignKey(e => e.RideId)
+//        .OnDelete(DeleteBehavior.ClientSetNull)
+//        .HasConstraintName("FK_RideToRoute_Ride");
+
+//    entity.HasOne(x => x.Route)
+//        .WithMany(e => e.RideToRoutes)
+//        .HasForeignKey(e => e.RouteId)
+//        .OnDelete(DeleteBehavior.ClientSetNull)
+//        .HasConstraintName("FK_RideToRoute_Route");
+//});
