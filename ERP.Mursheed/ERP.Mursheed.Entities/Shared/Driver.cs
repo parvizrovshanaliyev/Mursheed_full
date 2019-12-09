@@ -13,6 +13,7 @@ namespace ERP.Mursheed.Entities.Shared
             DriverLanguages = new HashSet<DriverLanguage>();
             DriverRatings = new HashSet<DriverRating>();
             DriverRoutes = new HashSet<DriverRoute>();
+            DriverRides = new HashSet<DriverRide>();
         }
         public int Id { get; set; }
         public string CustomId { get; set; }
@@ -34,6 +35,7 @@ namespace ERP.Mursheed.Entities.Shared
         public virtual ICollection<DriverLanguage>  DriverLanguages { get; set; }
         public virtual ICollection<DriverRating>  DriverRatings { get; set; }
         public virtual ICollection<DriverRoute>  DriverRoutes { get; set; }
+        public virtual ICollection<DriverRide>  DriverRides { get; set; }
 
     }
 
@@ -52,7 +54,11 @@ namespace ERP.Mursheed.Entities.Shared
     public class DriverRide
     {
         public int Id { get; set; }
+        public int DriverId { get; set; }
+        public int TouristId { get; set; }
 
+        public virtual Driver  Driver { get; set; }
+        public virtual Tourist  Tourist { get; set; }
     }
 
 

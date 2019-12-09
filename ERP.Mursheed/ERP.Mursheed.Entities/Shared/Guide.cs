@@ -10,7 +10,8 @@ namespace ERP.Mursheed.Entities.Shared
         {
             GuideLanguages = new HashSet<GuideLanguage>();
             GuideRatings = new HashSet<GuideRating>();
-            DriverRoutes = new HashSet<DriverRoute>();
+            GuideRoutes = new HashSet<GuideRoute>();
+            GuideRides = new HashSet<GuideRide>();
         }
         public int Id { get; set; }
         public int GovernmentalId { get; set; }
@@ -27,7 +28,8 @@ namespace ERP.Mursheed.Entities.Shared
         public Country Country { get; set; }
         public virtual ICollection<GuideLanguage> GuideLanguages { get; set; }
         public virtual ICollection<GuideRating> GuideRatings { get; set; }
-        public virtual ICollection<DriverRoute> DriverRoutes { get; set; }
+        public virtual ICollection<GuideRoute> GuideRoutes { get; set; }
+        public virtual ICollection<GuideRide> GuideRides { get; set; }
     }
 
     public class GuideRating
@@ -40,6 +42,14 @@ namespace ERP.Mursheed.Entities.Shared
         public Guide Guide { get; set; }
     }
 
+    public class GuideRide
+    {
+        public int Id { get; set; }
+        public int GuideId { get; set; }
+        public int TouristId { get; set; }
 
+        public virtual Guide Guide { get; set; }
+        public virtual Tourist Tourist { get; set; }
+    }
 
 }
