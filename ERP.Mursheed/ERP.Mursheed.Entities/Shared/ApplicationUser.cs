@@ -8,7 +8,9 @@ namespace ERP.Mursheed.Entities.Shared
     {
         public ApplicationUser()
         {
-
+            Drivers = new HashSet<Driver>();
+            Guides = new HashSet<Guide>();
+            Tourists = new HashSet<Tourist>();
         }
         public int PersonId { get; set; }
         public bool Status { get; set; }
@@ -20,6 +22,12 @@ namespace ERP.Mursheed.Entities.Shared
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
         public virtual ICollection<IdentityUserToken<string>> Tokens { get; set; }
         public virtual ICollection<ApplicationUserRole> ApplicationUserRoles { get; set; }
+        /// <summary>
+        /// TOURIST, GUIDE, DRIVER
+        /// </summary>
+        public virtual ICollection<Tourist> Tourists { get; set; }
+        public virtual ICollection<Driver> Drivers { get; set; }
+        public virtual ICollection<Guide> Guides { get; set; }
     }
 
     public class ApplicationRole : IdentityRole
