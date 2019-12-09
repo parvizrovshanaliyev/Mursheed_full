@@ -21,8 +21,9 @@ namespace ERP.Mursheed.Entities.Shared
         public int CarId { get; set; }
         public string Firstname { get; set; }
         public string Lastname { get; set; }
-        public string Email { get; set; }
         public string Fullname => $"{Firstname} {Lastname}";
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
         public string PhotoName { get; set; }
         public string PhotoPath { get; set; }
         public bool Status { get; set; }
@@ -73,37 +74,7 @@ namespace ERP.Mursheed.Entities.Shared
 
 
 
-    //[Table("Route")]
-    //public class Route
-    //{
-    //    public Route()
-    //    {
-    //        RideToRoutes = new HashSet<RideToRoute>();
-    //        TransporterRoutes = new HashSet<TransporterRoute>();
-    //    }
-    //    [Key] public int Id { get; set; }
-
-    //    [Required]
-    //    public int FromCityId { get; set; }
-
-    //    [Required]
-    //    public int ToCityId { get; set; }
-
-    //    [Required]
-    //    public float Price { get; set; }
-
-    //    public string Info { get; set; }
-
-    //    [ForeignKey("FromCityId")]
-    //    public City FromCity { get; set; }
-
-    //    [ForeignKey("ToCityId")]
-    //    public City ToCity { get; set; }
-
-    //    public virtual ICollection<RideToRoute> RideToRoutes { get; set; }
-    //    public virtual ICollection<TransporterRoute> TransporterRoutes { get; set; }
-
-    //}
+    
 
 
     //[Table("Ride")]

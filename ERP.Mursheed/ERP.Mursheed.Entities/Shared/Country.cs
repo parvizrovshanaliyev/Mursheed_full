@@ -38,5 +38,7 @@ namespace ERP.Mursheed.Entities.Shared
         public string NiceName { get; set; }
 
         public Country Country { get; set; }
+        public virtual ICollection<Route> FromRoutes { get; set; }
+        public virtual ICollection<Route> ToRoutes { get; set; }
     }
 }
