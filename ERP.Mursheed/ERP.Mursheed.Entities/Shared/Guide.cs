@@ -14,6 +14,7 @@ namespace ERP.Mursheed.Entities.Shared
             GuideRides = new HashSet<GuideRide>();
         }
         public int Id { get; set; }
+        public string ApplicationUserId { get; set; }
         public int GovernmentalId { get; set; }
         public int CountryId { get; set; }
         public string Firstname { get; set; }
@@ -25,6 +26,7 @@ namespace ERP.Mursheed.Entities.Shared
         public string PhotoPath { get; set; }
         public bool Status { get; set; }
 
+        public virtual ApplicationUser ApplicationUser { get; set; }
         public Country Country { get; set; }
         public virtual ICollection<GuideLanguage> GuideLanguages { get; set; }
         public virtual ICollection<GuideRating> GuideRatings { get; set; }
@@ -77,5 +79,6 @@ namespace ERP.Mursheed.Entities.Shared
         public int GuideRideId { get; set; }
         public float TotalPrice { get; set; }
         public virtual GuideRide GuideRide { get; set; }
+       
     }
 }

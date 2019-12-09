@@ -16,6 +16,7 @@ namespace ERP.Mursheed.Entities.Shared
             DriverRides = new HashSet<DriverRide>();
         }
         public int Id { get; set; }
+        public string ApplicationUserId { get; set; }
         public string CustomId { get; set; }
         public int GovernmentalId { get; set; }
         public string DriverLicenseId { get; set; }
@@ -30,6 +31,7 @@ namespace ERP.Mursheed.Entities.Shared
         public string PhotoPath { get; set; }
         public bool Status { get; set; }
 
+        public virtual ApplicationUser ApplicationUser { get; set; }
         public Country Country { get; set; }
         public Car Car { get; set; }
         public virtual ICollection<DriverLanguage>  DriverLanguages { get; set; }
