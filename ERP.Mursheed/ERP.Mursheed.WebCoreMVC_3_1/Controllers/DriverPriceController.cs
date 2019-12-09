@@ -52,7 +52,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
                 StartDate = model.DateFromTo.StartDate,
                 EndDate = model.DateFromTo.EndDate
             };
-            var dateFromToResult = _unitOfWork.Repository<DateFromTo>().AddUnCommitted(dateFromTo);
+            var dateFromToResult =await  _unitOfWork.Repository<DateFromTo>().AddAsync(dateFromTo);
 
             if (!dateFromToResult.IsSuccess) return new JsonResult(BadRequest());
             var ride = new Ride
@@ -61,7 +61,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
                 TransporterId = model.DriverId
             };
             // create ride
-            var insertedRideResult=_unitOfWork.Repository<Ride>().AddUnCommitted(ride);
+            var insertedRideResult= await _unitOfWork.Repository<Ride>().AddAsync(ride);
 
             if (!insertedRideResult.IsSuccess) return new JsonResult(BadRequest());
             // find all routes
@@ -84,7 +84,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
                 totalPrice += route.Price;
                 rideToRoutes.Add(rideToRoute);
             }
-            var insertedRideToRoutesResult = _unitOfWork.Repository<RideToRoute>().AddRangeUnCommitted(rideToRoutes);
+            var insertedRideToRoutesResult = await _unitOfWork.Repository<RideToRoute>().AddRangeAsync(rideToRoutes);
             if (!insertedRideToRoutesResult.IsSuccess) return new JsonResult(BadRequest());
             // final 
             var ticket = new Ticket
@@ -93,9 +93,20 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
                 TotalPrice = totalPrice
             };
 
-            var insertedTicketResult=_unitOfWork.Repository<Ticket>().AddUnCommitted(ticket);
+            var insertedTicketResult=await _unitOfWork.Repository<Ticket>().AddAsync(ticket);
 
-            return insertedRideResult.IsSuccess ? new JsonResult(Ok()) : new JsonResult(BadRequest());
+            if (insertedRideResult.IsSuccess)
+            {
+                return  Json(new{rideId=ride.Id, totalPrice=totalPrice});
+            }
+
+            //var allCommitResult =_unitOfWork.Commit();
+            //if (allCommitResult.IsCompletedSuccessfully)
+            //{
+                
+            //}
+
+            return new JsonResult(BadRequest());
         }
     }
 }
