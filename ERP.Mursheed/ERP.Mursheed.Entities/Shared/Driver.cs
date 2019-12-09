@@ -10,18 +10,14 @@ namespace ERP.Mursheed.Entities.Shared
     {
         public Driver()
         {
-            //TransporterRatings = new HashSet<TransporterRating>();
-            //Rides = new HashSet<Ride>();
-            //TransporterRoutes = new HashSet<TransporterRoute>();
+            
         }
         public int Id { get; set; }
 
         public string CustomId { get; set; }
 
-        //[DataType(DataType.PostalCode)]
         public int GovernmentalId { get; set; }
 
-        //[Required]
         public string DriverLicenseId { get; set; }
 
         public int CountryId { get; set; }
@@ -43,54 +39,14 @@ namespace ERP.Mursheed.Entities.Shared
 
         public bool Status { get; set; }
 
-        //public Country Country { get; set; }
+        public Country Country { get; set; }
 
-        //public Car Car { get; set; }
+        public Car Car { get; set; }
 
     }
 
 
-    //[Table("Tourist")]
-    //public class Tourist
-    //{
-    //    public Tourist()
-    //    {
-    //        TransporterRatings = new HashSet<TransporterRating>();
-    //        Rides = new HashSet<Ride>();
-    //    }
-
-    //    [Key] public int Id { get; set; }
-
-    //    [Required]
-    //    public int CountryId { get; set; }
-
-    //    [Required]
-    //    [StringLength(50), MinLength(3)]
-    //    public string Firstname { get; set; }
-
-    //    [Required]
-    //    [StringLength(50), MinLength(3)]
-    //    public string Lastname { get; set; }
-
-
-    //    [EmailAddress]
-    //    public string Email { get; set; }
-
-    //    public string AdditonalInfo { get; set; }
-
-    //    public string Fullname
-    //    {
-    //        get { return $"{Firstname} {Lastname}"; }
-    //    }
-    //    public bool Status { get; set; }
-
-    //    [ForeignKey("CountryId")]
-    //    public virtual Country Country { get; set; }
-
-    //    public virtual ICollection<TransporterRating> TransporterRatings { get; set; }
-    //    public virtual ICollection<Ride> Rides { get; set; }
-
-    //}
+    
 
    
     //[Table("DriverLanguage")]
@@ -115,20 +71,7 @@ namespace ERP.Mursheed.Entities.Shared
    
 
 
-    //[Table("Language")]
-    //public class Language
-    //{
-    //    public Language()
-    //    {
-    //        DriverLanguages = new HashSet<DriverLanguage>();
-    //    }
-    //    [Key] public int Id { get; set; }
-
-    //    [Required] public string Name { get; set; }
-
-    //    public virtual ICollection<DriverLanguage> DriverLanguages { get; set; }
-
-    //}
+    
    
 
     //[Table("TransporterRating")]
@@ -228,29 +171,7 @@ namespace ERP.Mursheed.Entities.Shared
     //}
 
 
-    //[Table("City")]
-    //public class City
-    //{
-    //    public City()
-    //    {
-    //        FromRoutes = new HashSet<Route>();
-    //        ToRoutes = new HashSet<Route>();
-    //    }
-    //    [Key] public int Id { get; set; }
-
-    //    [Required]
-    //    public int CountryId { get; set; }
-
-    //    [Required]
-    //    public string Name { get; set; }
-    //    //public string NiceName { get; set; }
-
-    //    [ForeignKey("CountryId")]
-    //    public Country Country { get; set; }
-
-    //    public virtual ICollection<Route> FromRoutes { get; set; }
-    //    public virtual ICollection<Route> ToRoutes { get; set; }
-    //}
+    
 
 
     //[Table("DateFromTo")]

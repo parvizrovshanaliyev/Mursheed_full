@@ -61,51 +61,51 @@ namespace ERP.Mursheed.ORM
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
            base.OnModelCreating(modelBuilder);
-            
-        //    #region Seed
-        //    modelBuilder.Entity<Person>().HasData(
 
-        //        new Person()
-        //        {
-        //            Id = 1,
-        //            Firstname = "Samir",
-        //            Lastname = "Karimov",
-        //            FatherName = "Karimov",
-        //            Email = "samir@code.edu.az"
-        //        }
-        //    );
+           #region Seed
+            //    modelBuilder.Entity<Person>().HasData(
 
-        //    modelBuilder.Entity<Brand>().HasData(
+            //        new Person()
+            //        {
+            //            Id = 1,
+            //            Firstname = "Samir",
+            //            Lastname = "Karimov",
+            //            FatherName = "Karimov",
+            //            Email = "samir@code.edu.az"
+            //        }
+            //    );
 
-        //        new Brand(){Id = 1,  Name= "Volkswagen"}
-        //    );
+            //    modelBuilder.Entity<Brand>().HasData(
 
-        //    modelBuilder.Entity<Model>().HasData(
+            //        new Brand(){Id = 1,  Name= "Volkswagen"}
+            //    );
 
-        //        new Model() {  Id = 1,  Name = "Touareg", BrandId=1},
-        //        new Model() {  Id = 2,  Name = "Passat", BrandId=1}
-        //    );
-        //    modelBuilder.Entity<Car>().HasData(
+            //    modelBuilder.Entity<Model>().HasData(
 
-        //        new Car(){  Id = 1,  ModelId = 1 },
-        //        new Car(){  Id = 2,  ModelId = 2 }
-        //    );
-        //    modelBuilder.Entity<Country>().HasData(
+            //        new Model() {  Id = 1,  Name = "Touareg", BrandId=1},
+            //        new Model() {  Id = 2,  Name = "Passat", BrandId=1}
+            //    );
+            //    modelBuilder.Entity<Car>().HasData(
 
-        //        new Country() { Id = 1, Name = "Azerbaijan" }
-        //    );
-        //    modelBuilder.Entity<City>().HasData(
+            //        new Car(){  Id = 1,  ModelId = 1 },
+            //        new Car(){  Id = 2,  ModelId = 2 }
+            //    );
+            //    modelBuilder.Entity<Country>().HasData(
 
-        //        new City() { Id = 1, CountryId = 1, Name = "Baki" },
-        //        new City() { Id = 2, CountryId = 1, Name = "Sumqayit" },
-        //        new City() { Id = 3, CountryId = 1, Name = "Gence" },
-        //        new City() { Id = 4, CountryId = 1, Name = "Quba" },
-        //        new City() { Id = 5, CountryId = 1, Name = "Qusar" },
-        //        new City() { Id = 6, CountryId = 1, Name = "Seki" },
-        //        new City() { Id = 7, CountryId = 1, Name = "Xacmaz" },
-        //        new City() { Id = 8, CountryId = 1, Name = "Mingecevir" },
-        //        new City() { Id = 9, CountryId = 1, Name = "Lenkeran" }
-        //    );
+            //        new Country() { Id = 1, Name = "Azerbaijan" }
+            //    );
+            //    modelBuilder.Entity<City>().HasData(
+
+            //        new City() { Id = 1, CountryId = 1, Name = "Baki" },
+            //        new City() { Id = 2, CountryId = 1, Name = "Sumqayit" },
+            //        new City() { Id = 3, CountryId = 1, Name = "Gence" },
+            //        new City() { Id = 4, CountryId = 1, Name = "Quba" },
+            //        new City() { Id = 5, CountryId = 1, Name = "Qusar" },
+            //        new City() { Id = 6, CountryId = 1, Name = "Seki" },
+            //        new City() { Id = 7, CountryId = 1, Name = "Xacmaz" },
+            //        new City() { Id = 8, CountryId = 1, Name = "Mingecevir" },
+            //        new City() { Id = 9, CountryId = 1, Name = "Lenkeran" }
+            //    );
             //modelBuilder.Entity<Driver>().HasData(
 
             //    new Driver()
@@ -180,44 +180,44 @@ namespace ERP.Mursheed.ORM
             #region Fulent API 
 
             #region Identity
-            //modelBuilder.Entity<ApplicationUser>(b =>
-            //{
-            //    // Each User can have many UserClaims
-            //    b.HasMany(e => e.Claims)
-            //        .WithOne()
-            //        .HasForeignKey(uc => uc.UserId)
-            //        .IsRequired();
+            modelBuilder.Entity<ApplicationUser>(b =>
+            {
+                // Each User can have many UserClaims
+                b.HasMany(e => e.Claims)
+                    .WithOne()
+                    .HasForeignKey(uc => uc.UserId)
+                    .IsRequired();
 
-            //    // Each User can have many UserLogins
-            //    b.HasMany(e => e.Logins)
-            //        .WithOne()
-            //        .HasForeignKey(ul => ul.UserId)
-            //        .IsRequired();
+                // Each User can have many UserLogins
+                b.HasMany(e => e.Logins)
+                    .WithOne()
+                    .HasForeignKey(ul => ul.UserId)
+                    .IsRequired();
 
-            //    // Each User can have many UserTokens
-            //    b.HasMany(e => e.Tokens)
-            //        .WithOne()
-            //        .HasForeignKey(ut => ut.UserId)
-            //        .IsRequired();
+                // Each User can have many UserTokens
+                b.HasMany(e => e.Tokens)
+                    .WithOne()
+                    .HasForeignKey(ut => ut.UserId)
+                    .IsRequired();
 
-            //    // Each User can have many entries in the UserRole join table
-            //    b.HasMany(e => e.ApplicationUserRoles)
-            //        .WithOne(e => e.ApplicationUser)
-            //        .HasForeignKey(ur => ur.UserId)
-            //        .IsRequired();
-            //});
+                // Each User can have many entries in the UserRole join table
+                b.HasMany(e => e.ApplicationUserRoles)
+                    .WithOne(e => e.ApplicationUser)
+                    .HasForeignKey(ur => ur.UserId)
+                    .IsRequired();
+            });
 
-            //modelBuilder.Entity<ApplicationRole>(b =>
-            //{
-            //    // Each Role can have many entries in the UserRole join table
-            //    b.HasMany(e => e.ApplicationUserRoles)
-            //        .WithOne(e => e.ApplicationRole)
-            //        .HasForeignKey(ur => ur.RoleId)
-            //        .IsRequired();
-            //});
+            modelBuilder.Entity<ApplicationRole>(b =>
+            {
+                // Each Role can have many entries in the UserRole join table
+                b.HasMany(e => e.ApplicationUserRoles)
+                    .WithOne(e => e.ApplicationRole)
+                    .HasForeignKey(ur => ur.RoleId)
+                    .IsRequired();
+            });
 
 
-            //#endregion
+            #endregion
 
             //modelBuilder.Entity<Route>().
             //    HasOne(x => x.FromCity).

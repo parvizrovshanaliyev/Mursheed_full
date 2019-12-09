@@ -6,20 +6,25 @@ namespace ERP.Mursheed.Entities.Shared
 {
     public class Guide
     {
+        public Guide()
+        {
+            GuideLanguages = new HashSet<GuideLanguage>();
+        }
+        public int Id { get; set; }
+        public int GovernmentalId { get; set; }
+        public int CountryId { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
+        public string Email { get; set; }
+        public string Fullname => $"{Firstname} {Lastname}";
+        public string PersonalPhoto { get; set; }
+        public bool Status { get; set; }
+
+        public Country Country { get; set; }
+        public virtual ICollection<GuideLanguage> GuideLanguages { get; set; }
     }
 
 
     
-    public class GuideLanguage
-    {
-        public int Id { get; set; }
-
-        public int GuideId { get; set; }
-
-        public int LanguageId { get; set; }
-
-        public virtual Guide Guide { get; set; }
-
-        //public virtual Language Language { get; set; }
-    }
+   
 }
