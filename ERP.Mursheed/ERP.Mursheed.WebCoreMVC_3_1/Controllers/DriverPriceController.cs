@@ -47,23 +47,55 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
         {
             if (!ModelState.IsValid) return new JsonResult(BadRequest());
 
+            var dateFromTo = new DateFromTo
+            {
+                StartDate = model.DateFromTo.StartDate,
+                EndDate = model.DateFromTo.EndDate
+            };
+            var dateFromToResult = _unitOfWork.Repository<DateFromTo>().AddUnCommitted(dateFromTo);
 
-            //try
-            //{
-            //    var t = _ticketFacade.AddAsync(model);
-            //    var commitResult = await _unitOfWork.Commit();
-            //    if (commitResult.IsSuccess)
-            //    {
-            //        return Json(new { t });
-            //    }
-            //}
-            //catch (Exception exception)
-            //{
-            //    return Json(new { exception });
-            //}
-            
+            if (!dateFromToResult.IsSuccess) return new JsonResult(BadRequest());
+            var ride = new Ride
+            {
+                TouristId = 1,
+                TransporterId = model.DriverId
+            };
+            // create ride
+            var insertedRideResult=_unitOfWork.Repository<Ride>().AddUnCommitted(ride);
 
-            return new JsonResult(BadRequest());
+            if (!insertedRideResult.IsSuccess) return new JsonResult(BadRequest());
+            // find all routes
+            if (model.RouteIds.Count == 0) return null;
+
+            var routes =await _unitOfWork.Repository<Route>().FindAllAsync(x => model.RouteIds.Contains(x.Id));
+
+            if (routes.Count == 0) return null;
+
+            float totalPrice = 0;
+            var rideToRoutes = new List<RideToRoute>();
+            foreach (var route in routes)
+            {
+                var rideToRoute = new RideToRoute
+                {
+                    RouteId = route.Id,
+                    RideId = ride.Id,
+                    DateFromToId = dateFromTo.Id
+                };
+                totalPrice += route.Price;
+                rideToRoutes.Add(rideToRoute);
+            }
+            var insertedRideToRoutesResult = _unitOfWork.Repository<RideToRoute>().AddRangeUnCommitted(rideToRoutes);
+            if (!insertedRideToRoutesResult.IsSuccess) return new JsonResult(BadRequest());
+            // final 
+            var ticket = new Ticket
+            {
+                RideId = ride.Id,
+                TotalPrice = totalPrice
+            };
+
+            var insertedTicketResult=_unitOfWork.Repository<Ticket>().AddUnCommitted(ticket);
+
+            return insertedRideResult.IsSuccess ? new JsonResult(Ok()) : new JsonResult(BadRequest());
         }
     }
 }
