@@ -300,19 +300,19 @@ namespace ERP.Mursheed.Entities.Shared
     {
         [Key] public int Id { get; set; }
 
-        [Required] 
+        // [Required] 
         public int RideId { get; set; }
 
-        [Required] 
+        //[Required] 
         public int RouteId { get; set; }
 
-        [Required] 
+        //[Required] 
         public int DateFromToId { get; set; }
 
-        [ForeignKey("RideId")] 
+        //[ForeignKey("RideId")] 
         public Ride Ride { get; set; }
 
-        [ForeignKey("RouteId")] 
+        //[ForeignKey("RouteId")] 
         public Route Route { get; set; }
 
         public DateFromTo DateFromTo { get; set; }

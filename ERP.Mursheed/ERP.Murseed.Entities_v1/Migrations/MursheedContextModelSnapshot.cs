@@ -989,20 +989,19 @@ namespace ERP.Mursheed.ORM.Migrations
                     b.HasOne("ERP.Mursheed.Entities.Shared.DateFromTo", "DateFromTo")
                         .WithMany("RideToRoutes")
                         .HasForeignKey("DateFromToId")
-                        .HasConstraintName("FK_RideToRoute_DateFromTo_DateFromToId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .HasConstraintName("FK_RideToRoute_DateFromTo")
                         .IsRequired();
 
                     b.HasOne("ERP.Mursheed.Entities.Shared.Ride", "Ride")
                         .WithMany("RideToRoutes")
                         .HasForeignKey("RideId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("FK_RideToRoute_Ride")
                         .IsRequired();
 
                     b.HasOne("ERP.Mursheed.Entities.Shared.Route", "Route")
                         .WithMany("RideToRoutes")
                         .HasForeignKey("RouteId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("FK_RideToRoute_Route")
                         .IsRequired();
                 });
 

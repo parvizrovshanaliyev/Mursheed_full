@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ERP.Mursheed.ORM.Migrations
 {
     [DbContext(typeof(MursheedContext))]
-    [Migration("20191208164837_initDB")]
+    [Migration("20191209063215_initDB")]
     partial class initDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -991,19 +991,19 @@ namespace ERP.Mursheed.ORM.Migrations
                     b.HasOne("ERP.Mursheed.Entities.Shared.DateFromTo", "DateFromTo")
                         .WithMany("RideToRoutes")
                         .HasForeignKey("DateFromToId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("FK_RideToRoute_DateFromTo")
                         .IsRequired();
 
                     b.HasOne("ERP.Mursheed.Entities.Shared.Ride", "Ride")
                         .WithMany("RideToRoutes")
                         .HasForeignKey("RideId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("FK_RideToRoute_Ride")
                         .IsRequired();
 
                     b.HasOne("ERP.Mursheed.Entities.Shared.Route", "Route")
                         .WithMany("RideToRoutes")
                         .HasForeignKey("RouteId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasConstraintName("FK_RideToRoute_Route")
                         .IsRequired();
                 });
 

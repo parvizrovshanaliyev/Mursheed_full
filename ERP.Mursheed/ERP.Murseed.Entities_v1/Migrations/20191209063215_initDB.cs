@@ -452,23 +452,23 @@ namespace ERP.Mursheed.ORM.Migrations
                 {
                     table.PrimaryKey("PK_RideToRoute", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_RideToRoute_DateFromTo_DateFromToId",
+                        name: "FK_RideToRoute_DateFromTo",
                         column: x => x.DateFromToId,
                         principalTable: "DateFromTo",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_RideToRoute_Ride_RideId",
+                        name: "FK_RideToRoute_Ride",
                         column: x => x.RideId,
                         principalTable: "Ride",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_RideToRoute_Route_RouteId",
+                        name: "FK_RideToRoute_Route",
                         column: x => x.RouteId,
                         principalTable: "Route",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
