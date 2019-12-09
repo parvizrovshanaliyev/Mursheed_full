@@ -229,12 +229,34 @@ namespace ERP.Mursheed.ORM
                 WithMany(x => x.ToRoutes).
                 OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<RideToRoute>()
-                .HasOne(x => x.DateFromTo)
-                .WithMany(e => e.RideToRoutes)
-                .HasForeignKey(e => e.DateFromToId)
-                .OnDelete(DeleteBehavior.Restrict)
-                .HasConstraintName("FK_RideToRoute_DateFromToId");
+            modelBuilder.Entity<RideToRoute>(entity =>
+            {
+                entity.HasIndex(e => e.RideId);
+
+                entity.HasIndex(e => e.RouteId);
+
+                entity.HasIndex(e => e.DateFromToId);
+
+                entity.HasOne(x => x.DateFromTo)
+                    .WithMany(e => e.RideToRoutes)
+                    .HasForeignKey(e => e.DateFromToId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_RideToRoute_DateFromTo");
+
+                entity.HasOne(x => x.Ride)
+                    .WithMany(e => e.RideToRoutes)
+                    .HasForeignKey(e => e.RideId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_RideToRoute_Ride");
+
+                entity.HasOne(x => x.Route)
+                    .WithMany(e => e.RideToRoutes)
+                    .HasForeignKey(e => e.RouteId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_RideToRoute_Route");
+            });
+
+
             #endregion  // fulent api
 
         }

@@ -315,14 +315,12 @@ namespace ERP.Mursheed.Entities.Shared
         [ForeignKey("RouteId")] 
         public Route Route { get; set; }
 
-        
         public DateFromTo DateFromTo { get; set; }
     }
 
     [Table("TransporterRoute")]
     public class TransporterRoute
     {
-       
         [Key] public int Id { get; set; }
 
         [Required]
