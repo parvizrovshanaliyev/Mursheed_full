@@ -17,7 +17,8 @@ namespace ERP.Mursheed.Entities.Shared
         public string Lastname { get; set; }
         public string Email { get; set; }
         public string Fullname => $"{Firstname} {Lastname}";
-        public string PersonalPhoto { get; set; }
+        public string PhotoName { get; set; }
+        public string PhotoPath { get; set; }
         public bool Status { get; set; }
 
         public Country Country { get; set; }

@@ -13,66 +13,34 @@ namespace ERP.Mursheed.Entities.Shared
             
         }
         public int Id { get; set; }
-
         public string CustomId { get; set; }
-
         public int GovernmentalId { get; set; }
-
         public string DriverLicenseId { get; set; }
-
         public int CountryId { get; set; }
-        
         public int CarId { get; set; }
-
         public string Firstname { get; set; }
-
         public string Lastname { get; set; }
-
         public string Email { get; set; }
-
-        public string Fullname
-        {
-            get { return $"{Firstname} {Lastname}"; }
-        }
-
-        public string PersonalPhoto { get; set; }
-
+        public string Fullname => $"{Firstname} {Lastname}";
+        public string PhotoName { get; set; }
+        public string PhotoPath { get; set; }
         public bool Status { get; set; }
 
         public Country Country { get; set; }
-
         public Car Car { get; set; }
 
     }
 
 
-    
-
-   
-    //[Table("DriverLanguage")]
-    //public class DriverLanguage
-    //{
-    //    [Key] public int Id { get; set; }
-
-    //    [Required]
-    //    public int DriverId { get; set; }
-
-    //    [Required]
-    //    public int LanguageId { get; set; }
-
-    //    [ForeignKey("DriverId")]
-    //    public Driver Driver { get; set; }
-
-    //    [ForeignKey("LanguageId")]
-    //    public Language Language { get; set; }
-    //}
 
 
-   
 
 
-    
-   
+
+
+
+
+
 
     //[Table("TransporterRating")]
     //public class TransporterRating
@@ -93,82 +61,9 @@ namespace ERP.Mursheed.Entities.Shared
 
     //}
 
-    //[Table("Car")]
-    //public class Car
-    //{
-    //    public Car()
-    //    {
-    //        Transporters = new HashSet<Driver>();
-    //    }
-    //    [Key] public int Id { get; set; }
+    
 
-    //    [Required]
-    //    public int ModelId { get; set; }
-
-    //    [ForeignKey("ModelId")]
-    //    public Model Model { get; set; }
-
-    //    public virtual ICollection<Driver> Transporters { get; set; }
-    //}
-
-    //[Table("Model")]
-    //public class Model
-    //{
-    //    public Model()
-    //    {
-    //        Cars = new HashSet<Car>();
-    //    }
-    //    [Key] public int Id { get; set; }
-
-    //    [Required]
-    //    public int BrandId { get; set; }
-
-    //    [Required]
-    //    public string Name { get; set; }
-
-    //    [ForeignKey("BrandId")]
-    //    public Brand Brand { get; set; }
-
-    //    public virtual ICollection<Car> Cars { get; set; }
-    //}
-
-    //[Table("Brand")]
-    //public class Brand
-    //{
-    //    public Brand()
-    //    {
-    //        Models = new HashSet<Model>();
-    //    }
-    //    [Key] public int Id { get; set; }
-
-    //    [Required]
-    //    public string Name { get; set; }
-
-    //    public virtual ICollection<Model> Models { get; set; }
-    //}
-
-    //[Table("Country")]
-    //public class Country
-    //{
-    //    public Country()
-    //    {
-    //        Cities = new HashSet<City>();
-    //        Transporters = new HashSet<Driver>();
-    //        Tourists = new HashSet<Tourist>();
-    //    }
-    //    public int Id { get; set; }
-    //    public string ISO { get; set; }
-    //    public string Name { get; set; }
-    //    public string NiceName { get; set; }
-    //    public string ISO3 { get; set; }
-    //    public string NumCode { get; set; }
-    //    public string Phonecode { get; set; }
-
-    //    public virtual ICollection<City> Cities { get; set; }
-    //    public virtual ICollection<Driver> Transporters { get; set; }
-    //    public virtual ICollection<Tourist> Tourists { get; set; }
-
-    //}
+    
 
 
     
@@ -310,22 +205,5 @@ namespace ERP.Mursheed.Entities.Shared
     //    public virtual Ride Ride { get; set; }
     //}
 
-
-
-    //[Table("RoutePlace")]
-    //public class RoutePlace
-    //{
-    //    public RoutePlace()
-    //    {
-    //        FromRoutes = new HashSet<Route>();
-    //        ToRoutes = new HashSet<Route>();
-    //    }
-    //    [Key] public int Id { get; set; }
-
-    //    public string Name { get; set; }
-
-    //    public virtual ICollection<Route> FromRoutes { get; set; }
-    //    public virtual ICollection<Route> ToRoutes { get; set; }
-    //}
 
 }
