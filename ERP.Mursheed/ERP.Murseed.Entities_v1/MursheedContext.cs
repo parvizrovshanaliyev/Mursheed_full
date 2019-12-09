@@ -37,32 +37,19 @@ namespace ERP.Mursheed.ORM
         #endregion
 
         #region DbSets
-        public DbSet<ApplicationUser> UserApps { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<ApplicationRole> ApplicationRoles { get; set; }
         public DbSet<ApplicationUserRole> ApplicationUserRoles { get; set; }
-        public DbSet<Driver> Transporters { get; set; }
-        //public DbSet<Tourist> Tourists { get; set; }
-        //public DbSet<TransporterRating> TransporterRatings { get; set; }
-        //public DbSet<Route> Routes { get; set; }
-        ////public DbSet<RoutePlace> RoutePlaces { get; set; }
-        //public DbSet<Ride> Rides { get; set; }
-        //public DbSet<RideToRoute> RideToRoutes { get; set; }
-        //public DbSet<Ticket> Tickets { get; set; }
-        //public DbSet<Country> Countries { get; set; }
-        //public DbSet<City> Cities { get; set; }
-        //public DbSet<Car> Cars { get; set; }
-        //public DbSet<Brand> Brands { get; set; }
-        //public DbSet<Model> Models { get; set; }
-        //public DbSet<DateFromTo> DateFromTos { get; set; }
+        
 
         #endregion
 
         #region OnModelCreate Seeding
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-           base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
 
-           #region Seed
+            #region Seed
             //    modelBuilder.Entity<Person>().HasData(
 
             //        new Person()
