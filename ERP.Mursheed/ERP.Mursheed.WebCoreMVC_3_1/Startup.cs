@@ -55,8 +55,8 @@ namespace ERP.Mursheed.WebCoreMVC_3_1
             #endregion
             #region facades
             //todo
-            services.AddScoped<IDriverPriceFacade, DriverPriceFacade>();
-            services.AddScoped<ITicketFacade, TicketFacade>();
+            //services.AddScoped<IDriverPriceFacade, DriverPriceFacade>();
+            //services.AddScoped<ITicketFacade, TicketFacade>();
             #endregion
             #region Mapper
 
