@@ -20,6 +20,6 @@ namespace ERP.Mursheed.Entities.Shared
 
         public virtual Guide Guide { get; set; }
 
-        public virtual Language Language { get; set; }
+        //public virtual Language Language { get; set; }
     }
 }
