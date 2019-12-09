@@ -6,7 +6,6 @@ using System.Text;
 
 namespace ERP.Mursheed.Entities.Shared
 {
-    [Table("Driver")]
     public class Driver
     {
         public Driver()
@@ -15,22 +14,18 @@ namespace ERP.Mursheed.Entities.Shared
             Rides = new HashSet<Ride>();
             TransporterRoutes = new HashSet<TransporterRoute>();
         }
-        [Key] public int Id { get; set; }
+        public int Id { get; set; }
 
         public string CustomId { get; set; }
 
-        [DataType(DataType.PostalCode)]
+        //[DataType(DataType.PostalCode)]
         public int GovernmentalId { get; set; }
 
-        [Required]
+        //[Required]
         public string DriverLicenseId { get; set; }
 
-
-        [Required]
         public int CountryId { get; set; }
         
-
-        [Required]
         public int CarId { get; set; }
 
         [Required]
@@ -67,82 +62,49 @@ namespace ERP.Mursheed.Entities.Shared
     }
 
 
-    [Table("Tourist")]
-    public class Tourist
-    {
-        public Tourist()
-        {
-            TransporterRatings = new HashSet<TransporterRating>();
-            Rides = new HashSet<Ride>();
-        }
+    //[Table("Tourist")]
+    //public class Tourist
+    //{
+    //    public Tourist()
+    //    {
+    //        TransporterRatings = new HashSet<TransporterRating>();
+    //        Rides = new HashSet<Ride>();
+    //    }
 
-        [Key] public int Id { get; set; }
+    //    [Key] public int Id { get; set; }
 
-        [Required]
-        public int CountryId { get; set; }
+    //    [Required]
+    //    public int CountryId { get; set; }
 
-        [Required]
-        [StringLength(50), MinLength(3)]
-        public string Firstname { get; set; }
+    //    [Required]
+    //    [StringLength(50), MinLength(3)]
+    //    public string Firstname { get; set; }
 
-        [Required]
-        [StringLength(50), MinLength(3)]
-        public string Lastname { get; set; }
+    //    [Required]
+    //    [StringLength(50), MinLength(3)]
+    //    public string Lastname { get; set; }
 
 
-        [EmailAddress]
-        public string Email { get; set; }
+    //    [EmailAddress]
+    //    public string Email { get; set; }
 
-        public string AdditonalInfo { get; set; }
+    //    public string AdditonalInfo { get; set; }
 
-        public string Fullname
-        {
-            get { return $"{Firstname} {Lastname}"; }
-        }
-        public bool Status { get; set; }
+    //    public string Fullname
+    //    {
+    //        get { return $"{Firstname} {Lastname}"; }
+    //    }
+    //    public bool Status { get; set; }
 
-        [ForeignKey("CountryId")]
-        public virtual Country Country { get; set; }
+    //    [ForeignKey("CountryId")]
+    //    public virtual Country Country { get; set; }
 
-        public virtual ICollection<TransporterRating> TransporterRatings { get; set; }
-        public virtual ICollection<Ride> Rides { get; set; }
+    //    public virtual ICollection<TransporterRating> TransporterRatings { get; set; }
+    //    public virtual ICollection<Ride> Rides { get; set; }
 
-    }
+    //}
 
-    [Table("Guide")]
-    public class Guide
-    {
-        [Key] public int Id { get; set; }
-
-        [DataType(DataType.PostalCode)]
-        public int GovernmentalId { get; set; }
-
-        [Required]
-        public int CountryId { get; set; }
-
-        [Required]
-        public int LanguageId { get; set; }
-
-        [Required]
-        public int CarId { get; set; }
-
-        [Required]
-        [StringLength(50), MinLength(3)]
-        public string Firstname { get; set; }
-
-        [Required]
-        [StringLength(50), MinLength(3)]
-        public string Lastname { get; set; }
-
-        [EmailAddress]
-        public string Email { get; set; }
-
-        public string Fullname
-        {
-            get { return $"{Firstname} {Lastname}"; }
-        }
-
-    }
+   
     [Table("DriverLanguage")]
     public class DriverLanguage
     {
@@ -162,23 +124,7 @@ namespace ERP.Mursheed.Entities.Shared
     }
 
 
-    [Table("GuideLanguage")]
-    public class GuideLanguage
-    {
-        [Key] public int Id { get; set; }
-
-        [Required]
-        public int GuideId { get; set; }
-
-        [Required]
-        public int LanguageId { get; set; }
-
-        [ForeignKey("GuideId")]
-        public virtual Guide Guide { get; set; }
-
-        [ForeignKey("LanguageId")]
-        public virtual Language Language { get; set; }
-    }
+   
 
 
     [Table("Language")]
