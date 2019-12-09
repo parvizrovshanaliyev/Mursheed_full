@@ -74,6 +74,9 @@ namespace ERP.Mursheed.Entities.Shared
         [Key] public int Id { get; set; }
 
         [Required]
+        public int CountryId { get; set; }
+
+        [Required]
         [StringLength(50), MinLength(3)]
         public string Firstname { get; set; }
 
@@ -81,15 +84,20 @@ namespace ERP.Mursheed.Entities.Shared
         [StringLength(50), MinLength(3)]
         public string Lastname { get; set; }
 
-        [Required]
-        [StringLength(50), MinLength(3)]
-        public string FatherName { get; set; }
+
+        [EmailAddress]
+        public string Email { get; set; }
+
+        public string AdditonalInfo { get; set; }
 
         public string Fullname
         {
-            get { return $"{Firstname} {Lastname} {FatherName}"; }
+            get { return $"{Firstname} {Lastname}"; }
         }
         public bool Status { get; set; }
+
+        [ForeignKey("CountryId")]
+        public virtual  Country Country { get; set; }
 
         public virtual ICollection<TransporterRating> TransporterRatings { get; set; }
         public virtual ICollection<Ride> Rides { get; set; }
@@ -176,6 +184,7 @@ namespace ERP.Mursheed.Entities.Shared
         {
             Cities = new HashSet<City>();
             Transporters = new HashSet<Transporter>();
+            Tourists = new HashSet<Tourist>();
         }
         public int Id { get; set; }
         public string ISO { get; set; }
@@ -187,6 +196,7 @@ namespace ERP.Mursheed.Entities.Shared
 
         public virtual ICollection<City> Cities { get; set; }
         public virtual ICollection<Transporter> Transporters { get; set; }
+        public virtual ICollection<Tourist> Tourists { get; set; }
 
     }
 
