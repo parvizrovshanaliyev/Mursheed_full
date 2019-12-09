@@ -260,6 +260,7 @@ namespace ERP.Mursheed.ORM
             });
             modelBuilder.Entity<Driver>(entity =>
             {
+                // custom id yazilmayib
                 entity.ToTable("DRIVER");
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
@@ -279,6 +280,7 @@ namespace ERP.Mursheed.ORM
                     //.IsRequired()
                     .HasMaxLength(250);
                 entity.Property(e => e.DriverLicenseId)
+                    .IsUnicode(false)
                     .IsRequired()
                     .HasMaxLength(50);
                 entity.Property(e => e.GovernmentalId)
@@ -686,8 +688,10 @@ namespace ERP.Mursheed.ORM
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
                 entity.Property(e => e.StartDate)
+                    .HasColumnType("datetime")
                     .IsRequired();
                 entity.Property(e => e.EndDate)
+                    .HasColumnType("datetime")
                     .IsRequired();
             });
 
@@ -701,39 +705,3 @@ namespace ERP.Mursheed.ORM
 
     }
 }
-//modelBuilder.Entity<Route>().
-//    HasOne(x => x.FromCity).
-//    WithMany(x => x.FromRoutes).
-//    OnDelete(DeleteBehavior.Restrict);
-
-//modelBuilder.Entity<Route>().
-//    HasOne(x => x.ToCity).
-//    WithMany(x => x.ToRoutes).
-//    OnDelete(DeleteBehavior.Restrict);
-
-//modelBuilder.Entity<RideToRoute>(entity =>
-//{
-//    entity.HasIndex(e => e.RideId);
-
-//    entity.HasIndex(e => e.RouteId);
-
-//    entity.HasIndex(e => e.DateFromToId);
-
-//    entity.HasOne(x => x.DateFromTo)
-//        .WithMany(e => e.RideToRoutes)
-//        .HasForeignKey(e => e.DateFromToId)
-//        .OnDelete(DeleteBehavior.ClientSetNull)
-//        .HasConstraintName("FK_RideToRoute_DateFromTo");
-
-//    entity.HasOne(x => x.Ride)
-//        .WithMany(e => e.RideToRoutes)
-//        .HasForeignKey(e => e.RideId)
-//        .OnDelete(DeleteBehavior.ClientSetNull)
-//        .HasConstraintName("FK_RideToRoute_Ride");
-
-//    entity.HasOne(x => x.Route)
-//        .WithMany(e => e.RideToRoutes)
-//        .HasForeignKey(e => e.RouteId)
-//        .OnDelete(DeleteBehavior.ClientSetNull)
-//        .HasConstraintName("FK_RideToRoute_Route");
-//});
