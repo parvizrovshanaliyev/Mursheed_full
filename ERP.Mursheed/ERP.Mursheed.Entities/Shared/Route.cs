@@ -8,6 +8,9 @@ namespace ERP.Mursheed.Entities.Shared
         {
             DriverRoutes = new HashSet<DriverRoute>();
             GuideRoutes = new HashSet<GuideRoute>();
+            //
+            GuideRideToRoutes = new HashSet<GuideRideToRoute>();
+            DriverRideToRoutes = new HashSet<DriverRideToRoute>();
         }
         public int Id { get; set; }
         public int FromCityId { get; set; }
@@ -19,6 +22,9 @@ namespace ERP.Mursheed.Entities.Shared
         public City ToCity { get; set; }
         public virtual ICollection<DriverRoute> DriverRoutes { get; set; }
         public virtual ICollection<GuideRoute> GuideRoutes { get; set; }
+        //
+        public virtual ICollection<GuideRideToRoute> GuideRideToRoutes { get; set; }
+        public virtual ICollection<DriverRideToRoute> DriverRideToRoutes { get; set; }
     }
 
 

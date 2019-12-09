@@ -53,107 +53,40 @@ namespace ERP.Mursheed.Entities.Shared
 
     public class DriverRide
     {
+        public DriverRide()
+        {
+            DriverRideToRoutes = new HashSet<DriverRideToRoute>();
+            DriverTickets = new HashSet<DriverTicket>();
+        }
         public int Id { get; set; }
         public int DriverId { get; set; }
         public int TouristId { get; set; }
 
         public virtual Driver  Driver { get; set; }
         public virtual Tourist  Tourist { get; set; }
+        public virtual ICollection<DriverRideToRoute> DriverRideToRoutes { get; set; }
+        public virtual ICollection<DriverTicket> DriverTickets { get; set; }
     }
 
+    public class DriverRideToRoute
+    {
+        public int Id { get; set; }
+        public int DriverRideId { get; set; }
+        public int RouteId { get; set; }
+        public int FromToDateId { get; set; }
 
+        public virtual DriverRide DriverRide { get; set; }
+        public virtual Route Route { get; set; }
+        public virtual FromToDate FromToDate { get; set; }
+    }
 
-
-
-
-    //[Table("DateFromTo")]
-    //public class DateFromTo
-    //{
-    //    public DateFromTo()
-    //    {
-    //        RideToRoutes = new HashSet<RideToRoute>();
-    //    }
-    //    [Key] public int Id { get; set; }
-
-    //    [Required]
-    //    public DateTime StartDate { get; set; }
-    //    [Required]
-    //    public DateTime EndDate { get; set; }
-
-    //    public virtual ICollection<RideToRoute> RideToRoutes { get; set; }
-
-    //}
-
-
-
-
-
-
-    //[Table("Ride")]
-    //public class Ride
-    //{
-    //    public Ride()
-    //    {
-    //        RideToRoutes = new HashSet<RideToRoute>();
-    //        Tickets = new HashSet<Ticket>();
-    //    }
-    //    [Key] public int Id { get; set; }
-
-    //    [Required]
-    //    public int TouristId { get; set; }
-
-    //    [Required]
-    //    public int TransporterId { get; set; }
-
-    //    [ForeignKey("TouristId")]
-    //    public Tourist Tourist { get; set; }
-
-    //    [ForeignKey("TransporterId")]
-    //    public Driver Transporter { get; set; }
-
-    //    public virtual ICollection<RideToRoute> RideToRoutes { get; set; }
-    //    public virtual ICollection<Ticket> Tickets { get; set; }
-    //}
-
-    //[Table("RideToRoute")]
-    //public class RideToRoute
-    //{
-    //    [Key] public int Id { get; set; }
-
-    //    // [Required] 
-    //    public int RideId { get; set; }
-
-    //    //[Required] 
-    //    public int RouteId { get; set; }
-
-    //    //[Required] 
-    //    public int DateFromToId { get; set; }
-
-    //    //[ForeignKey("RideId")] 
-    //    public Ride Ride { get; set; }
-
-    //    //[ForeignKey("RouteId")] 
-    //    public Route Route { get; set; }
-
-    //    public DateFromTo DateFromTo { get; set; }
-    //}
-
-
-
-    //[Table("Ticket")]
-    //public class Ticket
-    //{
-    //    [Key] public int Id { get; set; }
-
-    //    [Required]
-    //    public int RideId { get; set; }
-
-    //    [Required]
-    //    public float TotalPrice { get; set; }
-
-    //    [ForeignKey("RideId")]
-    //    public virtual Ride Ride { get; set; }
-    //}
+    public class DriverTicket
+    {
+        public int Id { get; set; }
+        public int DriverRideId { get; set; }
+        public float TotalPrice { get; set; }
+        public virtual DriverRide DriverRide { get; set; }
+    }
 
 
 }

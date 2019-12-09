@@ -44,12 +44,38 @@ namespace ERP.Mursheed.Entities.Shared
 
     public class GuideRide
     {
+        public GuideRide()
+        {
+            GuideRideToRoutes = new HashSet<GuideRideToRoute>();
+            GuideTickets = new HashSet<GuideTicket>();
+        }
         public int Id { get; set; }
         public int GuideId { get; set; }
         public int TouristId { get; set; }
 
         public virtual Guide Guide { get; set; }
         public virtual Tourist Tourist { get; set; }
+        public virtual ICollection<GuideRideToRoute> GuideRideToRoutes { get; set; }
+        public virtual ICollection<GuideTicket> GuideTickets { get; set; }
     }
 
+    public class GuideRideToRoute
+    {
+        public int Id { get; set; }
+        public int GuideRideId { get; set; }
+        public int RouteId { get; set; }
+        public int FromToDateId { get; set; }
+
+        public virtual GuideRide GuideRide { get; set; }
+        public virtual Route Route { get; set; }
+        public virtual FromToDate FromToDate { get; set; }
+    }
+
+    public class GuideTicket
+    {
+        public int Id { get; set; }
+        public int GuideRideId { get; set; }
+        public float TotalPrice { get; set; }
+        public virtual GuideRide GuideRide { get; set; }
+    }
 }
