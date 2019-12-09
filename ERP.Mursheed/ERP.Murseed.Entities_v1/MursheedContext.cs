@@ -24,15 +24,15 @@ namespace ERP.Mursheed.ORM
 
         #region OnConfiguring
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer(
-                    @"Server=.\\SQLExpress; Database=Mursheed; Trusted_Connection=True;MultipleActiveResultSets=true");
-            }
-            base.OnConfiguring(optionsBuilder);
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    //if (!optionsBuilder.IsConfigured)
+        //    //{
+        //    //    optionsBuilder.UseSqlServer(
+        //    //        @"Server=.\\SQLExpress; Database=Mursheed; Trusted_Connection=True;MultipleActiveResultSets=true");
+        //    //}
+        //    base.OnConfiguring(optionsBuilder);
+        //}
 
         #endregion
 
