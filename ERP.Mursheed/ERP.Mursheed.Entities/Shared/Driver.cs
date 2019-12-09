@@ -12,6 +12,7 @@ namespace ERP.Mursheed.Entities.Shared
         {
             DriverLanguages = new HashSet<DriverLanguage>();
             DriverRatings = new HashSet<DriverRating>();
+            DriverRoutes = new HashSet<DriverRoute>();
         }
         public int Id { get; set; }
         public string CustomId { get; set; }
@@ -32,6 +33,7 @@ namespace ERP.Mursheed.Entities.Shared
         public Car Car { get; set; }
         public virtual ICollection<DriverLanguage>  DriverLanguages { get; set; }
         public virtual ICollection<DriverRating>  DriverRatings { get; set; }
+        public virtual ICollection<DriverRoute>  DriverRoutes { get; set; }
 
     }
 
@@ -126,24 +128,7 @@ namespace ERP.Mursheed.Entities.Shared
     //    public DateFromTo DateFromTo { get; set; }
     //}
 
-    //[Table("TransporterRoute")]
-    //public class TransporterRoute
-    //{
-    //    [Key] public int Id { get; set; }
-
-    //    [Required]
-    //    public int TransporterId { get; set; }
-
-    //    [Required]
-    //    public int RouteId { get; set; }
-
-
-    //    [ForeignKey("TransporterId")]
-    //    public Driver Transporter { get; set; }
-
-    //    [ForeignKey("RouteId")]
-    //    public Route Route { get; set; }
-    //}
+    
 
     //[Table("Ticket")]
     //public class Ticket
