@@ -11,6 +11,8 @@ namespace ERP.Mursheed.Entities.Shared
         {
             DriverRides = new HashSet<DriverRide>();
             GuideRides = new HashSet<GuideRide>();
+            GuideRatings = new HashSet<GuideRating>();
+            DriverRatings = new HashSet<DriverRating>();
         }
         public int Id { get; set; }
         public string ApplicationUserId { get; set; }
@@ -27,5 +29,7 @@ namespace ERP.Mursheed.Entities.Shared
         public virtual Country Country { get; set; }
         public virtual ICollection<DriverRide> DriverRides { get; set; }
         public virtual ICollection<GuideRide> GuideRides { get; set; }
+        public virtual ICollection<DriverRating> DriverRatings { get; set; }
+        public virtual ICollection<GuideRating> GuideRatings { get; set; }
     }
 }

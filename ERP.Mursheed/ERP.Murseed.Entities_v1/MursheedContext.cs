@@ -564,6 +564,132 @@ namespace ERP.Mursheed.ORM
                     .HasForeignKey(e => e.TouristId)
                     .OnDelete(DeleteBehavior.Restrict);
             });
+            modelBuilder.Entity<GuideRideToRoute>(entity =>
+            {
+                entity.ToTable("GUIDE_RIDE_TO_ROUTE");
+
+                entity.HasIndex(e => e.RouteId);
+                entity.HasIndex(e => e.GuideRideId);
+                entity.HasIndex(e => e.FromToDateId);
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.HasOne(e => e.Route)
+                    .WithMany(e => e.GuideRideToRoutes)
+                    .HasForeignKey(e => e.RouteId)
+                    .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(e => e.GuideRide)
+                    .WithMany(e => e.GuideRideToRoutes)
+                    .HasForeignKey(e => e.GuideRideId)
+                    .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(e => e.FromToDate)
+                    .WithMany(e => e.GuideRideToRoutes)
+                    .HasForeignKey(e => e.FromToDateId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+            modelBuilder.Entity<DriverRideToRoute>(entity =>
+            {
+                entity.ToTable("DRIVER_RIDE_TO_ROUTE");
+
+                entity.HasIndex(e => e.RouteId);
+                entity.HasIndex(e => e.DriverRideId);
+                entity.HasIndex(e => e.FromToDateId);
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.HasOne(e => e.Route)
+                    .WithMany(e => e.DriverRideToRoutes)
+                    .HasForeignKey(e => e.RouteId)
+                    .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(e => e.DriverRide)
+                    .WithMany(e => e.DriverRideToRoutes)
+                    .HasForeignKey(e => e.DriverRideId)
+                    .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(e => e.FromToDate)
+                    .WithMany(e => e.DriverRideToRoutes)
+                    .HasForeignKey(e => e.FromToDateId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+            modelBuilder.Entity<DriverRating>(entity =>
+            {
+                entity.ToTable("DRIVER_RATING");
+
+                entity.HasIndex(e => e.DriverId);
+                entity.HasIndex(e => e.TouristId);
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.HasOne(e => e.Driver)
+                    .WithMany(e => e.DriverRatings)
+                    .HasForeignKey(e => e.DriverId)
+                    .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(e => e.Tourist)
+                    .WithMany(e => e.DriverRatings)
+                    .HasForeignKey(e => e.TouristId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+            modelBuilder.Entity<GuideRating>(entity =>
+            {
+                entity.ToTable("GUIDE_RATING");
+
+                entity.HasIndex(e => e.GuideId);
+                entity.HasIndex(e => e.TouristId);
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.HasOne(e => e.Guide)
+                    .WithMany(e => e.GuideRatings)
+                    .HasForeignKey(e => e.GuideId)
+                    .OnDelete(DeleteBehavior.Restrict);
+                entity.HasOne(e => e.Tourist)
+                    .WithMany(e => e.GuideRatings)
+                    .HasForeignKey(e => e.TouristId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            modelBuilder.Entity<GuideTicket>(entity =>
+            {
+                entity.ToTable("GUIDE_TICKET");
+
+                entity.HasIndex(e => e.GuideRideId);
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.TotalPrice)
+                    .IsRequired();
+
+                entity.HasOne(e => e.GuideRide)
+                    .WithMany(e => e.GuideTickets)
+                    .HasForeignKey(e => e.GuideRideId)
+                    .OnDelete(DeleteBehavior.Restrict);
+                
+            });
+
+            modelBuilder.Entity<DriverTicket>(entity =>
+            {
+                entity.ToTable("DRIVER_TICKET");
+
+                entity.HasIndex(e => e.DriverRideId);
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.TotalPrice)
+                    .IsRequired();
+
+                entity.HasOne(e => e.DriverRide)
+                    .WithMany(e => e.DriverTickets)
+                    .HasForeignKey(e => e.DriverRideId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            modelBuilder.Entity<FromToDate>(entity =>
+            {
+                entity.ToTable("FROM_TO_DATE");
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.Property(e => e.StartDate)
+                    .IsRequired();
+                entity.Property(e => e.EndDate)
+                    .IsRequired();
+            });
 
 
             #endregion  // fulent api

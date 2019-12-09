@@ -12,11 +12,11 @@ namespace ERP.Mursheed.Entities.Shared
             Guides = new HashSet<Guide>();
             Tourists = new HashSet<Tourist>();
         }
-        public int PersonId { get; set; }
+        //public int PersonId { get; set; }
         public bool Status { get; set; }
 
-        [ForeignKey("PersonId")]
-        public virtual Person Person { get; set; }
+        //[ForeignKey("PersonId")]
+        //public virtual Person Person { get; set; }
 
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }

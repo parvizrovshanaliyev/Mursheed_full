@@ -16,7 +16,7 @@ namespace ERP.Mursheed.Entities.Shared
     {
         public Person()
         {
-            ApplicationUsers = new HashSet<ApplicationUser>();
+            //ApplicationUsers = new HashSet<ApplicationUser>();
         }
         [Key] public int Id { get; set; }
 
@@ -43,7 +43,7 @@ namespace ERP.Mursheed.Entities.Shared
         [EmailAddress]
         public string Email { get; set; }
 
-        public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
+        //public virtual ICollection<ApplicationUser> ApplicationUsers { get; set; }
 
         //[ForeignKey("CountryId")]
         //public virtual Country Country { get; set; }
