@@ -233,10 +233,17 @@ function onHire(btn) {
         data: { model: ticketViewModel },
         type: "POST"
     }).done(function (response) {
-        SwalUtility.Success(response);
+        window.swal({
+            type: 'success',
+            title: 'Əməliyyat yerinə yetirildi',
+            text: `Ride id: ${response.rideId} Total Price : ${response.totalPrice}`,
+            showConfirmButton: true
+            //timer: 1000
+        });
     }).fail(function (response) {
         SwalUtility.Fail();
     });
+    
     
 }
 //#endregion Insert New Route Row

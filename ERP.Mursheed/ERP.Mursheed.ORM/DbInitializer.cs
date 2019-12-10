@@ -63,9 +63,8 @@ namespace ERP.Mursheed.ORM
                 {
                     Email = configuration.GetSection("AdminSettings")["Email"],
                     UserName = configuration.GetSection("AdminSettings")["Username"],
-                    Status = true,
+                    Status = true
                     // todo
-                    PersonId = 1
                 };
 
                 var userPass = configuration.GetSection("AdminSettings")["Password"];

@@ -34,28 +34,79 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
             _ticketFacade = ticketFacade;
         }
 
-        [Route("DriverPrice/{id}")]
-        public IActionResult Index(int? id)
-        {
-            if (id == null) return NotFound();
-            var model= _driverPriceFacade.GetTransporter((int) id);
-            return View(model);
-        }
+        // [Route("DriverPrice/{id}")]
+        //public IActionResult Index(int? id)
+        //{
+        //    if (id == null) return NotFound();
+        //    var model= _driverPriceFacade.GetTransporter((int) id);
+        //    return View(model);
+        //}
 
-        [HttpPost]
-        public async Task<IActionResult> Ticket(TicketViewModel model)
-        {
-            if (!ModelState.IsValid) return new JsonResult(BadRequest());
-            try
-            {
-                var result = await _ticketFacade.AddAsync(model);
-                if (!result.IsSuccess) return BadRequest();
-            }
-            catch (Exception)
-            {
-                return BadRequest();
-            }
-            return new JsonResult(BadRequest());
-        }
+        //[HttpPost]
+        //public async Task<JsonResult> Ticket(TicketViewModel model)
+        //{
+        //    //if (!ModelState.IsValid) return new JsonResult(BadRequest());
+
+        //    //var dateFromTo = new DateFromTo
+        //    //{
+        //    //    StartDate = model.DateFromTo.StartDate,
+        //    //    EndDate = model.DateFromTo.EndDate
+        //    //};
+        //    //var dateFromToResult =await  _unitOfWork.Repository<DateFromTo>().AddAsync(dateFromTo);
+
+        //    //if (!dateFromToResult.IsSuccess) return new JsonResult(BadRequest());
+        //    //var ride = new Ride
+        //    //{
+        //    //    TouristId = 1,
+        //    //    TransporterId = model.DriverId
+        //    //};
+        //    //// create ride
+        //    //var insertedRideResult= await _unitOfWork.Repository<Ride>().AddAsync(ride);
+
+        //    //if (!insertedRideResult.IsSuccess) return new JsonResult(BadRequest());
+        //    //// find all routes
+        //    //if (model.RouteIds.Count == 0) return null;
+
+        //    //var routes =await _unitOfWork.Repository<Route>().FindAllAsync(x => model.RouteIds.Contains(x.Id));
+
+        //    //if (routes.Count == 0) return null;
+
+        //    //float totalPrice = 0;
+        //    //var rideToRoutes = new List<RideToRoute>();
+        //    //foreach (var route in routes)
+        //    //{
+        //    //    var rideToRoute = new RideToRoute
+        //    //    {
+        //    //        RouteId = route.Id,
+        //    //        RideId = ride.Id,
+        //    //        DateFromToId = dateFromTo.Id
+        //    //    };
+        //    //    totalPrice += route.Price;
+        //    //    rideToRoutes.Add(rideToRoute);
+        //    //}
+        //    //var insertedRideToRoutesResult = await _unitOfWork.Repository<RideToRoute>().AddRangeAsync(rideToRoutes);
+        //    //if (!insertedRideToRoutesResult.IsSuccess) return new JsonResult(BadRequest());
+        //    //// final 
+        //    //var ticket = new Ticket
+        //    //{
+        //    //    RideId = ride.Id,
+        //    //    TotalPrice = totalPrice
+        //    //};
+
+        //    //var insertedTicketResult=await _unitOfWork.Repository<Ticket>().AddAsync(ticket);
+
+        //    //if (insertedRideResult.IsSuccess)
+        //    //{
+        //    //    return  Json(new{rideId=ride.Id, totalPrice=totalPrice});
+        //    //}
+
+        //    //var allCommitResult =_unitOfWork.Commit();
+        //    //if (allCommitResult.IsCompletedSuccessfully)
+        //    //{
+                
+        //    //}
+
+        //    return new JsonResult(BadRequest());
+        //}
     }
 }
