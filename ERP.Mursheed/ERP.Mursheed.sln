@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERP.Mursheed.Repositories",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERP.Mursheed.Repositories.Interfaces", "ERP.Mursheed.Repositories.Interfaces\ERP.Mursheed.Repositories.Interfaces.csproj", "{F6F0A891-2276-48E7-8777-80455618E632}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Mursheed.ORM", "ERP.Mursheed.ORM\ERP.Mursheed.ORM.csproj", "{9CB14B26-A449-4461-B373-E5FDD84B7E97}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{F6F0A891-2276-48E7-8777-80455618E632}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6F0A891-2276-48E7-8777-80455618E632}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6F0A891-2276-48E7-8777-80455618E632}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CB14B26-A449-4461-B373-E5FDD84B7E97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CB14B26-A449-4461-B373-E5FDD84B7E97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CB14B26-A449-4461-B373-E5FDD84B7E97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CB14B26-A449-4461-B373-E5FDD84B7E97}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{175AD5DF-E27C-4E1D-95FC-974478EA3614} = {FB736849-79C4-4352-A0D6-67DFEA9C263A}
 		{E579990F-0AB3-4D2D-B707-EB820DAB21C8} = {15E0548B-8FD8-4860-8E23-3C89167C6952}
 		{F6F0A891-2276-48E7-8777-80455618E632} = {FB736849-79C4-4352-A0D6-67DFEA9C263A}
+		{9CB14B26-A449-4461-B373-E5FDD84B7E97} = {15E0548B-8FD8-4860-8E23-3C89167C6952}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA724ADE-F644-4FC7-A6B4-9E6FEDA05699}
