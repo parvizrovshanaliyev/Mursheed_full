@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ERP.Mursheed.ORM.Migrations
 {
     [DbContext(typeof(MursheedContext))]
-    [Migration("20191210124030_initdb")]
-    partial class initdb
+    [Migration("20191211160651_initDB")]
+    partial class initDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

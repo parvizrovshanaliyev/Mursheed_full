@@ -348,7 +348,7 @@ namespace ERP.Mursheed.ORM
             {
                 entity.ToTable("COUNTRY");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(50);
@@ -358,7 +358,7 @@ namespace ERP.Mursheed.ORM
             {
                 entity.ToTable("CITY");
                 entity.HasIndex(e => e.CountryId);
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(50);
