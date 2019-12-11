@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace ERP.Mursheed.Entities.Shared
@@ -12,7 +13,7 @@ namespace ERP.Mursheed.Entities.Shared
             Tourists = new HashSet<Tourist>();
             Guides = new HashSet<Guide>();
         }
-        public int Id { get; set; }
+        [Key]public int Id { get; set; }
         public string ISO { get; set; }
         public string Name { get; set; }
         public string NiceName { get; set; }
@@ -32,7 +33,7 @@ namespace ERP.Mursheed.Entities.Shared
         {
             
         }
-        public int Id { get; set; }
+        [Key] public int Id { get; set; }
         public int CountryId { get; set; }
         public string Name { get; set; }
         public string NiceName { get; set; }
