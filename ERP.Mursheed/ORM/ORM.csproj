@@ -4,8 +4,4 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ERP.Mursheed.Utility\ERP.Mursheed.Utility.csproj" />
-  </ItemGroup>
-
 </Project>
