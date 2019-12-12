@@ -19,8 +19,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ERP.Mursheed.Entities\ERP.Mursheed.Entities.csproj" />
-    <ProjectReference Include="..\ERP.Mursheed.Repositories.Interfaces\ERP.Mursheed.Repositories.Interfaces.csproj" />
     <ProjectReference Include="..\ERP.Mursheed.Repositories\ERP.Mursheed.Repositories.csproj" />
   </ItemGroup>
 

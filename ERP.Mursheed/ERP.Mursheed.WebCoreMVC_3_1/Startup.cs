@@ -5,18 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using ERP.Mursheed.Entities.Shared;
-//using ERP.Mursheed.ORM;
-using ERP.Mursheed.ORMV2;
-using ERP.Mursheed.Repositories;
-using ERP.Mursheed.Repositories.Interfaces;
 using ERP.Mursheed.WebCoreMVC_3_1.Facades;
 using ERP.Mursheed.WebCoreMVC_3_1.Helper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
@@ -38,17 +32,17 @@ namespace ERP.Mursheed.WebCoreMVC_3_1
         {
             #region DbContext
 
-            services.AddDbContext<MursheedDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
-                    x => x.UseNetTopologySuite()));
+            //services.AddDbContext<MursheedDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+            //        x => x.UseNetTopologySuite()));
 
 
-            services.AddScoped<DbContext>(sp => sp.GetRequiredService<MursheedDbContext>());
+            //services.AddScoped<DbContext>(sp => sp.GetRequiredService<MursheedDbContext>());
             #endregion
             #region Repository
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            //services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            //services.AddScoped<IUnitOfWork, UnitOfWork>();
             #endregion
             #region services
             //todo
@@ -72,19 +66,19 @@ namespace ERP.Mursheed.WebCoreMVC_3_1
             #endregion
             #region Identity
 
-            services.AddIdentity<ApplicationUser, ApplicationRole>()
-                .AddEntityFrameworkStores<MursheedDbContext>()
-                .AddDefaultTokenProviders();
+            //services.AddIdentity<ApplicationUser, ApplicationRole>()
+            //    .AddEntityFrameworkStores<MursheedDbContext>()
+            //    .AddDefaultTokenProviders();
 
 
-            services.Configure<IdentityOptions>(options =>
-            {
-                options.Password.RequireDigit = false;
-                options.Password.RequiredLength = 6;
-                options.Password.RequireUppercase = false;
-                options.Password.RequiredUniqueChars = 3;
-                options.Password.RequireNonAlphanumeric = false;
-            });
+            //services.Configure<IdentityOptions>(options =>
+            //{
+            //    options.Password.RequireDigit = false;
+            //    options.Password.RequiredLength = 6;
+            //    options.Password.RequireUppercase = false;
+            //    options.Password.RequiredUniqueChars = 3;
+            //    options.Password.RequireNonAlphanumeric = false;
+            //});
             //todo
             //services.ConfigureApplicationCookie(config =>
             //{
