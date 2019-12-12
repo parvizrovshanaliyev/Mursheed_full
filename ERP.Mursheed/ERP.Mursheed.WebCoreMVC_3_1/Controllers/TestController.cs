@@ -50,21 +50,23 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(int id)
         {
-            var country = new Country
+            var countryVM = new CountryViewModel
             {
                
-                Name = "Azerbaijan",
-                NiceName = "AZERBAIJAN"
+                Name = "Azerbaijan"
             };
 
-            _unitOfWork.Repository<Country>().AddUnCommitted(country);
-            var city = new City
+            var c = _mapper.Map<Country>(countryVM);
+
+            _unitOfWork.Repository<Country>().AddUnCommitted(c);
+            var cityVM = new CityViewModel
             {
 
-                CountryId = 1,
-                Name = "Ganja",
-                NiceName = "GANJA"
+                CountryId = c.Id,
+                Name = "Ganja"
             };
+            var city = _mapper.Map<City>(cityVM);
+
             _unitOfWork.Repository<City>().AddUnCommitted(city);
 
             var commit = await _unitOfWork.Commit();
