@@ -6,7 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using ERP.Mursheed.Entities.Shared;
-using ERP.Mursheed.ORM;
+//using ERP.Mursheed.ORM;
+using ERP.Mursheed.ORM_V2;
 using ERP.Mursheed.Repositories;
 using ERP.Mursheed.Repositories.Interfaces;
 using ERP.Mursheed.WebCoreMVC_3_1.Facades;
@@ -37,12 +38,12 @@ namespace ERP.Mursheed.WebCoreMVC_3_1
         {
             #region DbContext
 
-            services.AddDbContext<MursheedContext>(options =>
+            services.AddDbContext<MursheedDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
                     x => x.UseNetTopologySuite()));
 
 
-            services.AddScoped<DbContext>(sp => sp.GetRequiredService<MursheedContext>());
+            services.AddScoped<DbContext>(sp => sp.GetRequiredService<MursheedDbContext>());
             #endregion
             #region Repository
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
@@ -72,7 +73,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1
             #region Identity
 
             services.AddIdentity<ApplicationUser, ApplicationRole>()
-                .AddEntityFrameworkStores<MursheedContext>()
+                .AddEntityFrameworkStores<MursheedDbContext>()
                 .AddDefaultTokenProviders();
 
 
