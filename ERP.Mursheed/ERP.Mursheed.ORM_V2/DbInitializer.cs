@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ERP.Mursheed.ORM_V2
+namespace ERP.Mursheed.ORMV2
 {
     public class DbInitializer
     {

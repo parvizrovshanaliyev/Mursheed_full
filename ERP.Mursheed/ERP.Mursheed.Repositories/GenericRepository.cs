@@ -7,6 +7,7 @@ using ERP.Mursheed.Repositories.Interfaces;
 using ERP.Mursheed.Utility;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace ERP.Mursheed.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class

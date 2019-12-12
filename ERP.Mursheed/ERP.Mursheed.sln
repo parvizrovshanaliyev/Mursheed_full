@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERP.Mursheed.Repositories.I
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERP.Mursheed.ORM", "ERP.Mursheed.ORM\ERP.Mursheed.ORM.csproj", "{9CB14B26-A449-4461-B373-E5FDD84B7E97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP.Mursheed.ORM_V2", "ERP.Mursheed.ORM_V2\ERP.Mursheed.ORM_V2.csproj", "{9FA080C4-21A9-4D13-9AC6-351D5965A1BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ERP.Mursheed.ORMV2", "ERP.Mursheed.ORM_V2\ERP.Mursheed.ORMV2.csproj", "{9FA080C4-21A9-4D13-9AC6-351D5965A1BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using ERP.Mursheed.Entities.Shared;
 //using ERP.Mursheed.ORM;
-using ERP.Mursheed.ORM_V2;
+using ERP.Mursheed.ORMV2;
 using ERP.Mursheed.Repositories;
 using ERP.Mursheed.Repositories.Interfaces;
 using ERP.Mursheed.WebCoreMVC_3_1.Facades;

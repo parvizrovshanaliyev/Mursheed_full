@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ERP.Mursheed.ORM_V2;
+using ERP.Mursheed.ORMV2;
 //using ERP.Mursheed.ORM;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

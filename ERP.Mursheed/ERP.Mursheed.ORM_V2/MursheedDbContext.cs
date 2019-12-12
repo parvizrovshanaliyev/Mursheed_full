@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
+
 using ERP.Mursheed.Entities.Shared;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace ERP.Mursheed.ORM_V2
+namespace ERP.Mursheed.ORMV2
 {
 
     public class MursheedDbContext : IdentityDbContext<ApplicationUser,
