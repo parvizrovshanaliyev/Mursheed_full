@@ -10,8 +10,8 @@ using ORM;
 namespace ORM.Migrations
 {
     [DbContext(typeof(MursheedContext))]
-    [Migration("20191212110814_initDb")]
-    partial class initDb
+    [Migration("20191212155102_initDB")]
+    partial class initDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

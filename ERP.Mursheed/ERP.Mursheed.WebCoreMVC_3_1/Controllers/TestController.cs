@@ -58,7 +58,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
 
             var c = _mapper.Map<Country>(countryVM);
 
-            _unitOfWork.Repository<Country>().AddUnCommitted(c);
+            _unitOfWork.Repository<Country>().Add(c);
             var cityVM = new CityViewModel
             {
 
@@ -67,9 +67,9 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
             };
             var city = _mapper.Map<City>(cityVM);
 
-            _unitOfWork.Repository<City>().AddUnCommitted(city);
+            
 
-            var commit = await _unitOfWork.Commit();
+            var commit = _unitOfWork.Repository<City>().Add(city);
 
             if (commit.IsSuccess)
             {
