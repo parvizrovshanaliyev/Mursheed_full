@@ -3,77 +3,79 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Entities.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Repositories.Interfaces;
 
 namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
 {
     public class TestController : Controller
     {
-        //private readonly IConfiguration _configuration;
-        //private readonly IMapper _mapper;
-        //private readonly IUnitOfWork _unitOfWork;
-        
+        private readonly IConfiguration _configuration;
+        private readonly IMapper _mapper;
+        private readonly IUnitOfWork _unitOfWork;
 
 
-        //public TestController(IMapper mapper,
-        //    IUnitOfWork unitOfWork,
-        //    IConfiguration configuration
-        //    )
-        //{
-        //    _configuration = configuration;
-        //    _mapper = mapper;
-        //    _unitOfWork = unitOfWork;
-        //}
 
-        //[HttpGet]
-        //public async Task<IActionResult> Index()
-        //{
-        //    return View();
-        //}
+        public TestController(IMapper mapper,
+            IUnitOfWork unitOfWork,
+            IConfiguration configuration
+            )
+        {
+            _configuration = configuration;
+            _mapper = mapper;
+            _unitOfWork = unitOfWork;
+        }
 
-        //public class CountryViewModel
-        //{
-        //    public int Id { get; set; }
-        //    public string Name { get; set; }
-           
-        //}
-        //public class CityViewModel
-        //{
-        //    public int Id { get; set; }
-        //    public int CountryId { get; set; }
-        //    public string Name { get; set; }
-        //}
-        //[HttpPost]
-        ////[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Index(int id)
-        //{
-        //    var countryVM = new CountryViewModel
-        //    {
-               
-        //        Name = "Azerbaijan"
-        //    };
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            return View();
+        }
 
-        //    var c = _mapper.Map<Country>(countryVM);
+        public class CountryViewModel
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
 
-        //    _unitOfWork.Repository<Country>().AddUnCommitted(c);
-        //    var cityVM = new CityViewModel
-        //    {
+        }
+        public class CityViewModel
+        {
+            public int Id { get; set; }
+            public int CountryId { get; set; }
+            public string Name { get; set; }
+        }
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> Index(int id)
+        {
+            var countryVM = new CountryViewModel
+            {
 
-        //        CountryId = c.Id,
-        //        Name = "Ganja"
-        //    };
-        //    var city = _mapper.Map<City>(cityVM);
+                Name = "Azerbaijan"
+            };
 
-        //    _unitOfWork.Repository<City>().AddUnCommitted(city);
+            var c = _mapper.Map<Country>(countryVM);
 
-        //    var commit = await _unitOfWork.Commit();
+            _unitOfWork.Repository<Country>().AddUnCommitted(c);
+            var cityVM = new CityViewModel
+            {
 
-        //    if (commit.IsSuccess)
-        //    {
-        //        return Content("ok");
-        //    }
-        //    return Content("olmadi yar");
-        //}
+                CountryId = c.Id,
+                Name = "Ganja"
+            };
+            var city = _mapper.Map<City>(cityVM);
+
+            _unitOfWork.Repository<City>().AddUnCommitted(city);
+
+            var commit = await _unitOfWork.Commit();
+
+            if (commit.IsSuccess)
+            {
+                return Content("ok");
+            }
+            return Content("olmadi yar");
+        }
     }
 }
