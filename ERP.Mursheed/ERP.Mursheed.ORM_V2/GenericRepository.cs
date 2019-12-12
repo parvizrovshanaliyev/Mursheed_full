@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using ERP.Mursheed.Repositories;
 using ERP.Mursheed.Repositories.Interfaces;
 using ERP.Mursheed.Utility;
 using Microsoft.EntityFrameworkCore;
 
-
-namespace ERP.Mursheed.Repositories
+namespace ERP.Mursheed.ORMV2
 {
 
     

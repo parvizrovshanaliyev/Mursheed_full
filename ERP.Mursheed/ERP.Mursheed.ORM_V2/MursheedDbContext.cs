@@ -5,8 +5,10 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace ERP.Mursheed.ORMV2
 {
+
 
     public class MursheedDbContext : IdentityDbContext<ApplicationUser,
         ApplicationRole, string,
