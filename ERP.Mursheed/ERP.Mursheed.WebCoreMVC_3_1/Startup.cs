@@ -38,7 +38,8 @@ namespace ERP.Mursheed.WebCoreMVC_3_1
             #region DbContext
 
             services.AddDbContext<MursheedContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                    x => x.UseNetTopologySuite()));
 
 
             services.AddScoped<DbContext>(sp => sp.GetRequiredService<MursheedContext>());

@@ -238,7 +238,8 @@ namespace ERP.Mursheed.ORM
             {
                 entity.ToTable("TOURIST");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
                 entity.Property(e => e.Firstname)
                     .IsRequired()
                     .HasMaxLength(50);
@@ -263,7 +264,8 @@ namespace ERP.Mursheed.ORM
                 // custom id yazilmayib
                 entity.ToTable("DRIVER");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
                 entity.Property(e => e.Firstname)
                     .IsRequired()
                     .HasMaxLength(50);
@@ -310,7 +312,8 @@ namespace ERP.Mursheed.ORM
             {
                 entity.ToTable("GUIDE");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
                 entity.Property(e => e.Firstname)
                     .IsRequired()
                     .HasMaxLength(50);
@@ -348,7 +351,8 @@ namespace ERP.Mursheed.ORM
             {
                 entity.ToTable("COUNTRY");
 
-                //entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(50);
@@ -357,8 +361,11 @@ namespace ERP.Mursheed.ORM
             modelBuilder.Entity<City>(entity =>
             {
                 entity.ToTable("CITY");
+
+                
                 entity.HasIndex(e => e.CountryId);
-                //entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(50);
@@ -366,7 +373,8 @@ namespace ERP.Mursheed.ORM
             modelBuilder.Entity<Language>(entity =>
             {
                 entity.ToTable("LANGUAGE");
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(50);
@@ -378,7 +386,8 @@ namespace ERP.Mursheed.ORM
                 entity.HasIndex(e => e.DriverId);
                 entity.HasIndex(e => e.LanguageId);
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
 
                 entity.HasOne(e => e.Language)
                     .WithMany(e => e.DriverLanguages)
@@ -399,7 +408,8 @@ namespace ERP.Mursheed.ORM
                 entity.HasIndex(e => e.GuideId);
                 entity.HasIndex(e => e.LanguageId);
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
 
                 entity.HasOne(e => e.Language)
                     .WithMany(e => e.GuideLanguages)
@@ -418,7 +428,8 @@ namespace ERP.Mursheed.ORM
 
                 entity.HasIndex(e => e.ModelId);
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
 
                 entity.HasOne(e => e.Model)
                     .WithMany(e => e.Cars)
@@ -431,7 +442,8 @@ namespace ERP.Mursheed.ORM
 
                 entity.HasIndex(e => e.CarId);
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
                 entity.Property(e => e.PhotoName)
                     //.IsRequired()
                     .HasMaxLength(100);
@@ -447,7 +459,8 @@ namespace ERP.Mursheed.ORM
             modelBuilder.Entity<Brand>(entity =>
             {
                 entity.ToTable("BRAND");
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(50);
@@ -459,7 +472,8 @@ namespace ERP.Mursheed.ORM
 
                 entity.HasIndex(e => e.BrandId);
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(50);
@@ -476,7 +490,8 @@ namespace ERP.Mursheed.ORM
                 entity.HasIndex(e => e.FromCityId);
                 entity.HasIndex(e => e.ToCityId);
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
                 entity.Property(e => e.Info)
                     .IsRequired()
                     .HasMaxLength(50);
@@ -500,7 +515,8 @@ namespace ERP.Mursheed.ORM
                 entity.HasIndex(e => e.RouteId);
                 entity.HasIndex(e => e.DriverId);
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
 
                 entity.HasOne(e => e.Route)
                     .WithMany(e => e.DriverRoutes)
@@ -518,7 +534,8 @@ namespace ERP.Mursheed.ORM
                 entity.HasIndex(e => e.RouteId);
                 entity.HasIndex(e => e.GuideId);
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
 
                 entity.HasOne(e => e.Route)
                     .WithMany(e => e.GuideRoutes)
@@ -536,7 +553,8 @@ namespace ERP.Mursheed.ORM
                 entity.HasIndex(e => e.DriverId);
                 entity.HasIndex(e => e.TouristId);
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
 
                 entity.HasOne(e => e.Driver)
                     .WithMany(e => e.DriverRides)
@@ -555,7 +573,8 @@ namespace ERP.Mursheed.ORM
                 entity.HasIndex(e => e.GuideId);
                 entity.HasIndex(e => e.TouristId);
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
 
                 entity.HasOne(e => e.Guide)
                     .WithMany(e => e.GuideRides)
@@ -574,7 +593,8 @@ namespace ERP.Mursheed.ORM
                 entity.HasIndex(e => e.GuideRideId);
                 entity.HasIndex(e => e.FromToDateId);
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
 
                 entity.HasOne(e => e.Route)
                     .WithMany(e => e.GuideRideToRoutes)
@@ -597,7 +617,8 @@ namespace ERP.Mursheed.ORM
                 entity.HasIndex(e => e.DriverRideId);
                 entity.HasIndex(e => e.FromToDateId);
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
 
                 entity.HasOne(e => e.Route)
                     .WithMany(e => e.DriverRideToRoutes)
@@ -619,7 +640,8 @@ namespace ERP.Mursheed.ORM
                 entity.HasIndex(e => e.DriverId);
                 entity.HasIndex(e => e.TouristId);
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
 
                 entity.HasOne(e => e.Driver)
                     .WithMany(e => e.DriverRatings)
@@ -637,7 +659,8 @@ namespace ERP.Mursheed.ORM
                 entity.HasIndex(e => e.GuideId);
                 entity.HasIndex(e => e.TouristId);
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
 
                 entity.HasOne(e => e.Guide)
                     .WithMany(e => e.GuideRatings)
@@ -655,7 +678,8 @@ namespace ERP.Mursheed.ORM
 
                 entity.HasIndex(e => e.GuideRideId);
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
                 entity.Property(e => e.TotalPrice)
                     .IsRequired();
 
@@ -672,7 +696,8 @@ namespace ERP.Mursheed.ORM
 
                 entity.HasIndex(e => e.DriverRideId);
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
                 entity.Property(e => e.TotalPrice)
                     .IsRequired();
 
@@ -686,7 +711,8 @@ namespace ERP.Mursheed.ORM
             {
                 entity.ToTable("FROM_TO_DATE");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                //entity.Property(e => e.Id).ValueGeneratedNever();  
+                entity.HasKey(e => e.Id);
                 entity.Property(e => e.StartDate)
                     .HasColumnType("datetime")
                     .IsRequired();

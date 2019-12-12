@@ -13,7 +13,7 @@ namespace ERP.Mursheed.Entities.Shared
             Tourists = new HashSet<Tourist>();
             Guides = new HashSet<Guide>();
         }
-        [Key]public int Id { get; set; }
+        public int Id { get; set; }
         public string ISO { get; set; }
         public string Name { get; set; }
         public string NiceName { get; set; }
@@ -33,7 +33,7 @@ namespace ERP.Mursheed.Entities.Shared
         {
             
         }
-        [Key] public int Id { get; set; }
+        public int Id { get; set; }
         public int CountryId { get; set; }
         public string Name { get; set; }
         public string NiceName { get; set; }

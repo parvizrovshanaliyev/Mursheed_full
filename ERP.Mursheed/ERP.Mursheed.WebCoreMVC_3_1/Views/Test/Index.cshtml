@@ -1,0 +1,26 @@
+﻿
+<h1>Create</h1>
+@*<form >
+    
+</form>*@
+<input type="button" id="testBtn" value="test" />
+
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+
+            $("#testBtn").on("click", function () {
+                $.ajax({
+                url: "/Test/Index/1",
+                method:"POST",
+                success: function () {
+                    alert("qoz")
+                }
+            }).fail(function () {
+                alert("olmadi")
+            });
+            })
+        })
+    </script>
+    }

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ERP.Mursheed.ORM.Migrations
 {
     [DbContext(typeof(MursheedContext))]
-    [Migration("20191211160651_initDB")]
+    [Migration("20191211163326_initDB")]
     partial class initDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -137,7 +137,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.Brand", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -152,7 +154,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.Car", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("ModelId")
                         .HasColumnType("int");
@@ -167,7 +171,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.CarPhoto", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("CarId")
                         .HasColumnType("int");
@@ -190,7 +196,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.City", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
@@ -213,7 +221,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.Country", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ISO")
                         .HasColumnType("nvarchar(max)");
@@ -243,7 +253,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.Driver", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
@@ -310,7 +322,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.DriverLanguage", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("DriverId")
                         .HasColumnType("int");
@@ -330,7 +344,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.DriverRating", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("DriverId")
                         .HasColumnType("int");
@@ -350,7 +366,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.DriverRide", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("DriverId")
                         .HasColumnType("int");
@@ -370,7 +388,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.DriverRideToRoute", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("DriverRideId")
                         .HasColumnType("int");
@@ -395,7 +415,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.DriverRoute", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("DriverId")
                         .HasColumnType("int");
@@ -415,7 +437,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.DriverTicket", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("DriverRideId")
                         .HasColumnType("int");
@@ -433,7 +457,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.FromToDate", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime");
@@ -449,7 +475,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.Guide", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ApplicationUserId")
                         .HasColumnType("nvarchar(450)");
@@ -502,7 +530,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.GuideLanguage", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("GuideId")
                         .HasColumnType("int");
@@ -522,7 +552,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.GuideRating", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("GuideId")
                         .HasColumnType("int");
@@ -542,7 +574,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.GuideRide", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("GuideId")
                         .HasColumnType("int");
@@ -562,7 +596,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.GuideRideToRoute", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("FromToDateId")
                         .HasColumnType("int");
@@ -587,7 +623,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.GuideRoute", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("GuideId")
                         .HasColumnType("int");
@@ -607,7 +645,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.GuideTicket", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("GuideRideId")
                         .HasColumnType("int");
@@ -625,7 +665,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.Language", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -640,7 +682,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.Model", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("BrandId")
                         .HasColumnType("int");
@@ -660,7 +704,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.Route", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("FromCityId")
                         .HasColumnType("int");
@@ -688,7 +734,9 @@ namespace ERP.Mursheed.ORM.Migrations
             modelBuilder.Entity("ERP.Mursheed.Entities.Shared.Tourist", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("AdditionalInfo")
                         .HasColumnType("nvarchar(max)");

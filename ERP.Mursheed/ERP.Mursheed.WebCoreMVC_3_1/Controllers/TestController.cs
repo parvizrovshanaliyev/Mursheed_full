@@ -28,38 +28,50 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
+            return View();
+        }
 
+        public class CountryViewModel
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+           
+        }
+        public class CityViewModel
+        {
+            public int Id { get; set; }
+            public int CountryId { get; set; }
+            public string Name { get; set; }
+        }
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public async Task<IActionResult> Index(int id)
+        {
             var country = new Country
             {
+               
                 Name = "Azerbaijan",
                 NiceName = "AZERBAIJAN"
             };
 
-            var insertCountryResult = _unitOfWork.Repository<Country>().AddUnCommitted(country);
-            if (insertCountryResult.IsSuccess)
+            _unitOfWork.Repository<Country>().AddUnCommitted(country);
+            var city = new City
             {
-                var city = new City
-                {
-                    CountryId = country.Id,
-                    Name = "Ganja",
-                    NiceName = "GANJA"
-                };
-                var insertCityResult = _unitOfWork.Repository<City>().AddUnCommitted(city);
 
-                if (insertCityResult.IsSuccess)
-                {
-                    var commit =await _unitOfWork.Commit();
+                CountryId = 1,
+                Name = "Ganja",
+                NiceName = "GANJA"
+            };
+            _unitOfWork.Repository<City>().AddUnCommitted(city);
 
-                    if (commit.IsSuccess)
-                    {
-                        return Content("ok");
-                    }
-                    return Content("olmadi yar");
+            var commit = await _unitOfWork.Commit();
 
-                }
-
+            if (commit.IsSuccess)
+            {
+                return Content("ok");
             }
             return Content("olmadi yar");
         }
