@@ -1,9 +1,11 @@
-﻿using ERP.Mursheed.Entities.Shared;
+﻿
+
+using Entities.Shared;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace ERP.Mursheed.ORM
+namespace ORM
 {
     public class MursheedContext : IdentityDbContext<ApplicationUser,
         ApplicationRole, string,
@@ -24,15 +26,15 @@ namespace ERP.Mursheed.ORM
 
         #region OnConfiguring
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    //if (!optionsBuilder.IsConfigured)
-        //    //{
-        //    //    optionsBuilder.UseSqlServer(
-        //    //        @"Server=.\\SQLExpress; Database=Mursheed; Trusted_Connection=True;MultipleActiveResultSets=true");
-        //    //}
-        //    base.OnConfiguring(optionsBuilder);
-        //}
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(
+                    @"Server=.\\SQLExpress; Database=Mursheed; Trusted_Connection=True;MultipleActiveResultSets=true");
+            }
+            base.OnConfiguring(optionsBuilder);
+        }
 
         #endregion
 

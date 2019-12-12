@@ -1,4 +1,4 @@
-﻿using ERP.Mursheed.Entities.Shared;
+﻿using Entities.Shared;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers

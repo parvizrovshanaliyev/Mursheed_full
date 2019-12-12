@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using ERP.Mursheed.Entities.Shared;
-using ERP.Mursheed.Repositories.Interfaces;
+using Entities.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Repositories.Interfaces;
 
 namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
 {
@@ -15,7 +15,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
-        
+
 
 
         public TestController(IMapper mapper,
@@ -38,7 +38,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
         {
             public int Id { get; set; }
             public string Name { get; set; }
-           
+
         }
         public class CityViewModel
         {
@@ -52,7 +52,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
         {
             var countryVM = new CountryViewModel
             {
-               
+
                 Name = "Azerbaijan"
             };
 

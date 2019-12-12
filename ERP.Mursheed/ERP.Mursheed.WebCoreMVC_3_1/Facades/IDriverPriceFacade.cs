@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using ERP.Mursheed.Entities.Shared;
-using ERP.Mursheed.Repositories.Interfaces;
+//using ERP.Mursheed.Entities.Shared;
+//using ERP.Mursheed.Repositories.Interfaces;
 using ERP.Mursheed.WebCoreMVC_3_1.ViewModels;
 
 namespace ERP.Mursheed.WebCoreMVC_3_1.Facades

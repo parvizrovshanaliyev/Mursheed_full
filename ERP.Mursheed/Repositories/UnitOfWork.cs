@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ERP.Mursheed.Repositories.Interfaces;
 using ERP.Mursheed.Utility;
 using Microsoft.EntityFrameworkCore;
+using Repositories.Interfaces;
 
-namespace ERP.Mursheed.Repositories
+namespace Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {

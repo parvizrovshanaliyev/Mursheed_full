@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ERP.Mursheed.Entities.Shared
+namespace Entities.Shared
 {
     public class Route
     {

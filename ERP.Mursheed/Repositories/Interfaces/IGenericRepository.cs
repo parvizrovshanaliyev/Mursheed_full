@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using ERP.Mursheed.Utility;
 
-namespace ERP.Mursheed.Repositories.Interfaces
+namespace Repositories.Interfaces
 {
     public interface IGenericRepository<T> where T : class
     {

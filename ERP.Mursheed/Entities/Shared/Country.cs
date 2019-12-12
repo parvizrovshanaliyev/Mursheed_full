@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace ERP.Mursheed.Entities.Shared
+namespace Entities.Shared
 {
     public class Country
     {
