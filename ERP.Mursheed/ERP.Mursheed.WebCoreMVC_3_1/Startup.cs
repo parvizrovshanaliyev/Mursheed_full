@@ -99,6 +99,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1
             //    });
             #endregion
 
+
             services.AddSingleton<IFileProvider>(
                 new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
 
