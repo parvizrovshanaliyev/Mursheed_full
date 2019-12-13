@@ -1,26 +1,20 @@
 ﻿
-<h1>Create</h1>
-@*<form >
-    
-</form>*@
+<h1>test index</h1>
 <input type="button" id="testBtn" value="test" />
-
-
 @section scripts{
-    <script>
+    <script asp-append-version="true">
         $(document).ready(function () {
-
             $("#testBtn").on("click", function () {
                 $.ajax({
-                url: "/Test/Index/1",
-                method:"POST",
-                success: function () {
-                    alert("qoz")
-                }
-            }).fail(function () {
-                alert("olmadi")
-            });
+                    url: "/Test/Index/1",
+                    method: "POST",
+                    success: function () {
+                        alert("ok");
+                    }
+                }).fail(function () {
+                    alert("fail");
+                });
             })
         })
     </script>
-    }
+}

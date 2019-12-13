@@ -58,10 +58,9 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
 
             var c = _mapper.Map<Country>(countryVM);
 
-            _unitOfWork.Repository<Country>().Add(c);
+            _unitOfWork.Repository<Country>().AddUnCommitted(c);
             var cityVM = new CityViewModel
             {
-
                 CountryId = c.Id,
                 Name = "Ganja"
             };
@@ -69,13 +68,14 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
 
             
 
-            var commit = _unitOfWork.Repository<City>().Add(city);
+            _unitOfWork.Repository<City>().AddUnCommitted(city);
 
+            var commit = await _unitOfWork.Commit();
             if (commit.IsSuccess)
             {
                 return Content("ok");
             }
-            return Content("olmadi yar");
+            return Content("fail");
         }
     }
 }
