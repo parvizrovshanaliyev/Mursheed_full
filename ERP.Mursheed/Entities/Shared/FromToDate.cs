@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace ERP.Mursheed.Entities.Shared
+namespace Entities.Shared
 {
     public class FromToDate
     {

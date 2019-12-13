@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ERP.Mursheed.ORM.Migrations
+namespace ORM.Migrations
 {
     public partial class initdb : Migration
     {
@@ -52,7 +52,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "BRAND",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -64,7 +65,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "COUNTRY",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ISO = table.Column<string>(nullable: true),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     NiceName = table.Column<string>(nullable: true),
@@ -81,7 +83,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "FROM_TO_DATE",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     StartDate = table.Column<DateTime>(type: "datetime", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime", nullable: false)
                 },
@@ -94,7 +97,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "LANGUAGE",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(maxLength: 50, nullable: false)
                 },
                 constraints: table =>
@@ -212,7 +216,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "MODEL",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     BrandId = table.Column<int>(nullable: false),
                     Name = table.Column<string>(maxLength: 50, nullable: false)
                 },
@@ -231,7 +236,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "CITY",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CountryId = table.Column<int>(nullable: false),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
                     NiceName = table.Column<string>(nullable: true)
@@ -251,7 +257,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "GUIDE",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ApplicationUserId = table.Column<string>(nullable: true),
                     GovernmentalId = table.Column<int>(maxLength: 50, nullable: false),
                     CountryId = table.Column<int>(nullable: false),
@@ -284,7 +291,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "TOURIST",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ApplicationUserId = table.Column<string>(nullable: true),
                     CountryId = table.Column<int>(nullable: false),
                     Firstname = table.Column<string>(maxLength: 50, nullable: false),
@@ -313,7 +321,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "CAR",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ModelId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -331,7 +340,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "ROUTE",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     FromCityId = table.Column<int>(nullable: false),
                     ToCityId = table.Column<int>(nullable: false),
                     Price = table.Column<float>(nullable: false),
@@ -358,7 +368,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "GUIDE_LANGUAGE",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     GuideId = table.Column<int>(nullable: false),
                     LanguageId = table.Column<int>(nullable: false)
                 },
@@ -383,7 +394,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "GUIDE_RATING",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     TouristId = table.Column<int>(nullable: false),
                     GuideId = table.Column<int>(nullable: false)
                 },
@@ -408,7 +420,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "GUIDE_RIDE",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     GuideId = table.Column<int>(nullable: false),
                     TouristId = table.Column<int>(nullable: false)
                 },
@@ -433,7 +446,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "CAR_PHOTO",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     CarId = table.Column<int>(nullable: false),
                     PhotoName = table.Column<string>(maxLength: 100, nullable: true),
                     PhotoPath = table.Column<string>(maxLength: 250, nullable: true)
@@ -453,7 +467,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "DRIVER",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ApplicationUserId = table.Column<string>(nullable: true),
                     CustomId = table.Column<string>(nullable: true),
                     GovernmentalId = table.Column<int>(maxLength: 50, nullable: false),
@@ -495,7 +510,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "GUIDE_ROUTE",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     GuideId = table.Column<int>(nullable: false),
                     RouteId = table.Column<int>(nullable: false)
                 },
@@ -520,7 +536,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "GUIDE_RIDE_TO_ROUTE",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     GuideRideId = table.Column<int>(nullable: false),
                     RouteId = table.Column<int>(nullable: false),
                     FromToDateId = table.Column<int>(nullable: false)
@@ -552,7 +569,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "GUIDE_TICKET",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     GuideRideId = table.Column<int>(nullable: false),
                     TotalPrice = table.Column<float>(nullable: false)
                 },
@@ -571,7 +589,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "DRIVER_LANGUAGE",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     DriverId = table.Column<int>(nullable: false),
                     LanguageId = table.Column<int>(nullable: false)
                 },
@@ -596,7 +615,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "DRIVER_RATING",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     TouristId = table.Column<int>(nullable: false),
                     DriverId = table.Column<int>(nullable: false)
                 },
@@ -621,7 +641,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "DRIVER_RIDE",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     DriverId = table.Column<int>(nullable: false),
                     TouristId = table.Column<int>(nullable: false)
                 },
@@ -646,7 +667,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "DRIVER_ROUTE",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     DriverId = table.Column<int>(nullable: false),
                     RouteId = table.Column<int>(nullable: false)
                 },
@@ -671,7 +693,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "DRIVER_RIDE_TO_ROUTE",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     DriverRideId = table.Column<int>(nullable: false),
                     RouteId = table.Column<int>(nullable: false),
                     FromToDateId = table.Column<int>(nullable: false)
@@ -703,7 +726,8 @@ namespace ERP.Mursheed.ORM.Migrations
                 name: "DRIVER_TICKET",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     DriverRideId = table.Column<int>(nullable: false),
                     TotalPrice = table.Column<float>(nullable: false)
                 },

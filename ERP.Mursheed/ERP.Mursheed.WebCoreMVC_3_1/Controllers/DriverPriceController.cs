@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using ERP.Mursheed.Entities.Shared;
-using ERP.Mursheed.Repositories.Interfaces;
+
 using ERP.Mursheed.Utility;
 using ERP.Mursheed.WebCoreMVC_3_1.Facades;
 using ERP.Mursheed.WebCoreMVC_3_1.ViewModels;
@@ -15,24 +14,24 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
 {
     public class DriverPriceController : Controller
     {
-        private readonly IConfiguration _configuration;
-        private readonly IMapper _mapper;
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IDriverPriceFacade _driverPriceFacade;
-        private readonly ITicketFacade _ticketFacade;
+        //private readonly IConfiguration _configuration;
+        //private readonly IMapper _mapper;
+        //private readonly IUnitOfWork _unitOfWork;
+        //private readonly IDriverPriceFacade _driverPriceFacade;
+        //private readonly ITicketFacade _ticketFacade;
 
         
-        public DriverPriceController(IConfiguration configuration, 
-            IMapper mapper, 
-            IUnitOfWork unitOfWork, 
-            IDriverPriceFacade driverPriceFacade, ITicketFacade ticketFacade)
-        {
-            _configuration = configuration;
-            _mapper = mapper;
-            _unitOfWork = unitOfWork;
-            _driverPriceFacade = driverPriceFacade;
-            _ticketFacade = ticketFacade;
-        }
+        //public DriverPriceController(IConfiguration configuration, 
+        //    IMapper mapper, 
+        //    IUnitOfWork unitOfWork, 
+        //    IDriverPriceFacade driverPriceFacade, ITicketFacade ticketFacade)
+        //{
+        //    _configuration = configuration;
+        //    _mapper = mapper;
+        //    _unitOfWork = unitOfWork;
+        //    _driverPriceFacade = driverPriceFacade;
+        //    _ticketFacade = ticketFacade;
+        //}
 
         // [Route("DriverPrice/{id}")]
         //public IActionResult Index(int? id)

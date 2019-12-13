@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ERP.Mursheed.Entities.Shared
+namespace Entities.Shared
 {
     /// <summary>
     /// 4 tip adam var Driver Guides Tourist Agency  bunlar ucun ortak olan ve olmayan xususiyyetlere uygun tablllar nece olmalidir sual 1

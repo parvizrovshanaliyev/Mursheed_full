@@ -2,7 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ERP.Mursheed.ORM;
+//using ERP.Mursheed.ORMV2;
+//using ERP.Mursheed.ORM;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,7 +25,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1
                 {
                     var serviceProvider = services.GetRequiredService<IServiceProvider>();
                     var configuration = services.GetRequiredService<IConfiguration>();
-                    DbInitializer.Seed(serviceProvider, configuration).Wait();
+                    //DbInitializer.Seed(serviceProvider, configuration).Wait();
                 }
                 catch (Exception exception)
                 {

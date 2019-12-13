@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
-namespace ERP.Mursheed.Entities.Shared
+namespace Entities.Shared
 {
     public class ApplicationUser : IdentityUser
     {

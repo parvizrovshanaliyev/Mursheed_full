@@ -5,10 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
-using ERP.Mursheed.Entities.Shared;
-using ERP.Mursheed.ORM;
-using ERP.Mursheed.Repositories;
-using ERP.Mursheed.Repositories.Interfaces;
+using Entities.Shared;
 using ERP.Mursheed.WebCoreMVC_3_1.Facades;
 using ERP.Mursheed.WebCoreMVC_3_1.Helper;
 using Microsoft.AspNetCore.Builder;
@@ -20,6 +17,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
+using ORM;
+using Repositories;
+using Repositories.Interfaces;
 
 namespace ERP.Mursheed.WebCoreMVC_3_1
 {
@@ -38,14 +38,12 @@ namespace ERP.Mursheed.WebCoreMVC_3_1
             #region DbContext
 
             services.AddDbContext<MursheedContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                    x => x.UseNetTopologySuite()));
             services.AddScoped<DbContext>(sp => sp.GetRequiredService<MursheedContext>());
             #endregion
             #region Repository
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             #endregion
             #region services
@@ -97,6 +95,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1
             //        options.AccessDeniedPath = "/Account/AccessDenied";
             //    });
             #endregion
+
 
             services.AddSingleton<IFileProvider>(
                 new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));

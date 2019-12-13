@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ERP.Mursheed.Entities.Shared;
-using ERP.Mursheed.Repositories.Interfaces;
+
 using ERP.Mursheed.WebCoreMVC_3_1.Facades;
 using ERP.Mursheed.WebCoreMVC_3_1.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -12,15 +11,15 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
 {
     public class Select2Controller : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IDriverPriceFacade _driverPriceFacade;
+        //private readonly IUnitOfWork _unitOfWork;
+        //private readonly IDriverPriceFacade _driverPriceFacade;
 
-        public Select2Controller(IUnitOfWork unitOfWork,
-                                 IDriverPriceFacade driverPriceFacade)
-        {
-            _unitOfWork = unitOfWork;
-            _driverPriceFacade = driverPriceFacade;
-        }
+        //public Select2Controller(IUnitOfWork unitOfWork,
+        //                         IDriverPriceFacade driverPriceFacade)
+        //{
+        //    _unitOfWork = unitOfWork;
+        //    _driverPriceFacade = driverPriceFacade;
+        //}
 
         //#region GetFromRoute
         //[HttpPost]

@@ -1,4 +1,4 @@
-﻿using ERP.Mursheed.Entities.Shared;
+﻿using Entities.Shared;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
@@ -24,6 +24,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
         #endregion
 
         [HttpGet]
+        [Route("{Register}")]
         public IActionResult Register()
         {
             return View();
@@ -33,6 +34,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
         #region Register Driver
         [HttpGet]
         [ActionName("driverRegister")]
+        [Route("{Register}/Driver")]
         public IActionResult DriverRegister()
         {
             return View();
@@ -52,6 +54,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
         #region Register Guide
         [HttpGet]
         [ActionName("guideRegister")]
+        [Route("{Register}/Guide")]
         public IActionResult GuideRegister()
         {
             return View();
@@ -70,6 +73,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
 
         #region Register Tourist = Customer
         [HttpGet]
+        [Route("{Register}/Tourist")]
         public IActionResult TouristRegister()
         {
             return View();
@@ -87,6 +91,7 @@ namespace ERP.Mursheed.WebCoreMVC_3_1.Controllers
 
         #region TranspostationAgencyRegister
         [HttpGet]
+        [Route("{Register}/Agency")]
         public IActionResult AgencyRegister()
         {
             return View();
